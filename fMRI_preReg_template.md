@@ -2,11 +2,11 @@
 
 Markdown adaptation of [Jessica Flannery's template](https://osf.io/6juft/). Slightly modified section headers to more closely match OSF registration. 
 
-*Recommendations of fMRI details come from Nichols et al., 2016; Poldrack et al., 2008.*
+Recommendations of fMRI details come from Nichols et al., 2016; Poldrack et al., 2008.
 
-*For extended checklist guidelines for this section following data analysis, see PHBM COBIDAS report Nichols et al., 2016.* 
+For extended checklist guidelines for this section following data analysis, see PHBM COBIDAS report Nichols et al., 2016. 
 
-*See also [this](https://osf.io/ery2q/) table format put together by Cassandra Gould van Praag that can be helpful to check that no methods item has been overlooked.*
+See also [this](https://osf.io/ery2q/) table format put together by Cassandra Gould van Praag that can be helpful to check that no methods item has been overlooked.
 
 
 ## Goal of extended fMRI preregistration template
