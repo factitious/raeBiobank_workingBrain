@@ -2,6 +2,13 @@
 
 Markdown adaptation of [Jessica Flannery's template](https://osf.io/6juft/). Slightly modified section headers to more closely match OSF registration. 
 
+*Recommendations of fMRI details come from Nichols et al., 2016; Poldrack et al., 2008.*
+
+*For extended checklist guidelines for this section following data analysis, see PHBM COBIDAS report Nichols et al., 2016.* 
+
+*See also [this](https://osf.io/ery2q/) table format put together by Cassandra Gould van Praag that can be helpful to check that no methods item has been overlooked.*
+
+
 ## Goal of extended fMRI preregistration template
 ---
 
@@ -88,13 +95,6 @@ For each sub-section below, you can write a paragraph below as you would for a p
 - [ ] Randomization/pseudo-randomized (why/why not done & how)	
 - [ ] Run order (of tasks within scanner)	
 
-*Recommendations of fMRI details come from Nichols et al., 2016; Poldrack et al., 2008.*
-
-*For extended checklist guidelines for this section following data analysis, see PHBM COBIDAS report Nichols et al., 2016.* 
-
-*See also [this](https://osf.io/ery2q/) table format put together by Cassandra Gould van Praag that can be helpful to check that no methods item has been overlooked.*
-
-
 ---
 ---
 # Sampling Plan
@@ -153,12 +153,6 @@ Please describe the process by which you will collect your data. For each entry 
 - [ ] For group comparisons, what variables (if any) were equated across groups?	
 - [ ] Study timeline (e.g., number of visits, length of visits, what was measured/collected at each visit)	
 
-*Recommendations of fMRI details come from Nichols et al., 2016; Poldrack et al., 2008.*
-
-*For extended checklist guidelines for this section following data analysis, see PHBM COBIDAS report Nichols et al., 2016.* 
-
-*See also [this](https://osf.io/ery2q/) table format put together by Cassandra Gould van Praag that can be helpful to check that no methods item has been overlooked.*
-
 ---
 ## Sample size & Stopping rule
 
@@ -201,14 +195,6 @@ i.e. Indepenent Variables. This section should be considered optional and might 
 - Contingency plans for behavioral analysis (e.g., plans if x% of behavioral data is missing; poor variability in behavioral measure). 
 
 `e.g.:` If the X questionnaire is missing for more than 10% of participants we will not use it or if X 	does not show variability in response (either ceiling or floor effects) in which we cannot look at 	behavioral pattern of interest, we will not use that questionnaire and use Y questionnaire instead.
-
-*Recommendations of fMRI details come from Nichols et al., 2016; Poldrack et al., 2008.*
-
-*For extended checklist guidelines for this section following data analysis, see PHBM COBIDAS report Nichols et al., 2016.* 
-
-*See also [this](https://osf.io/ery2q/) table format put together by Cassandra Gould van Praag that can be helpful to check that no methods item has been overlooked.*
-
-
 
 ---
 ## Indices
@@ -576,8 +562,4 @@ If not specified previously, will you be conducting any confirmatory analyses to
 
 If you plan to explore your data set to look for unexpected differences or relationships, you may describe those tests here. An exploratory test is any test where a prediction is not made up front, or there are multiple possible tests that you are going to use. A statistically significant finding in an exploratory test is a great way to form a new confirmatory hypothesis, which could be registered at a later time.
 
-*Recommendations of fMRI details come from Nichols et al., 2016; Poldrack et al., 2008.*
-
-*For extended checklist guidelines for this section following data analysis, see PHBM COBIDAS report Nichols et al., 2016.* 
-
-*See also [this](https://osf.io/ery2q/) table format put together by Cassandra Gould van Praag that can be helpful to check that no methods item has been overlooked.*
+###### tags: `raeBiobank` `github` `mainRepo`
