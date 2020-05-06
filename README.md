@@ -16,6 +16,18 @@ The main point of this exercise is to gain familiarity with an SPM pipeline and 
 
 Bonus: emotional face perception task used involves, unsuprisingly, facial processing -> this is what the task used for the UK Biobank (also HCP btw) tfMRI; i.e. Hariri (2002) :thumbsup: 
 
+<details>
+  <summary>Spoiler warning</summary>
+  
+  Spoiler text. Note that it's important to have a space after the summary tag. You should be able to write any markdown you want inside the `<details>` tag... just make sure you close `<details>` afterward.
+  
+  ```javascript
+  console.log("I'm a code block!");
+  ```
+  
+</details>
+
+
 :::spoiler Show me the ToC
 [TOC]
 :::
