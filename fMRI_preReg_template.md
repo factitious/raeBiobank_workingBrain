@@ -1,0 +1,1 @@
+# fMRI Preregistration Template
