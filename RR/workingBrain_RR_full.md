@@ -1,45 +1,17 @@
 
-# occupationalBrainNets
+# workingBrain
 
-    Markdown adaptation of [Jessica Flannery's template](https://osf.io/6juft/). Slightly modified section headers to more closely match OSF registration. 
-
-    Recommendations of fMRI details come from Nichols et al., 2016; Poldrack et al., 2008.
-
-    For extended checklist guidelines for this section following data analysis, see PHBM COBIDAS report Nichols et al., 2016. 
-
-    See also [this](https://osf.io/ery2q/) table format put together by Cassandra Gould van Praag that can be helpful to check that no methods item has been overlooked.
-
-
-    ## Goal of extended fMRI preregistration template
-    ---
-
-    The goal of this template is to provide sufficient information in preregistration for fMRI data design to increase reproducible reporting practices. 
-
-    Text was adopted from the OSF preregistration challenge template to include the details important for fMRI psychology design. OSF template is retained in some areas and edited in other areas to incorporate both prior published templates and guidelines (Nichols et al., 2016; Poldrack et al., 2008; van’t Veer & Giner-Sorolla, 2016). 
-
-    https://www.biorxiv.org/content/early/2016/05/20/054262 
-    https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2287206/
-    https://www.sciencedirect.com/science/article/pii/S0022103116301925 
-
-    Quick notes:
-    All prompts and tables can be used to fill in as it, or as a checklist of information you include for text for that section or checklist for attached files (e.g., json file of scan parameters). Tip: Using it as a checklist will allow you to write these sections as they will appear in your future paper.
-
-    If a certain table/section does not apply, can just state “N/A.” 
-
-    This is also a base template and will not be sufficient for every type of fMRI analysis. If your methods require additional checklists, please include!
-
-
-# Study information 
+# I.   Study information 
 ---
 
-## Title: Characterising neural network markers of occupational wellbeing.
+## 1.   Title: Characterising neural network markers of occupational wellbeing.
 ---
 
-## Authors: Raul Duke, Charlotte Rae.
+## 2.  Authors: Raul Duke, Charlotte Rae.
 ___
 
 
-## Introduction
+## 3. Introduction
 ---
 
     This can be as complete as you like, but at least a brief introduction is  suggested to help to ensure literature review is done prior to hypotheses and help ensure your hypotheses are properly informed based on the literature. 
@@ -59,7 +31,7 @@ $^2$Work and Wellbeing guide, TUC, 2015
 $^3$https://hse.gov.uk/statistics/dayslost.htm
 
 
-## Hypotheses
+## 4.  Hypotheses
 ---
 
     #### Description of essential elements:
@@ -78,21 +50,23 @@ $^3$https://hse.gov.uk/statistics/dayslost.htm
     From van’t Veer & Giner-Sorolla, 2016
 
 
+
+
 ---
 ---
-# Design Plan
+# II.  Design Plan
 ---
-## Study type
+## 1. Study type
 
 See OSF registration options.
 
 ---
-## Blinding
+## 2. Blinding
 
 Blinding describes who is aware of the experimenta manipulations within a study.
 
 ---
-## Study design
+## 3. Study design
 
 #### Design specification:
 - [ ] Design type (task, rest; event-related, block)	
@@ -112,9 +86,9 @@ Blinding describes who is aware of the experimenta manipulations within a study.
 
 ---
 ---
-# Sampling Plan
+# III. Sampling Plan
 ---
-## Existing data
+## 1. Existing data
 
 Preregistration is designed to make clear the distinction between confirmatory tests, specified prior to seeing the data, and exploratory analyses conducted after observing the data. Therefore, creating a research plan in which existing data will be used presents unique challenges. Please select the description that best describes your situation. 
 
@@ -125,34 +99,28 @@ Preregistration is designed to make clear the distinction between confirmatory t
 - [ ] Registration following analysis of the data
 
 ---
-## Explanation of existing data
-
-
-If you indicate that you will be using some data that already exist in this study, please describe the steps you have taken to assure that you are unaware of any patterns or summary statistics in the data. This may include an explanation of how access to the data has been limited, who has observed the data, or how you have avoided observing any analysis of the specific data you will use in your study. The purpose of this question is to assure that the line between confirmatory and exploratory analysis is clear.
-
-e.g., links to prior papers, osf project page, prior posters or talks, or descriptions. 
-
-![](https://i.imgur.com/ZXbuxjF.png)
-
----
-## Details of larger study
+## 2. Details of larger study
 
 
 Is your preregistration part of a larger project?
 - [x] Yes
 - [ ] No 
 
-        If yes, provide a brief description of the larger study. Note, this does not need to include a list of all measures included in the larger study, but it is meant to provide context for the larger scope of the project.
+This project will use data obtained as part of of the UK Biobank population-based cohort study [@Biobank]
 
-
-        If applicable:
-        - Link to OSF project page 
-        - Link to collaborator’s related preregistrations, posters, etc. 
-
-        Explanation of how information from larger study or related studies within the larger project have/have not influenced your hypotheses/ measurement decisions. 
 
 ---
-## Data collection procedures 
+### A. Explanation of existing data
+
+
+    If you indicate that you will be using some data that already exist in this study, please describe the steps you have taken to assure that you are unaware of any patterns or summary statistics in the data. This may include an explanation of how access to the data has been limited, who has observed the data, or how you have avoided observing any analysis of the specific data you will use in your study. The purpose of this question is to assure that the line between confirmatory and exploratory analysis is clear.
+
+    e.g., links to prior papers, osf project page, prior posters or talks, or descriptions. 
+
+![](https://i.imgur.com/ZXbuxjF.png)
+
+---
+### B. Data collection procedures 
 
 Please describe the process by which you will collect your data. For each entry below, you can write a paragraph below as you would for a paper and use the checklist below to keep ensure everything gets done.
 
@@ -178,7 +146,8 @@ Ethical approval for the UK Biobank study was granted by the NHS National Resear
 
 
 ---
-## Sample size & Stopping rule
+
+## 3. Sample size & Stopping rule
 
 
 Effect size: 	
@@ -197,14 +166,16 @@ Specify the type of outcome used as the basis of power computations, e.g. signal
 > **value**
 ---
 ---
-# Variables
+## 4. Summary
+
+# IV.  Variables
 ---
-## Manipulated behavioural variables 
+## 1. Manipulated behavioural variables 
 
 i.e. Indepenent Variables. This section should be considered optional and might be unnecessary depending on the information covered in the previous sections.
 
 ---
-## Measured behavioural variables
+## 2. Measured behavioural variables
 
 - Describe each variable that you will measure. You do not need to include any variables that you plan on collecting if they are not going to be included in the confirmatory analyses of this study.
 
@@ -221,7 +192,7 @@ i.e. Indepenent Variables. This section should be considered optional and might 
 `e.g.:` If the X questionnaire is missing for more than 10% of participants we will not use it or if X 	does not show variability in response (either ceiling or floor effects) in which we cannot look at 	behavioral pattern of interest, we will not use that questionnaire and use Y questionnaire instead.
 
 ---
-## Indices
+## 3. Indices
 
 Derived indices from fMRI data
 `e.g.:`Contrast masks and how they were obtained.
@@ -229,7 +200,7 @@ Derived indices from fMRI data
 This is an optional section, and depending on the information covered in the previous sections it might be unnecessary.
 
 ---
-## Additional operational definitions
+## 4. Additional operational definitions
 
 Region Specificity (e.g., defined based on anatomical definition, Prior study cluster, Neurosynth definition (make sure to be specific here!), Parcellation definition)
 
@@ -238,9 +209,10 @@ Any other definitions used across study: (e.g., how is “risk” defined; how w
 
 ---
 ---
-# Analysis Plan
+# V.   Analysis Plan
 ---
-## Transformations 
+## 1. UK Biobank data curation.
+### A. Transformations 
 
 If you plan on transforming, centering, recoding the data, or will require a coding scheme for categorical variables, please describe that process.
 
@@ -249,22 +221,29 @@ Contingency plans for transformation: (e.g., transformations that will occur if 
 Code, if applicable: for scoring behavioral data
 
 ---
-## Data exclusion
+### B. Data exclusion
+(details below from [UK Biobank Imaging documentation](https://biobank.ctsu.ox.ac.uk/crystal/crystal/docs/brain_mri.pdf), section `3. Image Processing Pipeline`
 
-How will you determine which data points or samples (if any) to exclude from your analyses? How will outliers be handled?
+    How will you determine which data points or samples (if any) to exclude from your analyses? How will outliers be handled?
 
-If any subjects were/will be scanned but then rejected/could be rejected from analysis after data collection, state reasons for rejection/possible rejections.
-	(e.g., If a participant has X percentage of volumes with motion, participant will be excluded)
-	Contingency plans: (e.g., plans for missing field map, plans for dropout, missing mprage etc.)
+    If any subjects were/will be scanned but then rejected/could be rejected from analysis after data collection, state reasons for rejection/possible rejections.
+        (e.g., If a participant has X percentage of volumes with motion, participant will be excluded)
+        Contingency plans: (e.g., plans for missing field map, plans for dropout, missing mprage etc.)
 
-How will you deal with incomplete or missing data (e.g., missing timepoints or missing/incomplete data within or between runs; what percent missing will be included)?
+    How will you deal with incomplete or missing data (e.g., missing timepoints or missing/incomplete data within or between runs; what percent missing will be included)?
+
+When raw data is corrupted, missing or otherwise unusable, it is moved into a subfolder (inside the given modality’s folder) named unusable, and not processed any further (apart from defacing applied to the raw T1 and T2_FLAIR). This “unusable” data is included in the Biobank database, because some researchers may be interested in working with this data, for example, to develop new methods for detecting or even possibly correcting such data.
+
+The evaluation of the T1 data for “usability” includes a rough manual review of all T1s (supplemented by a beta-version auto-QC approach) (Alfaro-Almagro et al., 2018). Where a T1 is considered to have a serious problem it has been moved into the “unusable” subfolder as described above. This is for datasets where the issue is considered serious enough that the pipeline is unlikely to run well - which could be imaging artefacts/problems or very gross pathologies. More subtle pathologies that are subtle enough that we expect the pipeline to run OK are not treated as “unusable” in this way.
+
+In the case of unusable T1 data, all other modalities’ raw imaging data are also considered unusable (because the pipeline cannot function without a usable T1). However, as with the T1 data, all such raw data is still available for download in the NIFTI packages (but without the pipeline processing applied). In the case of the incompatible (Phase 2) dMRI and T2_FLAIR data (see above for protocol incompatibilities), these also are not processed with the image processing pipeline, but the raw data are moved to an incompatible folder, and available for download. For example, some researchers may wish to investigate the possibility of developing analyses which can handle the protocol incompatibilities.
 
 
 ---
-## Data acquisition
-(details below from [UK Biobank Imaging documentation](https://biobank.ctsu.ox.ac.uk/crystal/crystal/docs/brain_mri.pdf), section `2. Image Acquisition Protocols`)
+### C. Data acquisition
+(details below from [UK Biobank Imaging documentation](https://biobank.ctsu.ox.ac.uk/crystal/crystal/docs/brain_mri.pdf), section `2. Image Acquisition Protocols` and [Extended Acquisition documentation](https://www.fmrib.ox.ac.uk/ukbiobank/protocol/V4_23092014.pdf))
 
-
+:::spoiler Checklist
 #### Subject preparation:
 - [ ] Mock scanning (Report type of mock scanner and protocol; i.e. duration, types of simulated scans, experiments).	
 - [ ] Specific accommodations (e.g., pediatric, parent present? Asleep?) 	
@@ -274,75 +253,73 @@ How will you deal with incomplete or missing data (e.g., missing timepoints or m
 - [x] Manufacturer, field strength (in Tesla), model name	
 
 #### MRI acquisition:
-- [ ] Pulse sequence (gradient/spin echo etc.)	
+- [x] Pulse sequence (gradient/spin echo etc.)	
 - [x] Image type (EPI, spiral, 3D etc.)	
 
 **Essential sequence & imaging parameters.**
 *For all acquisitions:*
-- [ ] Echo time (TE).
-- [ ] Repetition time (TR).
-    - [ ] For multi­shot acquisitions, additionally the time per volume.
-- [ ]  Flip angle (FA).
-- [ ]  Acquisition time (duration of acquisition). 
+- [x] Echo time (TE).
+- [x] Repetition time (TR).
+    - [x] For multi-shot acquisitions, additionally the time per volume.
+- [x]  Flip angle (FA).
+- [x]  Acquisition time (duration of acquisition). 
  
 *Functional MRI:*
 - [ ] Number of volumes.
 - [ ] Sparse sampling delay (delay in TR) if used. 
 
 *Inversion recovery sequences:*
-- [ ] Inversion time (TI). 
+- [x] Inversion time (TI). 
 
 *B0 field maps:*
-- [ ] Echo time difference (dTE). 
-- [ ] Diffusion MRI:
-    - [ ] Number of directions.
-    - [ ] Direction optimization, if used and type.
-- [ ] b-values.
-- [ ] Number of b=0 images.
+- [x] Number of b=0 images.
 - [ ] Number of averages (if any).
-- [ ] Single shell, multi-shell (specify equal or unequal spacing).
-- [ ] Single- or dual-spin-echo, gradient mode (serial or parallel).
+- [x] Single shell, multi-shell (specify equal or unequal spacing).
+- [x] Single- or dual-spin-echo, gradient mode (serial or parallel).
 - [ ] If cardiac gating used.
 
 *Imaging parameters:*
-- [ ] Field of view.
-- [ ] In-plane matrix size, slice thickness and interslice gap, for 2D acquisitions. 
-- [ ] Slice orientation:
-    - [ ] Axial, sagittal, coronal or oblique.
-    - [ ] Angulation: If acquistion not aligned with scanner axes, specify angulation to AC­PC line (see Slice position procedure). 
-- [ ] 3D matrix size, for 3D acquisitions.	
-- [ ] Phase encoding	
-- [ ] Parallel imaging method & parameters	
-- [ ] Multiband parameters	
+- [x] Field of view.
+- [x] In-plane matrix size, slice thickness and interslice gap, for 2D acquisitions. 
+- [x] Slice orientation:
+    - [x] Axial, sagittal, coronal or oblique.
+    - [x] Angulation: If acquistion not aligned with scanner axes, specify angulation to AC-PC line (see Slice position procedure). 
+- [x] 3D matrix size, for 3D acquisitions.	
+- [x] Phase encoding	
+- [x] Parallel imaging method & parameters	
+- [x] Multiband parameters	
 - [ ] Readout parameters 	
-- [ ] Fat suppression (for anatomical, state if used)	
-- [ ] Shimming	
-- [ ] Slice order & timing	
-- [ ] Brain coverage (e.g., whole brain, was cerebellum, brain stem included)
+- [x] Fat suppression (for anatomical, state if used)	
+- [x] Shimming	
+- [x] Slice order & timing	
+- [x] Brain coverage (e.g., whole brain, was cerebellum, brain stem included)
 - [ ] Scanner-side preprocessing (e.g., Including: Reconstruction matrix size differing from acquisition matrix size; Prospective-motion correction (including details of any optical tracking, and how motion parameters are used); Signal inhomogeneity correction; Distortion-correction.)	
-- [ ] Scan duration (in seconds)	
-- [ ] Other non-standard procedures	
+- [x] Scan duration (in seconds)	
+- [x] Other non-standard procedures	
 - [ ] T1 stabilization (discarded “dummy” scans acquired discarded by scanner)	
 - [ ] Diffusion MRI gradient table (Also referred to as the b­matrix, but not to be confused with the 3×3 matrix that describes diffusion weighting for a single diffusion weighted measurement)	
 
-#### 1. Brain imaging hardware
+:::
+
+
+#### i. Brain imaging hardware
 
 The scanner used for the acquisition of brain imaging data is a standard Siemens Skyra 3T running VD13A SP4 (as of October 2015), with a standard Siemens 32-channel RF receiver head coil. The data is collected in three identical centres dedicated to UK Biobank imaging in Manchester, Newcastle, and Reading. 
 
-#### 2. Echo-planar imaging
+#### ii. Echo-planar imaging
 
 The EPI-based acquisitions (rfMRI and tfMRI) utilize simultaneous multi-slice (multiband) acceleration (Larkman et al., 2001, Moeller et al., 2010). Biobank uses pulse sequences and reconstruction code from the Center for Magnetic Resonance Research (CMRR), University of Minnesota https://www.cmrr.umn.edu/multiband. These developments were partially generated as part of the Human Connectome Project (HCP, NIH grant 1U54MH091657), as described in (Ugurbil et al., 2013). The fMRI data and primary dMRI data are all acquired with AP (anterior-posterior) phase encoding direction.
 
 Distortion correction of EPI requires an estimate of the static field map. This fieldmap is derived from pairs of spin-echo EPI acquisitions with opposite phase encoding directions, acquired as part of the dMRI dataset; in addition to the primary dMRI data, 3 $B_0$ images are acquired with reversed phase encoding for later fieldmap estimation (along with 3 $B_0$ images with standard phase encoding). The estimated fieldmap is used for distortion correction in both the dMRI and fMRI datasets. This aproach was found to have similar accuracy to separate fieldmap acquisitions in much shorter time and with greater robustness against head motion.
 
-##### 3. Setup::shimming [2 min]
+#### iii. Setup::shimming [2 min]
 
 It is critical to achieve maximally consistent spatial coverage of scans in the presence of differences in subject positioning and head size. For each scan, the field-of-view is automatically determined based on Siemens’ auto-align software, which aligns a scout scan to an atlas. In the infrequent situation where auto-align failed, alignment was set by the radiographer. T1 and T2 structurals are acquired using straight sagittal orientation (i.e., with the field-of-view aligned to the scanner axes). fMRI (task and resting-state). Using the population brain size and shape results from (Mennes et al., 2014), imaging matrix is angled such that the front of the brain is tilted down (relative to the imaging matrix) by 16$^{\circ}$, with respect to the AC-PC line.
 
 Shim field accuracy is critical for data quality, and was found to be suboptimal when using default settings on the MRI scanner, particularly for the simultaneous multi-slice EPI acquisitions. Initially, shim quality was improved by manually iterating the shimming process 3 times; this process which was later replaced by a single shim using a reduced shimming field-of-view, thereby improving resolution of the acquired field map. The scans are prescribed to avoid any subsequent re-shimming during the entire protocol.
 
 
-##### 4. T1-weighted structural imaging [5 min]
+#### iv. T1-weighted structural imaging [5 min]
 
 Resolution: 1x1x1 mm
 Field-of-view: 208x256x256 matrix
@@ -351,17 +328,17 @@ Duration: 5 minutes
 
 The superior-inferior field-of-view is large (256mm), at little cost, in order to include reasonable amounts of neck/mouth, as those areas will be of interest to some researchers.
 
-##### 5. Resting-state functional (rf)MRI [6 min:490 timepoints]
+#### v. Resting-state functional (rf)MRI [6 min:490 timepoints]
 
 Resolution: 2.4x2.4x2.4 mm
 Field-of-view: 88x88x64 matrix
 TR: 0.735 s
 TE: 39ms
-GE-EPI with x8 multislice acceleration, no iPAT, flip angle 52, fat saturation
+GE-EPI with x8 multislice acceleration, no iPAT, flip angle 52$^{\circ}$, fat saturation.
 
 As implemented in the CMRR multiband acquisition, a separate “single-band reference scan” is also acquired. This has the same geometry (including EPI distortion) as the timeseries data, but has higher between-tissue contrast to noise, and is used as the reference scan in head motion correction and alignment to other modalities.
 
-##### 6. Task functional (tf)MRI [4 min:332 timepoints]
+#### vi. Task functional (tf)MRI [4 min:332 timepoints]
 
 Acquisition details are identical to those used for rfMRI, with the exception of the duration (i.e. 4 min vs 6 min),
 
@@ -369,7 +346,7 @@ The task is the Hariri faces/shapes “emotion” task (Hariri et al., 2002, Bar
 
 The ePrime script that controls the video presented to the participant is derived from the one used by the HCP, and is available at http://biobank.ctsu.ox.ac.uk/crystal/refer.cgi?id=1462.
 
-##### 7. T2-weighted FLAIR structural imaging [6 min]
+#### vii. T2-weighted FLAIR structural imaging [6 min]
 
 Resolution: 1.05x1x1 mm
 Field-of-view: 192x256x256 matrix
@@ -380,7 +357,7 @@ Duration: 6 minutes
 
 After early piloting, a standard T2/PD-weighted acquisition was dropped due to a combination of factors such as overall value and timing practicalities. However a T2-weighted FLAIR image is acquired, which is generally of good quality and which shows strong contrast for white matter hyperintensities.
 
-##### Compatibility across different phases of imaging
+#### viii. Compatibility across different phases of imaging
 
 The imaging documentation reads:
 
@@ -388,11 +365,13 @@ The imaging documentation reads:
 
 We're not getting dMRI or T2_Flair, so for our purposes there is no difference between acquisision phases.
 
+
+
 ---
-## Preprocessing
+### D. Preprocessing
+(details below from [UK Biobank Imaging documentation](https://biobank.ctsu.ox.ac.uk/crystal/crystal/docs/brain_mri.pdf), section `3. Image Processing Pipeline` and [Extended Analysis documentation](https://www.fmrib.ox.ac.uk/ukbiobank/fbp/). Scripts available [here](https://git.fmrib.ox.ac.uk/falmagro/UK_biobank_pipeline_v_1))
 
-For each sub-section below, you can write a paragraph below as you would for a paper and use the checklist below to keep ensure everything gets done.
-
+:::spoiler Checklist]
 #### Preliminary quality control:
 - [ ] Motion monitoring (For functional or diffusion acquisitions, any visual or quantitative checks for severe motion; likewise, for structural images, checks on motion or general image quality.)	
 - [ ] Incidental findings (Protocol for review of any incidental findings, and how they are handled in particular with respect to possible exclusion of a subject’s data.)	
@@ -414,7 +393,6 @@ For each sub-section below, you can write a paragraph below as you would for a p
 	
 
 #### Inter-subject registration:
-
 - [ ] Intersubject registration method used	
 - [ ] Illustration of the voxels present in all subjects (“mask image”) can be helpful, particularly for restricted fields of view (to illustrate overlap of slices across all subjects). Better still would be an indication of average BOLD sensitivity within each voxel in the mask	
 - [ ] Transformation model and optimization	
@@ -431,9 +409,14 @@ For each sub-section below, you can write a paragraph below as you would for a p
 
 - [ ] Smoothing (Size and type of smoothing kernel - provide justification for size; e.g., for a group study, “12 mm FHWM Gaussian smoothing applied to ameliorate differences in intersubject localization”; for single subject fMRI “6 mm FWHM Gaussian smoothing used to reduce noise”)
 	
+:::
+<br>
+
 
 ---
-## Statistical modelling
+### E. Summary
+
+## 2. Statistical modelling
 
 Planned comparison 
 If the experiment has multiple conditions, what are the specific planned comparisons, or is an omnibus ANOVA used?
@@ -508,7 +491,7 @@ For local multivariate report:
 If not previously specified above, what statistical model will you use to test each hypothesis? Please include the type of model (e.g. ANOVA, multiple regression, SEM, etc) and the specification of the model (this includes each variable that will be included as predictors, outcomes, or covariates). Please specify any interactions that will be tested and remember that any test not included here must be noted as an exploratory test in your final article. 
 
 ---
-## Statistical inference
+## 3. Statistical inference
 
 For each sub-section below, you can write a paragraph below as you would for a paper and use the checklist below to keep ensure everything gets done.
 
@@ -609,12 +592,12 @@ Specify either:
 
 
 ---
-## Follow-up analyses
+## 4. Follow-up analyses
  
 If not specified previously, will you be conducting any confirmatory analyses to follow up on effects in your statistical model, such as subgroup analyses, pairwise or complex contrasts, or follow-up tests from interactions? Remember that any analyses not specified in this research plan must be noted as exploratory.
  
 ---
-## Exploratory analyses
+## 5. Exploratory analyses
 
 If you plan to explore your data set to look for unexpected differences or relationships, you may describe those tests here. An exploratory test is any test where a prediction is not made up front, or there are multiple possible tests that you are going to use. A statistically significant finding in an exploratory test is a great way to form a new confirmatory hypothesis, which could be registered at a later time.
 
