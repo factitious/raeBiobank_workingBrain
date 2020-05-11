@@ -177,9 +177,6 @@ Data are being obtained from the UK Biobank, a population-based cohort study of 
 
 
 
-![](https://i.imgur.com/ZXbuxjF.png)
-
-
 ---
 
 ## 4. Sample size & Stopping rule
@@ -199,6 +196,7 @@ Target power:
  
 Specify the type of outcome used as the basis of power computations, e.g. signal in a pre-specified ROI, or whole image voxelwise (or cluster­wise, peak­wise, etc.):	
 > **value**
+ 
 ---
 ---
 ## 5. Summary
@@ -206,20 +204,22 @@ Specify the type of outcome used as the basis of power computations, e.g. signal
 # IV.  Variables
 ---
 
-- Describe each variable that you will measure. You do not need to include any variables that you plan on collecting if they are not going to be included in the confirmatory analyses of this study.
+    - Describe each variable that you will measure. You do not need to include any variables that you plan on collecting if they are not going to be included in the confirmatory analyses of this study.
 
-- Outcome measures (specific measure, scale/range of measure, which subscale/component of measure you will use): 
+    - Outcome measures (specific measure, scale/range of measure, which subscale/component of measure you will use): 
 
-- Predictor measures (specific measure, scale/range of measure, which subscale/component of measure you will use):
+    - Predictor measures (specific measure, scale/range of measure, which subscale/component of measure you will use):
 
-- Covariate measures (specific measure, scale/range of measure, which subscale/component of measure you will use):
+    - Covariate measures (specific measure, scale/range of measure, which subscale/component of measure you will use):
 
-- How was behavioral task performance measured (if task fMRI; e.g., response time, accuracy)?
+    - How was behavioral task performance measured (if task fMRI; e.g., response time, accuracy)?
 
-- Contingency plans for behavioral analysis (e.g., plans if x% of behavioral data is missing; poor variability in behavioral measure). 
+    - Contingency plans for behavioral analysis (e.g., plans if x% of behavioral data is missing; poor variability in behavioral measure). 
 
-`e.g.:` If the X questionnaire is missing for more than 10% of participants we will not use it or if X 	does not show variability in response (either ceiling or floor effects) in which we cannot look at 	behavioral pattern of interest, we will not use that questionnaire and use Y questionnaire instead.
+    `e.g.:` If the X questionnaire is missing for more than 10% of participants we will not use it or if X 	does not show variability in response (either ceiling or floor effects) in which we cannot look at 	behavioral pattern of interest, we will not use that questionnaire and use Y questionnaire instead.
 
+
+![](https://i.imgur.com/ZXbuxjF.png)
 
 --- 
 ## 1. Independent variables
@@ -290,6 +290,7 @@ In the case of unusable T1 data, all other modalities’ raw imaging data are al
 <details>
   <summary>Checklist:</summary>
 <br>
+
 #### Subject preparation:
 - [ ] Mock scanning (Report type of mock scanner and protocol; i.e. duration, types of simulated scans, experiments).	
 - [ ] Specific accommodations (e.g., pediatric, parent present? Asleep?) 	
