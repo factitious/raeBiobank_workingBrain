@@ -39,3 +39,14 @@ So the value type is text, as the the values in build Item Types are coded links
 
 - Instance 3: First repeat imaging visit (2019+)
 1,366 participants, 1,366 items
+
+### Alcohol (CatID: 100051)
+
+- Instance 0: Initial assessment visit (2006-2010) at which participants were recruited and consent given 
+501,608 participants, 501,608 items
+- Instance 1: First repeat assessment visit (2012-13)
+20,336 participants, 20,336 items
+- Instance 2: Imaging visit (2014+)
+48,340 participants, 48,340 items
+- Instance 3: First repeat imaging visit (2019+) 
+3,081 participants, 3,081 items
