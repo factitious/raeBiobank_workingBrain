@@ -1,0 +1,78 @@
+---
+title: "workingBrain: UK Biobank metadata."
+output: html_notebook
+---
+
+### Setup
+
+Load needed libraries 
+```{r loadLibs}
+library(readxl)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(data.tree)
+library(circlepackeR)
+library(igraph)
+library(networkD3)
+```
+
+
+Load the data and have a look at the first few rows.
+```{r loadData}
+metaData_all <- read_excel("~/GoogleDrive/Git/raeBiobank/RR/workingBrain_dataFields.xlsx", 
+    sheet = "allData_BB")
+
+head(metaData_all)
+```
+
+This is all the datafields in the UK Biobank data set, so we need to filter for this specific study (i.e. based on the variable 'inBasket')
+```{r filterData}
+metaData_filtered <- filter(metaData_all, inBasket == T)
+head(metaData_filtered)
+```
+
+### Explore
+```{r diagnostics1}
+# Do we have the right number of rows? 
+nrow(metaData_filtered); 
+
+# Do we have the right number of columns?
+ncol(metaData_filtered); 
+
+# How many 'complete cases' (no rows/cols missing)?
+sum(complete.cases(metaData_filtered))
+```
+
+How many different 'Paths' are there? Will use to create 'Category' field, that is more intuitive and removes some of the information that we're not really interested in (e.g. that that data was aquired through 'Touchscreen'). 
+```{r}
+unique(metaData_filtered$Path)
+```
+
+
+```{r}
+metaData_filtered %>%
+  filter(str_detect(Path, "Population characteristics > Baseline characteristics "))
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
