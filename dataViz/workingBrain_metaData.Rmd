@@ -1,51 +1,64 @@
 ---
-title: "workingBrain: UK Biobank metadata."
-output: html_notebook
+title: 'workingBrain: UK Biobank metadata.'
+output:
+  html_document:
+    df_print: paged
 ---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+```
+
 
 ## Setup and load data
 
-Load needed libraries 
-```{r loadLibs, echo=FALSE}
+```{r loadLibs, results="hide"}
 library(readxl); library(tidyverse); library(dplyr); library(naniar); library(ggplot2); library(jsonlite);
 library(data.tree); library(circlepackeR); library(igraph); library(networkD3); library(htmlwidgets)
 ```
 
 
 Load the data and have a look at the first few rows.
-```{r loadData}
+```{r loadData, echo=FALSE}
 metaData_all <- read_excel("~/GoogleDrive/Git/raeBiobank/RR/workingBrain_dataFields.xlsx", 
     sheet = "allData_BB")
 
 head(metaData_all)
 ```
 
-This is all the datafields in the UK Biobank data set, so we need to filter for this specific study (i.e. based on the variable 'inBasket')
+This is all the datafields in the UK Biobank data set, so we need to filter for this specific study (i.e. based on the variable 'inBasket').
 ```{r filterData}
 metaData<- filter(metaData_all, inBasket == T)
 head(metaData)
 ```
 
 ## Explore
-```{r checks1}
+```{r checks1, echo=FALSE}
 # Do we have the right number of rows? 
+cat("How many rows does our dataframe have?\n")
 nrow(metaData); 
 
+cat("How many columns does our dataframe have?\n")
 # Do we have the right number of columns?
 ncol(metaData); 
 
 # How many 'complete cases' (no rows/cols missing)?
+cat("How many 'complete cases' (no rows/cols with NA)?\n")
 sum(complete.cases(metaData))
 ```
 
-How many different 'Paths' are there? Will use to create 'Category' field, that is more intuitive and removes some of the information that we're not really interested in (e.g. that that data was aquired through 'Touchscreen'). 
-```{r allPaths}
+**What's the structure of our data?**
+
+This is currently held in the 'Path' variable. Will use this to create 'Medium' (Population vs Online vs Assessment Centre), 'MetaCat' and 'Category' variables (i.e. columns), making it more intuitive and removing some of the information that we're not really interested in (e.g. that that data was aquired through 'Touchscreen'). More details below.
+```{r allPaths, echo=FALSE}
 unique(metaData$Path)
 ```
 
-The following are various steps to make the data more intuitive and easier to work with. The main aim is to divide the unhelpful (and in this state unusable) `Path` variable into columns that could actually help us make sense of the data. Ideallly would've done everything inside a 'pipe' (i.e.e %>%), but it waas being really stubborn an not allowing me to cut NA\s while keeping my rows -> Had to go with a bit of an inelegant solution, i.e. iteratively splitting the columns and making the desired changes and them putting them back together.
+**"Wrangling"**
 
-```{r splitPaths, echo = FALSE}
+The following are various steps to make the data more intuitive and easier to work with. The main aim is to divide the unhelpful (and in this state unusable) `Path` variable into columns that could actually help us make sense of the data. Details in the comments (probably lacking in some places, come back to this: `TODO`).
+
+```{r splitPaths, results="hide"}
 
 # Split "Path" column based on ">" separator
 metaData_filtered <- metaData %>%
@@ -119,8 +132,12 @@ metaData_filtered <- metaData_filtered %>%
 
 ```
 
+Following "wrangling", our data now has the following structure.
+```{r}
+head(metaData_filtered)
+```
 
-```{r splitPahts_show}
+```{r splitPahts_show, echo=FALSE}
 cat("Metacategories after transformation: \n")
 unique(metaData_filtered$MetaCat)
 
@@ -130,33 +147,42 @@ unique(metaData_filtered$Category)
 
 ## Visualize
 
-First visualising these as 
+### circlePacking
+Circular packing or circular treemap allows to visualize a hierarchic organization. It is an equivalent of a treemap or a dendrogram, where each node of the tree is represented as a circle and its sub-nodes are represented as circles inside of it. \n\n
+
+I thought this would be quite useful for visualising (and hopefully makign sense) of our 'metadata'. The size of the circles can be changed to be proportional to whatever value we choose, but for now I left it as constant as I couldn't really see any value that we could've made the size of the circles dependent on to help with insight.
+
+**Visualising MetaCat/Cat relationship**
+
 ```{r circlePack_cats}
 metaData_filtered$pathString <- file.path("world", metaData_filtered$MetaCat, metaData_filtered$Category)
 metaData_filtered$value <- sample(seq(1:nrow(metaData_filtered)), 1)
 
 cats_p <- circlepackeR(as.Node(metaData_filtered), size = "value", color_min = "rgb(250, 200, 150)", color_max = "rgb(120, 50, 0)")
 
-show(cats_p)
+cats_p
 
 # save the widget
 #saveWidget(cats_p, file=paste("circlePack_cats.html"))
 
 ```
 
+**Visualising MetaCat/Cat/Fields relationship**
+
+Note: had to use `FieldID` as opposed to `Field`(i.e. field name) to help with visualisation.
 ```{r circlePack_fields}
-metaData_filtered$pathString <- file.path("world", metaData_filtered$MetaCat, metaData_filtered$Category, metaData_filtered$Field)
+metaData_filtered$pathString <- file.path("world", metaData_filtered$MetaCat, metaData_filtered$Category, metaData_filtered$FieldID)
 metaData_filtered$value <- sample(seq(1:nrow(metaData_filtered)), 1)
 
 fields_p <- circlepackeR(as.Node(metaData_filtered), size = "value", color_min = "rgb(250, 200, 150)", color_max = "rgb(120, 50, 0)")
 
-show(fields_p)
+fields_p
 
 # save the widget
-saveWidget(fields_p, file=paste("circlePack_fields.html"))
+# saveWidget(fields_p, file=paste("circlePack_fields.html"))
 ```
 
-
+### networkD3
 
 
 
