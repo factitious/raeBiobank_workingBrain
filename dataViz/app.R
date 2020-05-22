@@ -1,49 +1,93 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
+library(collapsibleTree)
+require(colorspace)
 
-# Define UI for application that draws a histogram
+# Load dataset
+load("metaData_export.rda")
+
+# Define UI for application that draws a collapsible tree
 ui <- fluidPage(
-
+    
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins 
+    titlePanel("workingBrain: UK Biobank metadata [Interactive Dendrogram]"),
+    
+    # Sidebar with a select input for the root node
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+            selectInput(
+                "hierarchy", "Tree hierarchy",
+                # dput(names(metaData_export))
+                choices = c("Medium", 
+                            "MetaCat", 
+                            "Category", 
+                            "CategoryID", 
+                            "FieldID", 
+                            "Field", 
+                            "Participants", 
+                            "Items", 
+                            "Stability", 
+                            "Value Type", 
+                            #"Units", 
+                            "ItemType", 
+                            "Strata", 
+                            "Sexed", 
+                            "Instances", 
+                            "Array",
+                            "showInfo"
+                            #"Notes", 
+                            #"Link"),
+                            ),
+                
+                selected = c("MetaCat",
+                             "Category", 
+                             "Field"
+                             ),
+                
+                multiple = TRUE
+            ),
+            tags$p("Selected node: (select 'Field' to display all attributes)"),
+            verbatimTextOutput("nodeName"),
+            verbatimTextOutput("par"),
+            verbatimTextOutput("value_type"),
+            tags$br(),
+            tags$a(href = "https://github.com/factitious/raeBiobank_workingBrain", "Main project page"),
+            width = 4
         ),
-
-        # Show a plot of the generated distribution
+        
+        # Show a tree diagram with the selected root node
         mainPanel(
-           plotOutput("distPlot")
+            collapsibleTreeOutput("plot", height = "900px")
         )
     )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic required to draw a collapsible tree diagram
 server <- function(input, output) {
-
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    output$plot <- renderCollapsibleTree({
+        collapsibleTreeSummary(
+            metaData_export, 
+            hierarchy = input$hierarchy,
+            root = 'UKBmetaData',
+            inputId = "node",
+            tooltip = TRUE,
+            #width = 1200,
+            zoomable = FALSE
+        )
+    })
+    
+    
+    output$nodeName <- renderPrint({
+        paste0("Field: ", input$node[1][1])
+    })
+    
+    output$par <- renderPrint({
+        paste0("Participants: ", metaData_export$Participants[metaData_export$Field == input$node[1][1]])
+    })
+    
+    output$value_type <- renderPrint({
+        paste("Value Type: ", metaData_export$'Value Type'[metaData_export$Field == input$node[1][1]])
     })
 }
 
-# Run the application 
+# Run the application
 shinyApp(ui = ui, server = server)

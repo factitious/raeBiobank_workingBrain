@@ -14,7 +14,9 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
 
 ```{r loadLibs, results="hide"}
 library(readxl); library(tidyverse); library(dplyr); library(naniar); library(ggplot2); library(jsonlite);
-library(data.tree); library(circlepackeR); library(igraph); library(networkD3); library(htmlwidgets)
+library(data.tree); library(circlepackeR); library(igraph); library(ggraph);library(networkD3); library(htmlwidgets);
+library(collapsibleTree)
+ 
 ```
 
 
@@ -145,6 +147,17 @@ cat("\nCategories after transformation: \n")
 unique(metaData_filtered$Category)
 ```
 
+```{r exportTransformedData}
+# As .rda
+# save(metaData_export, file = "metaData_export.rda")
+
+#As csv
+#write.csv(metaData_export,"/Users/munchausend/GoogleDrive/Git/raeBiobank/workingBrain_dataFields 210520.csv", row.names = TRUE)
+
+
+```
+
+
 ## Visualize
 
 ### circlePacking
@@ -182,9 +195,21 @@ fields_p
 # saveWidget(fields_p, file=paste("circlePack_fields.html"))
 ```
 
-### networkD3
+### Interactive Dendrogram
 
+**There is some problem using two different types of html widgets in the same knit, so for now this will just live in the shiny app: https://munchausend.shinyapps.io/dataViz/**
 
+```{r dendrogram_notZoomable}
+# collapsibleTreeSummary(
+#   metaData_filtered, c("MetaCat", "Category", "Field"),
+#   root = 'UKBmetaData',
+#   #width = 1200,
+#   #height = 800,
+#   zoomable = FALSE,
+#   tooltip = TRUE,
+#   )
+
+```
 
 
 

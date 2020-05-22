@@ -1,0 +1,12 @@
+name: dataViz
+title: dataViz
+username:
+account: munchausend
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2342962
+bundleId: 3179457
+url: https://munchausend.shinyapps.io/dataViz/
+when: 1590169470.05839
+asMultiple: FALSE
+asStatic: FALSE
