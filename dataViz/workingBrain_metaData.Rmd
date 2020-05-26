@@ -28,7 +28,7 @@ metaData_all <- read_excel("~/GoogleDrive/Git/raeBiobank/RR/workingBrain_dataFie
 head(metaData_all)
 ```
 
-This is all the datafields in the UK Biobank data set, so we need to filter for this specific study (i.e. based on the variable 'inBasket').
+These are all the datafields in the UK Biobank data set, so we need to filter for the fields included in our study (i.e. based on the variable 'inBasket'):
 ```{r filterData}
 metaData<- filter(metaData_all, inBasket == T)
 head(metaData)
@@ -53,12 +53,13 @@ sum(complete.cases(metaData))
 
 This is currently held in the 'Path' variable. Will use this to create 'Medium' (Population vs Online vs Assessment Centre), 'MetaCat' and 'Category' variables (i.e. columns), making it more intuitive and removing some of the information that we're not really interested in (e.g. that that data was aquired through 'Touchscreen'). More details below.
 ```{r allPaths, echo=FALSE}
-unique(metaData$Path)
+cat("Full paths before transformation: \n\n")
+sort(unique(metaData$Path))
 ```
 
 **"Wrangling"**
 
-The following are various steps to make the data more intuitive and easier to work with. The main aim is to divide the unhelpful (and in this state unusable) `Path` variable into columns that could actually help us make sense of the data. Details in the comments (probably lacking in some places, come back to this: `TODO`).
+The following are various steps to make the data more intuitive and easier to work with (code not included, just presenting output here). The main aim is to divide the unhelpful (and in this state unusable) `Path` variable into columns that could actually help us make sense of the data. Details will be in the code, **not included for readability** (probably still lacking in some places, come back to this: `TODO`).
 
 ```{r splitPaths, results="hide"}
 
@@ -140,12 +141,22 @@ head(metaData_filtered)
 ```
 
 ```{r splitPahts_show, echo=FALSE}
-cat("Metacategories after transformation: \n")
+cat("Full paths after transformation: \n\n")
+metaData_filtered$pathString <- paste(metaData_filtered$Medium, metaData_filtered$MetaCat, metaData_filtered$Category, sep=" > ")
+sort(unique(metaData_filtered$pathString))
+
+```
+
+
+```{r}
+cat("Metacategories after transformation:")
 unique(metaData_filtered$MetaCat)
 
-cat("\nCategories after transformation: \n")
+cat("Categories after transformation:")
 unique(metaData_filtered$Category)
+
 ```
+
 
 ```{r exportTransformedData}
 # As .rda
@@ -214,40 +225,40 @@ fields_p
 ### networkD3
 
 ```{r}
-nodes <- read.csv("~/Downloads/sunbelt2019/Data files/Dataset1-Media-Example-NODES.csv")
-links <- read.csv("~/Downloads/sunbelt2019/Data files/Dataset1-Media-Example-EDGES.csv")
+#nodes <- read.csv("~/Downloads/sunbelt2019/Data files/Dataset1-Media-Example-NODES.csv")
+#links <- read.csv("~/Downloads/sunbelt2019/Data files/Dataset1-Media-Example-EDGES.csv")
 ```
 
 
 ```{r}
-head(nodes)
-head(links)
+#head(nodes)
+#head(links)
 ```
 
 
 ```{r}
 
-links.d3 <- data.frame(from=as.numeric(factor(links$from))-1, 
-                       to=as.numeric(factor(links$to))-1 )
+#links.d3 <- data.frame(from=as.numeric(factor(links$from))-1, 
+                       # to=as.numeric(factor(links$to))-1 )
 
-nodes.d3 <- cbind(idn=factor(nodes$media, levels=nodes$media), nodes) 
+#nodes.d3 <- cbind(idn=factor(nodes$media, levels=nodes$media), nodes) 
 
 ```
 
 
 ```{r}
-forceNetwork(Links = links.d3, Nodes = nodes.d3, Source="from", Target="to",
-               NodeID = "name", Group = "type.label",linkWidth = 1,
-               linkColour = "#afafaf", fontSize=12, zoom=F, legend=T,
-               Nodesize=6, opacity = 0.8, charge=-300, 
-               width = 600, height = 400, arrows = T)
+# forceNetwork(Links = links.d3, Nodes = nodes.d3, Source="from", Target="to",
+#                NodeID = "name", Group = "type.label",linkWidth = 1,
+#                linkColour = "#afafaf", fontSize=12, zoom=F, legend=T,
+#                Nodesize=6, opacity = 0.8, charge=-300, 
+#                width = 600, height = 400, arrows = T)
 ```
 
 
 
 ```{r}
-library('visNetwork') 
-visNetwork(nodes, links, width="100%", height="400px")
+#library('visNetwork') 
+#visNetwork(nodes, links, width="100%", height="400px")
 ```
 
 
