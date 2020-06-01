@@ -174,7 +174,7 @@ unique(metaData_filtered$Category)
 ### circlePacking
 Circular packing or circular treemap allows to visualize a hierarchic organization. It is an equivalent of a treemap or a dendrogram, where each node of the tree is represented as a circle and its sub-nodes are represented as circles inside of it. \n\n
 
-I thought this would be quite useful for visualising (and hopefully makign sense) of our 'metadata'. The size of the circles can be changed to be proportional to whatever value we choose, but for now I left it as constant as I couldn't really see any value that we could've made the size of the circles dependent on to help with insight.
+I thought this would be quite useful for visualising (and hopefully making sense) of our 'metadata'. The size of the circles can be changed to be proportional to whatever value we choose, but for now I left it as constant as I couldn't really see any value that we could've made the size of the circles dependent on to help with insight.
 
 **Visualising MetaCat/Cat relationship**
 
@@ -222,47 +222,32 @@ fields_p
 
 ```
 
-### networkD3
+## Simulating data.
+
+Got directory structure for fMRI data from Fidel (fMRIB), see `metaData/simulation/fmri_dirStructure.pdf`. Will use this to simulate fMRI data files for e.g. a hundred participants.
+
+No dummy/simulated/example data is available for the Biobank resource, so I'm making my own.
+First looking for a more computationally friendly representation of the distributions of my variables. **None available**
+
+The most informative, official, documentation of the data structure can be found here:  http://biobank.ctsu.ox.ac.uk/~bbdatan/Accessing_UKB_data_v2.1.pdf
+
+From the above I can create the UDI's* for all our items and add it as an extra column in our metaData_filtered dataset.
+
+```*UDI - the Unique Data Identifier for an item of data within the UK Biobank repository.
+The format for standard data fields is field_id-instance_index.array_index```
+
+This needs some thinking through, come back to it. **TODO** 
 
 ```{r}
-#nodes <- read.csv("~/Downloads/sunbelt2019/Data files/Dataset1-Media-Example-NODES.csv")
-#links <- read.csv("~/Downloads/sunbelt2019/Data files/Dataset1-Media-Example-EDGES.csv")
+metaData_UKB <- metaData_filtered %>%
+  mutate(Instances = as.numeric(Instances))
+
+# metaData_UKB %>% 
+#   group_by(Instances) %>%
+#   complete(Total = full_seq(1:Total, 1))
+# 
+# metaData_UKB$UDI <- 
+  
 ```
-
-
-```{r}
-#head(nodes)
-#head(links)
-```
-
-
-```{r}
-
-#links.d3 <- data.frame(from=as.numeric(factor(links$from))-1, 
-                       # to=as.numeric(factor(links$to))-1 )
-
-#nodes.d3 <- cbind(idn=factor(nodes$media, levels=nodes$media), nodes) 
-
-```
-
-
-```{r}
-# forceNetwork(Links = links.d3, Nodes = nodes.d3, Source="from", Target="to",
-#                NodeID = "name", Group = "type.label",linkWidth = 1,
-#                linkColour = "#afafaf", fontSize=12, zoom=F, legend=T,
-#                Nodesize=6, opacity = 0.8, charge=-300, 
-#                width = 600, height = 400, arrows = T)
-```
-
-
-
-```{r}
-#library('visNetwork') 
-#visNetwork(nodes, links, width="100%", height="400px")
-```
-
-
-
-
 
 
