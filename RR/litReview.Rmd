@@ -1,0 +1,305 @@
+---
+title: "Literature review"
+output: html_notebook
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+###### tags: `raeBiobank` `private` `notes`
+
+BB meta-categories (w/o CogFunc):
+```{r}
+metaData_filtered %>%
+  distinct(MetaCat)
+
+```
+
+BB categories (w/o CogFunc):
+```{r}
+metaData_filtered %>%
+  filter(metaData_filtered$MetaCat != "Cognitive function") %>%
+  distinct(Category)
+
+```
+
+
+
+
+Papers
+---
+
+#### [@Buxton2018]
+<span style="color: blue;"> **Sleep -> Employment** </span>
+
+Sounds like a great special issue for our link between sleep and work, can't find any info on when it might actually be published though.
+
+#### [@Lowe2017]
+<span style="color: blue;"> **Sleep ->  Cognitive function** </span>
+
+Relevance:
+
+- Importance of sleep for cognition.
+- Experimentally restricted sleep.
+
+#### [@Reinhardt2016]
+Reinhardt, É. L., Fernandes, P. A. C. M., Markus, R. P., & Fischer, F. M. (2016). Short sleep duration increases salivary IL-6 production. Chronobiology International, 33(6), 780–782. https://doi.org/10.3109/07420528.2016.1167710
+
+#### [@Schiller2017a]
+<span style="color: blue;"> **Employment <--> Sleep <--> Health and wellbeing** </span>
+
+Relevance:
+
+- A 25% reduction of weekly work hours, without a decrease in salary, improved sleep quality and alertness and decreased perceived stress during both workdays and days off. Moreover, sleep duration during workdays increased by approximately 20 min.
+
+#### [@Schiller2018]
+<span style="color: blue;"> **Employment <--> Health and wellbeing** </span>
+
+Interventional study. Same data as the 2017 study.
+
+Relevance:
+
+- Importance of recovery activities for well being. 
+- The Basner papers find that relative to all other waking activities, paid work time was the primary waking activity exchanged for sleep. First, their recommandations for increasing sleep time: delay morning start time of work/educational activities. No mention of time spent at work. Second, the follow-up paper finds that some groups show a significant increase in sleep duration across (survey) years either on weekdays or weekends, i.e. employed adults, full time students and retirees (interestingly not for those who are unemployed or not in the labour force). They conclude that the change is predominantly explained by respondents retiring eariler in the evening: participants seem more willing to trade waking activities for sleep. 
+- Based on the link that this present paper is establishing between recovery activities and wellbeing, the groups isolated in the Basner follow-up paper are trading the wrong waking activities in exchange for sleep.
+
+- Hmm, no difference in the effects of reduced worktime depending on job nature (e.g. shift workers).
+
+
+#### [@Byrne2019]
+<span style="color: blue;"> **Sleep <--> Brain** </span>
+
+Systematic review. Studies included:
+
+Studies were included if they used a naturalistic or experimental design and generated data of a circadian signal in reward circuitry.
+
+Relevance:
+
+- Link between physiology and brain.
+- Highlights 'brain factors' that warrant a closer look, i.e. reward (probably opportunistic). In fact it would seem this is an old idea (e.g. Clark et al., 1989, Thayer et al., 1988)
+- Highlights specific brain regions that might be affected by circadian modulation (disruption?)
+
+#### [@Pejovic2013]
+<span style="color: blue;"> **Sleep <--> Physiology <--> Cognitive function** </span>
+
+Interventional study. Laboratory setting. 
+
+Relevance:
+
+- Importance of sleep (physiology + psychology)
+- Experimentally manipulated sleep (restriction + recovery)
+
+#### [@Lo2014]
+
+<span style="color: blue;"> **Sleep <--> Employment** </span> 
+
+Relevance:
+
+- A link between work and sleep schedule.
+- Cultural comparisons allows for finer detail re the specific factors that contribute to the formation and maintenance of a sleep schedule (e.g. Work vs Social Zeitgebers vs Natural Zeitgebers) + interesting suggestions re sleep/work patterns. 
+
+#### [@Wild2018]
+Wild, C. J., Nichols, E. S., Battista, M. E., Stojanoski, B., & Owen, A. M. (2018). Dissociable effects of self-reported daily sleep duration on high-level cognitive abilities. Sleep, 41(12), 1–11. https://doi.org/10.1093/sleep/zsy182
+
+#### [@Lippman2017]
+<span style="color: blue;"> **Sleep <--> Mental Health** </span>
+Lippman, S., Gardener, H., Rundek, T., Seixas, A., Elkind, M. S. V., Sacco, R. L., … Ramos, A. R. (2017). Short sleep is associated with more depressive symptoms in a multi-ethnic cohort of older adults. Sleep Medicine, 40, 58–62. https://doi.org/10.1016/j.sleep.2017.09.019
+
+#### [@Basner2014]
+<span style="color: blue;"> **Sleep <--> Employment** </span>
+
+Analysis of a cross-sectional annual survey conducted by the U.S. Bureau of Labour Statistics (i.e. American Time Use Survey - ATUS). [2003 and 2011]
+
+Need follow-up to this + GOLD would be similar (e.g. actigraphy analyses) in the Biobank data, because:
+
+- Different perceptions about work, might be more of a focus in updated study.
+- Something on the same dataset would make any potential comparisons much clearer.
+- Actigraphy data is more accurate than survey data: 
+"Time-use survery sleep time estimates are not directly comparable with (and likely overestimate) sleep times estimates from epidemiologic studies, which themselves have been shown to overestimate physiological sleep." ~ 1H on average.
+
+
+Participants: Representative cohort (N = 124,517) of Americans 15 years and older surveyed between 2003 and 2011.
+
+Relevance:
+
+- Relative to all other waking activities, paid work time was the primary waking activity exchanged for sleep
+- More generally, helpful 'Employment' and 'Waking activities' sections in Results.
+- Recommandations for increasing sleep time: delay morning start time of work/educational activities. No mention of work time - strange. Hopefully an 'updated' one takes this into account as work-life balance has definitely more of a presence in the current cultural consciousness. 
+- Self-employed respondents were less likely to be short sleepers compared to private sector employees (OR 0.83, 95{\%} CI 0.72; 0.95). Sociodemographic characteristics associated with paid work (age 25-64, male sex, high income, and employment per se) were consistently associated with short sleep.
+- Potentially good reference for statistical modelling: 
+
+See figures 3,4,5 + highlighted sections + below:
+
+Ran linear and logistic regression models to calculate average sleep time and odds ratios for being a short or long sleeper for sociodemographic variables. To account for nonlinear relationships, all variables were entered categorically into the model. 
+
+To identify waking activities predominantly exchanged for more or less sleep in short and log sleepers compared to normal sleepers, linear regression models, adjusting for age, gender, and race/ethnicity, with indicator variables for short and long sleep were run for each of the waking activities (e.g. work). 
+
+To investigate the effect of work and school start times on sleep duration, they.
+
+#### [@Basner2018]
+
+<span style="color: blue;"> **Sleep <--> Employment** </span>
+
+Analysis of a cross-sectional annual survey conducted by the U.S. Bureau of Labour Statistics (i.e. American Time Use Survey - ATUS). **Follow up on the 2014 study.** [2003 and 2016, i.e. 5 extra years].
+
+Summary of relevent findings:
+
+Previous study found that "relative to all other waking activities, paid work time was the primary waking activity exchanged for sleep". In this study they isolate the groups that show a sicgnificant increase in sleep duration across survey years either on weekdays or weekends, i.e. employed adults, full time students and retirees (interestingly not for those who are unemployed or not in the labour force). The change is predominantly explained by respondents retiring eariler in the evening: participants seem more willing to trade waking activities for sleep. The results also suggests taht increasing online opportunities to work, learn, bank, shop and perform administrative duties freed up time that likely contributed to increased sleep duration. 
+
+Relevance:
+
+- Employed vs Unemployed adults showed 'better' sleep patterns with time: could be tied to better work/life balance. Would have to see if this subsection (i.e. Employed adults) are looked at directly, as the abstract lists reitree + students in the same category so the above couldn't hold - but different group could be exhibiting similar effects due to different factors!
+- Interesting: Overall sleep duration increased, due to a combination of a decline in short sleep (-0.44%) and an increase in long sleep (+0.48%).
+
+#### [@Norbury2019a]
+<span style="color: blue;"> **Sleep <--> Brain** </span>
+
+UK Biobank data: (T1-weighted anatomical image plus measures and covariates described above) were avail- able for 3004 participants categorized as no mood disorder (please see Table 3). 
+
+Relevance:
+
+- Reporting structure: level of details + info (report-level, perhaps not publication.
+- Covariates used, and their treatment (report-level, perhaps not publication)
+- 'Simple' stats, i.e. ANOVA (in SPSS).
+
+
+#### [@Yao2019]
+<span style="color: blue;"> **Sleep <--> Health and medical history**
+
+Time-use survey data.
+
+Relevance:
+
+- Healthy behaviours competing for the time 'leftover' after work. Decreasing work would therefore leave a bigger chunk up for grabs.
+- Particular focus on EXERCISE.
+
+
+#### [@Barnes2015]
+<span style="color: blue;"> **Sleep <--> Health and wellbeing** </span>
+
+Cites work relating to:
+**Employment <--> Sleep -> Health and wellbeing**
+(Drake et al, 2004; Wittmann et al., 2006); (Schlafer et al, 2014; Steele et al., 1999)
+
+
+Table 1 is a nice summary of the identified problems and suggested solutions.
+
+Relevance:
+
+- Employment -> Circadian Rythm
+- Policy implications of sleep -> wellbeing research.
+- Recommendations for stronger regulation of work hours and schedules (see Highlighted paragraph)
+- Physiological adjustment to night shifts (Aschoff, 1975)
+
+
+#### [@Wolkow2016]
+
+<span style="color: blue;"> **Employment <--> Sleep <--> Health and wellbeing <--> Physiology** </span> 
+
+Systematic review: Emergency service personnel:
+Active duty emergency (e.g., firefighting, police/law enforcement, paramedic/ambulance personnel, rescue workers) or defense force (e.g., army, navy) personnel in physically demanding occupations or healthy adults exposed to periods of sleep restriction similar to emergency personnel (see below).
+
+Physiological stress: pro- and/or anti-inflammatory cytokines and/or cortisol.
+
+Psychological stress responses: a valid and reliable subjective mood, behavior and/or anxiety questionnaire (e.g., Profile of Mood States, Brunel Mood Scale, State-Trait Anxiety Inventory).
+
+
+Relevance: 
+
+- Link between work and well being (through sleep).
+- However, generalising might be a bit difficult as the focus of the review are emergency personnel.
+
+
+#### [@Curtis2019]
+<span style="color: blue;"> **Sleep <--> Brain** </span>
+
+Relevance:
+
+- Self-reported short sleep duration, perceived sleep-related dysfunction, and sleep quality via PSQI do not appear to be meaningfully associated with activation in well-described regions of the human neurobiological reward circuit. As these findings are counter to prior results using experimental sleep deprivation, future work focused on more direct comparisons between self-reported sleep variables and experimental sleep deprivation appears warranted.
+- Goes against what the Byrne (2019) concludes?
+
+
+#### [@Lyall2018]
+
+<span style="color: blue;"> **Sleep <--> Health and wellbeing** </span> 
+
+
+Relevance: 
+
+- Circadian disruption associated with greater risk of mood disorders and poorer subjecctive wellbeing.
+- Circadian disrutions associated with self-rated happiness, health satisfaction, and increased subjective loneliness -> imparied subjective wellbeing. 
+- Objectively measured circadian disruption is associated with slower reaction times independent of demographic, lifestyle, activity, BMI, and childhood trauma covariates. 
+- Reaction times show consistent associations with higher general intelligence and white matter integrity and is often considered a general marker of neurocognitive functioning.
+- Biobank data: Presentation | Modelling | Handling confounding
+
+
+Primary 'IV': Cicardian relative amplitude
+i.e. The relative difference between the most active continuous 10-h period (M10) and the least active continuous 5-h period (L5) in an average 24 h (midnight to midnight), and is a common non-parametric measure of the amplitude of rest–activity rhythms [(M10 - L5)/(M10+L5)].
+
+Relative amplitude ranges from 0 to 1, with higher values reflecting clearer distinction between activity levels during the most and least active periods of the day. Lower values result from reduced daytime activity, increased night-time activity, or both.
+
+**Modelling:** 
+
+Associations between the relative amplitude predictor and each of the mental health, wellbeing, and cognitive dependent variables (lifetime major depressive disorder, lifetime bipolar disorder, mood instability, neuroticism, self-rated happiness, health satisfaction, loneliness, and reaction time) were examined in three separate regression models, each adjusting for more potential confounders than the previous model.
+
+Associations between relative amplitude quintile and binary measures of lifetime major depressive disorder, bipolar disorder, mood instability, and loneliness were examined with logistic regression, and ordinal logistic regression was used for the self-rated happiness and health satisfaction variables: odds ratios (OR) are reported. Linear regression was used to analyse reaction time and linear regression coefficients are reported. Negative binomial regression was used for models examining neuroticism, because this count-based variable had a skewed distribution, and incidence rate ratios (IRR) are reported. Robust standard errors were used
+
+
+#### [@Cole2020]
+Cole, J. H. (2020). Journal Pre-proof Multi-modality neuroimaging brain-age in UK Biobank: relationship to biomedical, lifestyle and cognitive factors. https://doi.org/10.1016/j.neurobiolaging.2020.03.014
+
+GOLD! Full analysis notebook (R).
+https://james-cole.github.io/UKBiobank-Brain-Age/
+
+#### [@Patterson2016]
+Patterson, F., Malone, S. K., Lozano, A., Grandner, M. A., & Hanlon, A. L. (2016). Smoking, Screen-Based Sedentary Behavior, and Diet Associated with Habitual Sleep Duration and Chronotype: Data from the UK Biobank. Annals of Behavioral Medicine, 50(5), 715–726. https://doi.org/10.1007/s12160-016-9797-5
+
+
+#### [@Barck-Holst2017]
+Barck-Holst, P., Institutet, K., Åkerstedt, S. T., & Hellgren, C. (2017). Reduced working hours and stress in the Swedish social services: A longitudinal study Åsa Nilsonne. International Social Work, 60(4), 897–913. https://doi.org/10.1177/0020872815580045
+
+<span style="color: blue;"> **Employment <--> Health and wellbeing** <span>
+
+Relevance: 
+
+- Benefits of reduced work hours.
+- Wide range of wellbeing factors looked at: stress, Exhaustion syndrome, psychosocial work, work-life balance, restorative sleep, memory, negative emotion, fatigue, etc. 
+ 
+
+Limitations:
+
+- Population used: primarily female social workers (Nordic model)
+
+#### [@Marucci-Wellman2016]
+Marucci-Wellman, H. R., Lombardi, D. A., & Willetts, J. L. (2016). Chronobiology International The Journal of Biological and Medical Rhythm Research Working multiple jobs over a day or a week: Short-term effects on sleep duration. https://doi.org/10.3109/07420528.2016.1167717
+
+#### [@Akerstedt2001]
+Akerstedt, T., Olsson, B., Ingre, M., Holmgren, M., & Kecklund, G. (2001). A 6-HOUR WORKING DAY-EFFECTS ON HEALTH AND WELL-BEING. J. Human Ergol (Vol. 30).
+
+<span style="color: blue;"> **Work <--> Wellbeing** </span>
+
+Relevance:
+
+- Benefits of shortening work hours. 
+- Discusses wide range of wellbeing factors like sleep, social factors, mental fatigue.
+- Long-ish term (2 years).
+
+Limitations:
+
+- Population used - generalization?: "Mainly female health care and day care nursery personnel"
+
+#### [@Crain2018]
+Crain, T. L., Brossoit, R. M., & Fisher, G. G. (2018). Work, Nonwork, and Sleep (WNS): a Review and Conceptual Framework. Journal of Business and Psychology, 33(6), 675–697. https://doi.org/10.1007/s10869-017-9521-x
+
+#### [@Curtis2016]
+Curtis, B. J., Williams, P. G., Jones, C. R., & Anderson, J. S. (2016). Sleep duration and resting fMRI functional connectivity: examination of short sleepers with and without perceived daytime dysfunction. Brain and Behavior, 6(12), e00576. https://doi.org/10.1002/brb3.576
+
+#### [@Simpson2016]
+Simpson, N. S., Diolombi, M., Scott-Sutherland, J., Yang, H., Bhatt, V., Gautam, S., … Haack, M. (2016). Repeating patterns of sleep restriction and recovery: Do we get used to it? Brain, Behavior, and Immunity, 58, 142–151. https://doi.org/10.1016/j.bbi.2016.06.001
+
+#### [@Bachman1989]
+Bachman, J. G., & Schulenberg, J. (1989). Monitoring the Future Occasional Paper 32 Institute for Social Research.
+
+#### [@Lo2014]
+Lo, J. C., Leong, R. L. F., Loh, K. K., Dijk, D. J., & Chee, M. W. L. (2014). Young adults’ sleep duration on work days: Differences between East and West. Frontiers in Neurology, 5 MAY(May), 1–12. https://doi.org/10.3389/fneur.2014.00081
