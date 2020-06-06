@@ -1,8 +1,8 @@
 ###### tags: `github` `raeBiobank` `mainRepo`
 
-# workingBrain_RR_full
+# workingBrain_PR_full
 
-# Progres
+# Progress
 
 <details>
   <summary>Checklist:</summary>
