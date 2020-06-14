@@ -6,7 +6,7 @@ author:
   - name          : "Raul Duke"
     affiliation   : "1, 2"
     corresponding : yes    # Define only one corresponding author
-    address       : "Falmer, Brighton, BN1 9QG, United Kingdom"
+    address       : "Brighton, BN1 9QG, United Kingdom"
     email         : "r.ungureanu@sussex.ac.uk"
   - name          : "Charlotte Rae"
     affiliation   : "1,3"
@@ -69,11 +69,16 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 ```
 
+\begin{center}
 
-    "How we spend our days is, 
-        of course, 
+
+    "How we spend our days is,
+        of course
     how we spend our lives."
+    
                         - Annie Dillard
+
+\end{center}
 
 The truth is, we spend most of our waking days working. Most people will spend a third of their adult lives at work [@WHO]. The average Briton works approximately 42 hours per week [@TUC1], with an additional ~4.9 hours spent on commuting [@TUC2]. More than 18% of the working-age population will further 'volunteer' an average of 7.5 hours a week in unpaid overtime [@TUC3]. It should come as no surprise then that our work environment deeply affects our health and wellbeing. However, the neurophysiology associated with occupational factors, the mechanism through which it influences wellbeing, and mediates vulnerability to mental health symptoms, is largely unexplored. As a result, we are failing to recognise what aspects of occupational health and brain function put certain individuals at risk, and not others. This is a key research priority, as gaining an insight into this issues would allow the development of preventative interventions, medical or ergonomic, that protect individuals in their workplace and the labour force as a whole. The aim of the present study is, therefore, to fill this important knowledge gap and begin characterising the neural markers of occupational wellbeing.
 
