@@ -1,0 +1,229 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  english,
+  man]{apa6}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Characterizing the neural markers of occupational wellbeing},
+  pdflang={en-EN},
+  pdfkeywords={keywords},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\begin{center}\begin{threeparttable}}
+%   {\end{threeparttable}\end{center}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% \usepackage{etoolbox}
+\makeatletter
+\patchcmd{\HyOrg@maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\makeatother
+\shorttitle{Neural markers of occupational wellbeing}
+\author{Raul Duke\textsuperscript{1, 2}\ \& Charlotte Rae\textsuperscript{1,3}}
+\affiliation{
+\vspace{0.5cm}
+\textsuperscript{1} Sussex Neuroscience, School of Life Sciences, University of Sussex, Falmer, UK\\\textsuperscript{2} School of Psychology, University of Sussex, Falmer, UK\\\textsuperscript{3} Sackler Centre for Consciousness Science, University of Sussex, Falmer, UK}
+\authornote{
+
+Correspondence concerning this article should be addressed to Raul Duke, Falmer, Brighton, BN1 9QG, United Kingdom. E-mail: r.ungureanu@sussex.ac.uk}
+\keywords{keywords\newline\indent Word count: X}
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
+\usepackage{lineno}
+
+\linenumbers
+\usepackage{csquotes}
+\ifxetex
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\else
+  \usepackage[shorthands=off,main=english]{babel}
+\fi
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  {\par}
+
+\title{Characterizing the neural markers of occupational wellbeing}
+
+\date{}
+
+\abstract{
+One or two sentences providing a \textbf{basic introduction} to the field, comprehensible to a scientist in any discipline.
+
+Two to three sentences of \textbf{more detailed background}, comprehensible to scientists in related disciplines.
+
+One sentence clearly stating the \textbf{general problem} being addressed by this particular study.
+
+One sentence summarizing the main result (with the words ``\textbf{here we show}'' or their equivalent).
+
+Two or three sentences explaining what the \textbf{main result} reveals in direct comparison to what was thought to be the case previously, or how the main result adds to previous knowledge.
+
+One or two sentences to put the results into a more \textbf{general context}.
+
+Two or three sentences to provide a \textbf{broader perspective}, readily comprehensible to a scientist in any discipline.
+}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\begin{verbatim}
+"How we spend our days is, 
+    of course, 
+how we spend our lives."
+                    - Annie Dillard
+\end{verbatim}
+
+The truth is, we spend most of our waking days working. Most people will spend a third of their adult lives at work ({\textbf{???}}). The average Briton works approximately 42 hours per week ({\textbf{???}}), with an additional \textasciitilde4.9 hours spent on commuting ({\textbf{???}}). More than 18\% of the working-age population will further `volunteer' an average of 7.5 hours a week in unpaid overtime ({\textbf{???}}). It should come as no surprise then that our work environment deeply affects our health and wellbeing. However, the neurophysiology associated with occupational factors, the mechanism through which it influences wellbeing, and mediates vulnerability to mental health symptoms, is largely unexplored. As a result, we are failing to recognise what aspects of occupational health and brain function put certain individuals at risk, and not others. This is a key research priority, as gaining an insight into this issues would allow the development of preventative interventions, medical or ergonomic, that protect individuals in their workplace and the labour force as a whole. The aim of the present study is, therefore, to fill this important knowledge gap and begin characterising the neural markers of occupational wellbeing.
+
+Three primary occupational factors have long been recognized and studied as risk factors for a variety of health and wellbeing outcomes: \emph{(i)} working hours; \emph{(ii)} shift work; \emph{(iii)} un- and under-employemt(Caruso, 2014; \emph{how does unemployment affect our wellbeing? What can reduce the damaging effects of unemployment? What happens to wellbeing when people (re)enter work?}, n.d.; Wong, Chan, \& Ngan, 2019). There is ample evidence that long hours negatively impact physiological health, both self-perceived {[}@{]}, and objectively measured (e.g.~higher risk of cardiovascular disease (Bannai \& Tamakoshi, 2014)); mental health (e.g.~higher incidence of depressive (Kim, Park, Lee, \& Kim, 2016), and anxiety (Bannai \& Tamakoshi, 2014) symptoms); cognitive function (e.g.~diminished performance on working memory and digit substitution tasks (Kajitani, McKenzie, \& Sakata, 2018)) and health behaviours (e.g.~higher rate of tobacco and alcohol consumption (Lallukka et al., 2008)). Recent evidence suggests that even the established norm of \textasciitilde40h/week can be detrimental to cognitive ability (Barck-Holst, Nilsonne, Åkerstedt, \& Hellgren, 2017). Interventional studies on Swedish social workers found that reducing working hours (while retaining full salary) has positive, long-lasting effects (e.g.~sustained at 18 months follow-up) on sleep, subjective stress measures, fatigue, negative emotion, and cognition {[}Barck-Holst et al. (2017); Schiller2017a{]}. Together these findigs suggests that long working hours are not only harmful to our wellbeing, but could also be potentially counter-productive. Furthermore, it is not only \emph{how much}, but also \emph{when} we work that can negatively affect our wellbeing. Shift work, usually defined as work outside the regular daytime work schedule of 9am-5pm {[}@{]}, has been linked with a wide range of negative health outcomes, physical (e.g.~increased risk of cancer, cardiovascular disease, diabetes, and asthma (Maidstone et al., 2020)), and mental (e.g.~anxiety {[}@{]} and depression {[}@{]}). Shift work has also been shown to affect cognitive performance (Vetter, Juda, \& Roenneberg, 2012, p. @Baulk2009), with some evidence to suggest long-term effects (Weinmann, Vetter, Karch, Nowak, \& Radon, 2018). On the other hand, involuntary underemployment is one of the most damaging factors influencing individual wellbeing, with potentially permanent effects that extend far beyond what would be expected from reduced income, and similar in severity to bereavement (\emph{how does unemployment affect our wellbeing? What can reduce the damaging effects of unemployment? What happens to wellbeing when people (re)enter work?}, n.d.).
+
+\newpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+\hypertarget{refs}{}
+\begin{cslreferences}
+\leavevmode\hypertarget{ref-Bannai2014}{}%
+Bannai, A., \& Tamakoshi, A. (2014). The association between long working hours and health: A systematic review of epidemiological evidence. \emph{Scandinavian Journal of Work, Environment \& Health}, \emph{40}(1), 5--18. \url{https://doi.org/10.5271/sjweh.3388}
+
+\leavevmode\hypertarget{ref-Barck-Holst2017}{}%
+Barck-Holst, P., Nilsonne, Å., Åkerstedt, T., \& Hellgren, C. (2017). Reduced working hours and stress in the Swedish social services: A longitudinal study. \emph{International Social Work}, \emph{60}(4), 897--913. \url{https://doi.org/10.1177/0020872815580045}
+
+\leavevmode\hypertarget{ref-Baulk2009}{}%
+Baulk, S. D., Fletcher, A., Kandelaars, K. J., Dawson, D., \& Roach, G. D. (2009). A field study of sleep and fatigue in a regular rotating 12-h shift system. \emph{Applied Ergonomics}, \emph{40}(4), 694--698. \url{https://doi.org/10.1016/j.apergo.2008.06.003}
+
+\leavevmode\hypertarget{ref-Caruso2014}{}%
+Caruso, C. C. (2014). Negative impacts of shiftwork and long work hours. \emph{Rehabilitation Nursing}, \emph{39}(1), 16--25. \url{https://doi.org/10.1002/rnj.107}
+
+\leavevmode\hypertarget{ref-WhatWorksWellbeing2}{}%
+\emph{how does unemployment affect our wellbeing? What can reduce the damaging effects of unemployment? What happens to wellbeing when people (re)enter work?} (n.d.). Retrieved from \url{www.whatworkswellbeing.org}
+
+\leavevmode\hypertarget{ref-Kajitani2018}{}%
+Kajitani, S., McKenzie, C., \& Sakata, K. (2018). Use It Too Much and Lose It? The Effect of Working Hours on Cognitive Ability. \emph{SSRN Electronic Journal}. \url{https://doi.org/10.2139/ssrn.2737742}
+
+\leavevmode\hypertarget{ref-Kim2016}{}%
+Kim, W., Park, E. C., Lee, T. H., \& Kim, T. H. (2016). Effect of working hours and precarious employment on depressive symptoms in South Korean employees: A longitudinal study. \emph{Occupational and Environmental Medicine}, \emph{73}(12), 816--822. \url{https://doi.org/10.1136/oemed-2016-103553}
+
+\leavevmode\hypertarget{ref-Lallukka2008}{}%
+Lallukka, T., Lahelma, E., Rahkonen, O., Roos, E., Laaksonen, E., Martikainen, P., \ldots{} Kagamimori, S. (2008). Associations of job strain and working overtime with adverse health behaviors and obesity: Evidence from the Whitehall II Study, Helsinki Health Study, and the Japanese Civil Servants Study. \emph{Social Science \& Medicine}, \emph{66}(8), 1681--1698. \url{https://doi.org/10.1016/j.socscimed.2007.12.027}
+
+\leavevmode\hypertarget{ref-Maidstone2020}{}%
+Maidstone, R., Turner, J., Vetter, C., Dashti, H. S., Saxena, R., Scheer, F. A., \ldots{} Durrington, H. J. (2020). Night Shift Work Increases the Risk of Asthma. \emph{medRxiv}, 2020.04.22.20074369. \url{https://doi.org/10.1101/2020.04.22.20074369}
+
+\leavevmode\hypertarget{ref-Vetter2012}{}%
+Vetter, C., Juda, M., \& Roenneberg, T. (2012). The Influence of Internal Time, Time Awake, and Sleep Duration on Cognitive Performance in Shiftworkers. \emph{Chronobiology International}, \emph{29}(8), 1127--1138. \url{https://doi.org/10.3109/07420528.2012.707999}
+
+\leavevmode\hypertarget{ref-Weinmann2018}{}%
+Weinmann, T., Vetter, C., Karch, S., Nowak, D., \& Radon, K. (2018). Shift work and cognitive impairment in later life - Results of a cross-sectional pilot study testing the feasibility of a large-scale epidemiologic investigation 11 Medical and Health Sciences 1117 Public Health and Health Services. \emph{BMC Public Health}, \emph{18}(1), 1256. \url{https://doi.org/10.1186/s12889-018-6171-5}
+
+\leavevmode\hypertarget{ref-Wong2019}{}%
+Wong, K., Chan, A. H. S., \& Ngan, S. C. (2019). The effect of long working hours and overtime on occupational health: A meta-analysis of evidence from 1998 to 2018. \emph{International Journal of Environmental Research and Public Health}, \emph{16}(12). \url{https://doi.org/10.3390/ijerph16122102}
+\end{cslreferences}
+
+\endgroup
+
+\end{document}

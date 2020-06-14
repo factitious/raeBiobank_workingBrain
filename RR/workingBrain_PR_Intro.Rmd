@@ -1,0 +1,93 @@
+---
+title             : "Characterizing the neural markers of occupational wellbeing"
+shorttitle        : "Neural markers of occupational wellbeing"
+
+author: 
+  - name          : "Raul Duke"
+    affiliation   : "1, 2"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Falmer, Brighton, BN1 9QG, United Kingdom"
+    email         : "r.ungureanu@sussex.ac.uk"
+  - name          : "Charlotte Rae"
+    affiliation   : "1,3"
+
+affiliation:
+  - id            : "1"
+    institution   : "Sussex Neuroscience, School of Life Sciences, University of Sussex, Falmer, UK"
+  - id            : "2"
+    institution   : "School of Psychology, University of Sussex, Falmer, UK"
+  - id              : "3"
+    institution   : "Sackler Centre for Consciousness Science, University of Sussex, Falmer, UK"
+
+authornote: |
+
+
+abstract: |
+  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
+  
+  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
+  
+  One sentence clearly stating the **general problem** being addressed by  this particular study.
+  
+  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
+  
+  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
+  
+  One or two sentences to put the results into a more **general context**.
+  
+  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+keywords          : "keywords"
+wordcount         : "X"
+
+bibliography      : ["workingBrain_RR_litReview.bib"]
+
+floatsintext      : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : yes
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+r_refs("r-references.bib")
+
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+
+    "How we spend our days is, 
+        of course, 
+    how we spend our lives."
+                        - Annie Dillard
+
+The truth is, we spend most of our waking days working. Most people will spend a third of their adult lives at work [@WHO]. The average Briton works approximately 42 hours per week [@TUC1], with an additional ~4.9 hours spent on commuting [@TUC2]. More than 18% of the working-age population will further 'volunteer' an average of 7.5 hours a week in unpaid overtime [@TUC3]. It should come as no surprise then that our work environment deeply affects our health and wellbeing. However, the neurophysiology associated with occupational factors, the mechanism through which it influences wellbeing, and mediates vulnerability to mental health symptoms, is largely unexplored. As a result, we are failing to recognise what aspects of occupational health and brain function put certain individuals at risk, and not others. This is a key research priority, as gaining an insight into this issues would allow the development of preventative interventions, medical or ergonomic, that protect individuals in their workplace and the labour force as a whole. The aim of the present study is, therefore, to fill this important knowledge gap and begin characterising the neural markers of occupational wellbeing.
+
+
+Three primary occupational factors have long been recognized and studied as risk factors for a variety of health and wellbeing outcomes: *(i)* working hours; *(ii)* shift work; *(iii)* un- and under-employemt[@Wong2019; @Caruso2014; @WhatWorksWellbeing2]. There is ample evidence that long hours negatively impact physiological health, both self-perceived [@], and objectively measured (e.g. higher risk of cardiovascular disease [@Bannai2014]); mental health (e.g. higher incidence of depressive [@Kim2016], and anxiety [@Bannai2014] symptoms); cognitive function (e.g. diminished performance on working memory and digit substitution tasks [@Kajitani2018]) and health behaviours (e.g. higher rate of tobacco and alcohol consumption [@Lallukka2008]). Recent evidence suggests that even the established norm of ~40h/week can be detrimental to cognitive ability [@Barck-Holst2017]. Interventional studies on Swedish social workers found that reducing working hours (while retaining full salary) has positive, long-lasting effects (e.g. sustained at 18 months follow-up) on sleep, subjective stress measures, fatigue, negative emotion, and cognition [@Barck-Holst2017; Schiller2017a]. Together these findigs suggests that long working hours are not only harmful to our wellbeing, but could also be potentially counter-productive. Furthermore, it is not only *how much*, but also *when* we work that can negatively affect our wellbeing. Shift work, usually defined as work outside the regular daytime work schedule of 9am-5pm [@], has been linked with a wide range of negative health outcomes, physical (e.g. increased risk of cancer, cardiovascular disease, diabetes, and asthma [@Maidstone2020]), and mental (e.g. anxiety [@] and depression [@]). Shift work has also been shown to affect cognitive performance [@Vetter2012, @Baulk2009], with some evidence to suggest long-term effects [@Weinmann2018]. On the other hand, involuntary underemployment is one of the most damaging factors influencing individual wellbeing, with potentially permanent effects that extend far beyond what would be expected from reduced income, and similar in severity to bereavement [@WhatWorksWellbeing2].
+
+
+\newpage
+
+# References
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id="refs" custom-style="Bibliography"></div>
+\endgroup
