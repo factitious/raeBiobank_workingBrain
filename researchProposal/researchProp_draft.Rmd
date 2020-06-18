@@ -1,0 +1,53 @@
+---
+title: "**Characterising the neurophysiological markers of occupational wellbeing**"
+author: 
+  - Raul Ungureanu
+  - "Supervisor: Dr. Charlotte Rae"
+output: 
+  bookdown::pdf_document2
+bibliography: rProp.bib
+csl: apaNumeric
+link-citations: yes
+toc: FALSE
+#date: "`r format(Sys.time(), '%d %B %Y')`"
+pagenumber: no
+abstract: |
+  
+  The truth is, we spend most of our waking days working. Most people will spend a third of their adult lives at work [@WHO1995]. The average Briton works approximately 42 hours per week [@TUC1], with an additional ~4.9 hours spent on commuting [@TUC2]. It should come as no surprise then that our work environment deeply affects our health and wellbeing. However, the neurophysiology associated with occupational factors, and the mechanism through which it influences wellbeing and mediates vulnerability to mental health symptoms, is largely unexplored. As a result, we are failing to recognise what puts certain individuals at risk, and others less so. This is a key research priority, as gaining an insight into these issues is needed to help guide preventative interventions, medical or ergonomic, that protect individuals in their workplace and the labour force as a whole. 
+
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhf{}
+  #- \fancypagestyle{plain}{\pagestyle{fancy}}
+  - \fancyhead[L]{\bfseries Characterising the neurophysiological markers of occupational wellbeing | PhD Proposal}
+  - \clearpage\maketitle
+  - \thispagestyle{empty}
+  - \fancyhead[R]{\thepage}
+  - \renewcommand{\footrulewidth}{0.4pt}
+  - \fancyfoot[R]{\copyright \  Raul Ungureanu, 2020} 
+
+  
+---
+
+\newpage
+
+# Research context
+
+The truth is, we spend most of our waking days working. Most people will spend a third of their adult lives at work [@WHO1995]. The average Briton works approximately 42 hours per week [@TUC1], with an additional ~4.9 hours spent on commuting [@TUC2]. It should come as no surprise then that our work environment deeply affects our health and wellbeing. However, the neurophysiology associated with occupational factors, and the mechanism through which it influences wellbeing and mediates vulnerability to mental health symptoms, is largely unexplored. As a result, we are failing to recognise what puts certain individuals at risk, and others less so. This is a key research priority, as gaining an insight into these issues is needed to help guide preventative interventions, medical or ergonomic, that protect individuals in their workplace and the labour force as a whole. 
+
+# Aims (100w)
+
+The aim of the present project is to fill this important knowledge gap and begin characterising the neural markers of occupational wellbeing.
+
+# Rationale (500w)
+
+Three occupational factors have been identified and studied as primary risk factors for a variety of health and wellbeing outcomes: (i) (long) working hours; (ii) shift work; (iii) un- and under-employment [@Wong2019; @Caruso2014; @WhatWorksWellbeing2]. There is ample evidence to show that long hours negatively impact physical health, both self-perceived [@], and objectively measured (e.g. higher risk of cardiovascular disease [@Bannai2014]); mental health (e.g. higher incidence of depressive [@Kim2016], and anxiety [@Bannai2014] symptoms); cognitive function (e.g. diminished performance on working memory and digit substitution tasks [@Kajitani2018]) and health-promoting behaviours (e.g. higher rate of tobacco and alcohol consumption [@Lallukka2008]). Recent evidence suggests that even the established norm of ~40h/week can be detrimental to cognitive ability and wellbeing [@Barck-Holst2017]. Interventional studies on Swedish social workers found that reducing working hours (while retaining full salary) has positive, long-lasting effects on sleep, subjective stress measures, fatigue, negative emotion, and cognition [@Barck-Holst2017; Schiller2017a]. Together these findings suggest that long working hours are not only harmful to our wellbeing but could also be counterproductive. Moreover, it is not only the amount, but also when we work that can negatively affect our wellbeing. Shift work, usually defined as work outside the regular daytime work schedule of 9 - 5 [@], has been linked with a wide range of negative health outcomes, physical (e.g. increased risk of cancer, cardiovascular disease, diabetes, and asthma [@Maidstone2020]), and psychological (e.g. anxiety [@] and depression [@]). Shift work has also been shown to affect cognitive performance [@Vetter2012, @Baulk2009], with some evidence indicating that effects can be long-lived [@Weinmann2018]. On the other hand, involuntary underemployment is one of the most damaging factors influencing individual wellbeing, with potentially permanent effects that extend far beyond what would be expected from reduced income, and similar in severity to bereavement [@WhatWorksWellbeing2].
+
+# Research outline (700w)
+
+
+\newpage
+
+# References
+

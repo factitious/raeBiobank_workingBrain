@@ -2,7 +2,6 @@
 
 
 Brief description of the project.
-Files contained here.
 
 
 
