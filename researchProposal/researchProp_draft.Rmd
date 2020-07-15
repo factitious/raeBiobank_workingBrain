@@ -11,17 +11,13 @@ link-citations: yes
 toc: FALSE
 #date: "`r format(Sys.time(), '%d %B %Y')`"
 pagenumber: no
-abstract: |
-  
-  The truth is, we spend most of our waking days working. Most people will spend a third of their adult lives at work [@WHO1995]. The average Briton works approximately 42 hours per week [@TUC1], with an additional ~4.9 hours spent on commuting [@TUC2]. It should come as no surprise then that our work environment deeply affects our health and wellbeing. However, the neurophysiology associated with occupational factors, and the mechanism through which it influences wellbeing and mediates vulnerability to mental health symptoms, is largely unexplored. As a result, we are failing to recognise what puts certain individuals at risk, and others less so. This is a key research priority, as gaining an insight into these issues is needed to help guide preventative interventions, medical or ergonomic, that protect individuals in their workplace and the labour force as a whole. 
+linestretch: 1.5
 
 header-includes:
   - \usepackage{fancyhdr}
   - \pagestyle{fancy}
   - \fancyhf{}
-  #- \fancypagestyle{plain}{\pagestyle{fancy}}
   - \fancyhead[L]{\bfseries Characterising the neurophysiological markers of occupational wellbeing | PhD Proposal}
-  - \clearpage\maketitle
   - \thispagestyle{empty}
   - \fancyhead[R]{\thepage}
   - \renewcommand{\footrulewidth}{0.4pt}
@@ -32,20 +28,147 @@ header-includes:
 
 \newpage
 
-# Research context
+# Background
 
-The truth is, we spend most of our waking days working. Most people will spend a third of their adult lives at work [@WHO1995]. The average Briton works approximately 42 hours per week [@TUC1], with an additional ~4.9 hours spent on commuting [@TUC2]. It should come as no surprise then that our work environment deeply affects our health and wellbeing. However, the neurophysiology associated with occupational factors, and the mechanism through which it influences wellbeing and mediates vulnerability to mental health symptoms, is largely unexplored. As a result, we are failing to recognise what puts certain individuals at risk, and others less so. This is a key research priority, as gaining an insight into these issues is needed to help guide preventative interventions, medical or ergonomic, that protect individuals in their workplace and the labour force as a whole. 
 
-# Aims (100w)
+Work takes up a huge chunk of our adult lives: the average Briton works approximately 42 hours per week [@TUC1], with an additional ~4.9 hours spent on commuting [@TUC2], and an estimate of ~10.1 hours in unpaid overtime [@TotallyMoney]. These numbers have been growing in the past 30 years [@TUC1; @TUC2; @TotallyMoney] without benefits to productivity. Importantly, a growing body of evidence suggests a strong negative impact on our health and wellbeing. Long working hours are associated with higher risk of cardiovascular disease [@Bannai2014], higher incidence of depressive [@Kim2016], and anxiety symptoms [@Bannai2014], deficient cognitive function [@Kajitani2018], and adverse physiological changes [@VanderHulst2003]. Moreover, interventional studies show that a reduction in working hours benefits both health and productivity [@Akerstedt2001; @Barck-Holst2017]. However, we do not yet understand the neurobiological implications of our modern, increasingly intense, working patterns. Three reasons motivate the need for such an understanding: 
 
-The aim of the present project is to fill this important knowledge gap and begin characterising the neural markers of occupational wellbeing.
+- The brain acts as an interface between the body and the environment, therefore, it is key for grasping the mechanism through which occupational factors are affecting our health and wellbeing. 
 
-# Rationale (500w)
+- Without it we cannot ascertain the true short-term impact of working patterns on our cognitive function and physiological health, let alone the long-term, potentially irreversible, effects on our mental health and wellbeing.
 
-Three occupational factors have been identified and studied as primary risk factors for a variety of health and wellbeing outcomes: (i) (long) working hours; (ii) shift work; (iii) un- and under-employment [@Wong2019; @Caruso2014; @WhatWorksWellbeing2]. There is ample evidence to show that long hours negatively impact physical health, both self-perceived [@], and objectively measured (e.g. higher risk of cardiovascular disease [@Bannai2014]); mental health (e.g. higher incidence of depressive [@Kim2016], and anxiety [@Bannai2014] symptoms); cognitive function (e.g. diminished performance on working memory and digit substitution tasks [@Kajitani2018]) and health-promoting behaviours (e.g. higher rate of tobacco and alcohol consumption [@Lallukka2008]). Recent evidence suggests that even the established norm of ~40h/week can be detrimental to cognitive ability and wellbeing [@Barck-Holst2017]. Interventional studies on Swedish social workers found that reducing working hours (while retaining full salary) has positive, long-lasting effects on sleep, subjective stress measures, fatigue, negative emotion, and cognition [@Barck-Holst2017; Schiller2017a]. Together these findings suggest that long working hours are not only harmful to our wellbeing but could also be counterproductive. Moreover, it is not only the amount, but also when we work that can negatively affect our wellbeing. Shift work, usually defined as work outside the regular daytime work schedule of 9 - 5 [@], has been linked with a wide range of negative health outcomes, physical (e.g. increased risk of cancer, cardiovascular disease, diabetes, and asthma [@Maidstone2020]), and psychological (e.g. anxiety [@] and depression [@]). Shift work has also been shown to affect cognitive performance [@Vetter2012, @Baulk2009], with some evidence indicating that effects can be long-lived [@Weinmann2018]. On the other hand, involuntary underemployment is one of the most damaging factors influencing individual wellbeing, with potentially permanent effects that extend far beyond what would be expected from reduced income, and similar in severity to bereavement [@WhatWorksWellbeing2].
+- Scientific evidence is needed to inform public policy and industry standards surrounding healthy work patterns. 
 
-# Research outline (700w)
+\newpage
 
+# Aim and objectives
+
+
+This project aims to characterize the neurophysiological processes through which work patterns affect our health and wellbeing, with the following objectives: 
+
+- Identify occupational factors that have a meaningful impact on neuronal function and describe the mechanism of impact. 
+- Assess how physiological inflammatory responses are altered by occupational factors. 
+- Determine how the identified neuronal and inflammatory markers jointly affect our physical and mental health. 
+
+Progress against these objectives will help develop a holistic insight into why our wellbeing is affected by modern work patterns and other occupational factors. 
+
+\newpage
+
+# Research Outline
+
+
+***Stage 1: UK Biobank.***
+
+I will begin by identifying neural markers of occupational wellbeing in the UK Biobank cohort: a population-based prospective study of ~500,000 individuals, a subset of which (~40,000) completed an imaging follow-up, including both task [i.e. emotional face perception; @Hariri2002a] and resting-state functional Magnetic Resonance Imaging (fMRI). Please see Appendix 1 for the proposed timeline. 
+
+In a staged exploratory analysis, using a combination of cognitive and population neuroscience methods, I will: 
+
+- Identify (task) fMRI activity associated with occupational factors of interest, e.g. hours worked, employment status, commute time, shift work history.
+
+- Use resting-state fMRI to investigate network characteristics of brain regions identified in the task fMRI data.
+
+- Characterize the interactions between neural and the inflammatory marker CRP.
+
+- Determine how the identified neural and inflammatory markers jointly affect long-term health and wellbeing in the cohort.
+
+*Training needs:*
+
+- Population neuroscience methods. 
+    - Organisation for Human Brain Mapping (OHBM) educational course “Population Neuroimaging: How to responsibly handle big data in the age of biobanks” (July 2020)
+
+- Advanced statistics for neuroimaging.
+    - OHBM educational course “Machine Learning for Neuroimaging, Learn the Basics before Going Deeper” (Date: July 2020).
+    - Oxford fMRIB course on FSL software (Date: TBD).
+    - MSc. modules (University of Sussex) “Machine Learning” and “Data Science Research Methods” (self-paced/ad-hoc) for handling big datasets.
+
+- Statistics in epidemiology.
+    - self-guided and self-paced.
+
+
+***Stage 2. MRI + Immunology data collection***
+
+The UK Biobank has the advantage of a large sample size, but offers a correlational rather than interventional design, and does not include our cognitive tasks of interest, interoceptive measures, or primary data on proinflammatory cytokines. Therefore, findings from stage 1 of the project will be used to inform and shape an interventional study, carried out in collaboration with another PhD student in the lab. Two groups of participants working in an office environment will be recruited and randomly allocated to different working patterns (exact patterns to be determined by stage 1 findings). To compare how neural and immune status interact we will use neuroimaging (task and resting-state fMRI) and physiological measures (e.g. enzyme-linked immunosorbent assay; ELISA) in combination with cognitive and interoceptive measures (e.g. interoceptive accuracy on heartbeat perception task, impulsivity on stop signal task), as well as assessments of workplace functioning (e.g. team work, job satisfaction, work engagement; mental health). Although sleep is not the primary measure in this study, it will be a critical covariate to neural and immune function, cognition, and occupational functioning. Therefore we will use both sleep watches and self-report questionnaires to assess it. 
+
+*Training needs:* 
+
+- Continued training and support from Dr Charlotte Rae, who is expert in MRI techniques,  in implementing HCP-style techniques in our analysis.
+
+- Support from Dr Sue Baxter (Director of Innovation and Business Partnerships at Sussex), our local business liaison, in planning recruitment.
+- Phlebotomy training to collect blood samples.
+- Training on the design, collection and analysis of occupational measures from lab collaborators Dr Emma Russell (University of Sussex Business School) and Prof Tom Ormerod (Psychology, Sussex). These collaborations have been established by Charlotte in 2020.
+
+***Stage 3. Analysis and write-up.***
+
+The final stage of my project will be primarily focused on the analysis of the data obtained from the interventional study, presenting the work at national and international conferences (e.g. OHBM), and writing up for publication. 
+
+*Training needs:*
+
+- Continued training and support from Dr Charlotte Rae, who is expert in MRI techniques.
+- ELISA training from Dr Lisa Mullen (BSMS) for cytokine analysis. 
+- Support with the interpretation of the physiology data from expert Dr. Jessica Eccles (BSMS).
+
+\newpage
+
+# Hypotheses and predictions.
+
+
+***H1: Working patterns will be associated with specific neural markers.*** Based on findings in total and partial sleep deprivation [@Yoo2007a; @Motomura2013; @Motomura2014; @Prather2013; @Zhao2018; @Cui2015; @Krause2017; @Yeo2015; @DeHavas2012; @Shao2014; @Lei2015; @Samann2010], I predict: 
+
+***P:*** Working longer hours will be associated with amygdala hyper-reactivity in response to emotional faces in the task fMRI.
+
+***P:*** Working longer hours will be associated with reduced functional connectivity between the prefrontal cortex and the basal ganglia in the task fMRI, an effect mediated by the insular cortex.
+
+***P:*** Working longer hours will be associated with reduced functional connectivity between the prefrontal cortex and the amygdala in task and resting-state fMRI, an effect mediated by the insular cortex.
+    
+***P:*** Working longer hours will be associated with reduced functional connectivity within the salience-detection network, executive control, fronto-parietal, and default mode (DMN) networks in resting-state fMRI.
+
+***P:*** Working longer hours will be associated with attenuated anticorrelation between task-negative (i.e. DMN) and task-positive regions (i.e. executive control, fronto-parietal, and salience-detection networks) in resting-state fMRI.
+
+***P:*** The above findings will be echoed in the interventional study.
+
+***P:*** The intervention to reduce working hours will result in a reversal of these effects.
+
+\hspace{1cm}
+
+***H2: Occupational factors will affect physiological immune function, in part, through altering sleep patterns.*** Given the known neurophysiological consequences of sleep restriction [@Reinhardt2016; @Simpson2016; @Meier-Ewert2004], and the effect of working patterns on sleep duration and quality [@Basner2014; @Basner2018; @Marucci-Wellman2016, @VanderHulst2003], I predict that: 
+
+***P:*** Working longer hours will be associated with higher concentrations of proinflammatory cytokines and related proteins/hormones: CRP in the UK Biobank data; e.g. IL-6 and/or cortisol in the local data.
+***P:*** The intervention to reduce working hours will lead to lower (vs. baseline) levels of IL-6 (as measured through ELISAs).
+
+\hspace{1cm}
+
+***H3: Interoception will mediate the neurophysiological impact of work patterns.*** Given its pivotal role in both interoception and the salience-detection network, the insular cortex is likely to be key [@Critchley2013; @Critchley2017; @Rae2018; @Ma2015]. Thus, I predict:
+
+***P:*** Levels of IL-6 will track insular activity in the fMRI data (UK Biobank and local), according to participants’ improved sleep patterns.
+***P:*** Working longer hours will be associated with worse performance on interoceptive measures (e.g. heartbeat perception task) in the local intervention.
+
+\hspace{1cm}
+
+***H4: Work patterns will affect sleep on both working and non-working days.*** Time-use survey data shows that work is the primary activity exchanged for sleep, and longer working hours are associated with shorter and (subjectively) worse sleep [@Basner2014; @Basner2018; @Marucci-Wellman2016, @VanderHulst2003]. Therefore, I predict:
+
+***P:*** Working longer hours and other time-consuming occupational factors (primarily commute time) will be negatively associated with the amount and subjective experience of sleep in the UK Biobank cohort.
+***P:*** The effects will be echoed in the local interventional study.
+***P:*** The intervention to reduce working hours will result in longer and better sleep (as measured by subjective report and actigraph watches).
+
+\hspace{1cm}
+
+***H5: Work patterns will impact cognitive function and workplace performance.*** Based on work time reduction interventions [@Schiller2018; Schiller2017a; @Akerstedt2001], I predict that: 
+
+***P:*** Working longer hours and other time-consuming occupational factors will negatively correlate with cognitive measures in the UK Biobank (after controlling for confounds).
+
+***P:*** Working longer hours and other time-consuming occupational factors will negatively correlate with cognitive (e.g. stop signal task) and occupational factors (e.g. team work, job satisfaction, work engagement; mental health) as measured in the local intervention. 
+
+***P:*** The intervention to reduce working hours will improve cognition and workplace functioning (measures above).
+
+\newpage
+
+# Risks
+
+- Employers might not be interested or willing. However, Dr Charlotte Rae has recruited several collaborators with various employer links, i.e. Sue Baxter in Research & Enterprise, Emma Russell in Business School, Tom Ormerod, head of Applied Behavioural Sciences in Psychology. This forms a multi-armed strategy that greatly increases the likelihood of finding employers that are willing and able to participate.
+
+- CISC may not be operational for research scanning by the time we want to start the local study due to Covid19. While unlikely, as the current plan is to re-initiate research in the autumn (2020) and we won’t be looking to start data collection until summer 2021, there is a possibility of subsequent pandemic waves. In that case, we plan to pause MRI acquisition and focus on UK Biobank analysis and publication of findings, as well as collection of pilot data for the local study that does not require MRI or blood sampling and can be done remotely, e.g. questionnaires, cognitive tests.  
+
+- Lack of local experts in handling MRI datasets of this size. However, second supervisor - Prof Jamie Ward - has experience with big data datasets (e.g. database of thousands of synaesthetes). Moreover, I am keen to learn methods for handling large datasets and apply them to our MRI data, and there is an outstanding community of Data/Network Scientists at Sussex who offer educational courses locally, and can also be approached for help (e.g. Prof Luc Berhouze). Finally, Dr Charlotte Rae can also facilitate assistance from Prof Steve Smith and colleagues at Oxford’s FMRIB, a group that  is playing a major role in several Big Data imaging projects, including: HCP, UK Biobank Brain Imaging, and the Developing Human Connectome Project. 
 
 \newpage
 
