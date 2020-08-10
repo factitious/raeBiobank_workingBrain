@@ -1,0 +1,40 @@
+# Sampling Plan
+
+## Existing data
+
+- [x] Registration prior to accessing the data
+- [ ] Registration prior to analysis of the data
+
+
+## Explanation of existing data
+
+This project will use data obtained by the UK Biobank population-based cohort study [@Biobank]
+
+
+## Data collection procedures 
+
+
+Data are being obtained from the UK Biobank, a population-based cohort study of over 500.000 individuals from across the United Kingdom (Sudlow et al, 2015). Participants, aged 40 to 69, completed baseline asssessments in 2006-2010. This involved the collection of biological (e.g. blood) and genetic samples, physical measurements, and an extensive questionnaire focusing on the health and lifestyle of individuals, including occupational factors (e.g. nature of employment). Since 2014, a subset of 100.000 individuals are being invited back for the acquisition of brain, body and heart imaging data. As of May 2020, imaging data for 35,501 volunteers has been made available for research [@Biobank]. Following approval by the UK Biobank Access Committee (Project ref. no.: 62188), brain imaging data (i.e. task and resting functional brain MRI data) will be obtained for 35,500 participants, together with a curated selection of health and lifestyle factors (see ##InRef## for details). Ethical approval for the UK Biobank study was granted by the NHS National Research Ethics Service North West (Ref. no.: 11/NW/0382). 
+ 
+
+
+
+---
+
+## 4. Sample size & Stopping rule
+
+
+Effect size: 	
+> **value**
+ 
+Source of predicted effect size (prior lit, pilot etc.):
+> **value**
+ 
+Significant level:
+> **value**
+ 
+Target power:
+> **value**
+ 
+Specify the type of outcome used as the basis of power computations, e.g. signal in a pre-specified ROI, or whole image voxelwise (or cluster­wise, peak­wise, etc.):	
+> **value**

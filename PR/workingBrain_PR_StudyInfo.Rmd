@@ -1,0 +1,40 @@
+# Study information
+
+
+
+## Background 
+
+
+Work takes up a huge chunk of our adult lives: the average Briton works approximately 42 hours per week [@TUC1], with an additional ~4.9 hours spent on commuting [@TUC2], and an estimate of ~10.1 hours in unpaid overtime [@TotallyMoney]. These numbers have been growing in the past 30 years [@TUC1; @TUC2; @TotallyMoney] without benefits to productivity. Importantly, a growing body of evidence suggests a strong negative impact on our health and wellbeing. Long working hours are associated with higher risk of cardiovascular disease [@Bannai2014], higher incidence of depressive [@Kim2016], and anxiety symptoms [@Bannai2014], deficient cognitive function [@Kajitani2018], and adverse physiological changes [@VanderHulst2003]. Moreover, interventional studies show that a reduction in working hours benefits both health and productivity [@Akerstedt2001; @Barck-Holst2017]. However, we do not yet understand the neurobiological implications of our modern, increasingly intense, working patterns. Three reasons motivate the need for such an understanding: 
+
+- The brain acts as an interface between the body and the environment, therefore, it is key for grasping the mechanism through which occupational factors are affecting our health and wellbeing. 
+
+- Without it we cannot ascertain the true short-term impact of working patterns on our cognitive function and physiological health, let alone the long-term, potentially irreversible, effects on our mental health and wellbeing.
+
+- Scientific evidence is needed to inform public policy and industry standards surrounding healthy work patterns. 
+
+\newpage
+
+## Aim and objectives
+
+
+This project aims to characterize the neurophysiological processes through which work patterns affect our health and wellbeing, with the following objectives: 
+
+- Identify occupational factors that have a meaningful impact on neuronal function and describe the mechanism of impact. 
+- Assess how physiological inflammatory responses are altered by occupational factors. 
+- Determine how the identified neuronal and inflammatory markers jointly affect our physical and mental health. 
+
+Progress against these objectives will help develop a holistic insight into why our wellbeing is affected by modern work patterns and other occupational factors. 
+
+\newpage
+
+## Rationale
+
+Until recently the impact of working patterns on our neurophysiology has been overlooked, therefore it is difficult to formulate an investigative plan that directly builds on prior work. However, I have identified inadequate sleep as the principal means through which the influence of occupational factors on wellbeing is likely to manifest. First, relative to all other activities, work is the primary waking activity exchanged for sleep [@Basner2014]. Second, it is becoming increasingly common for workers to accumulate sleep debt throughout the working week and attempt to catch-up on the weekend, a countermeasure that has been shown to be ineffective in combating the deleterious effects of weekday sleep debt [@Basner2018; @Simpson2016; @Reinhardt2016; @Buxton2010]. Finally, working longer hours is associated with significantly reduced sleep duration and quality [@Marucci-Wellman2016, @VanderHulst2003]. Therefore, we will use the known neuronal and physiological mechanisms of sleep, and in particular sleep restriction, to help guide the incipient stage of our investigation.
+
+A multitude of bodily systems react to and interact with sleep-loss, a key set being the body’s inflammatory response, and in particular increased expression of proinflammatory cytokines. Sleep restriction studies consistently found increased levels of interleukin-6 [IL-6; a known risk factor for depression @Howren2009] in response to restricted sleep [@Reinhardt2016], an effect that is resilient to recovery sleep [@Simpson2016]. One mechanism in which this altered inflammatory response affects cognitive and affective processing is via the interoceptive system [@Critchley2013]. Afferent signals from peripheral nerves that embed visceral organs communicate to the brain what is happening physiologically in the body, including sensing inflammation. Interoception interacts with many other cognitive processes, such that our bodily feelings determine the way we behave [@Critchley2017; @Rae2018]. Altogether, this suggests that inflammation, via interoception, can drive how we feel and ultimately how we act. 
+
+Neurally, the most consistent findings associated with inadequate sleep are: (i) amygdala hyper-reactivity to aversive stimuli [@Yoo2007a; @Motomura2014]; (ii) disconnect between frontal regions and the amygdala, as well as the basal ganglia [[@Yoo2007a; @Motomura2013; @Prather2013; @Zhao2018]; (iii) altered structure and function in the fronto-parietal network [@Cui2015; @Krause2017]. Furthermore, given its pivotal role in both interoception and the salience-detection network, the insular cortex is likely to be a key mediator of the neurophysiological changes that result from chronic sleep restriction [@Critchley2013; @Critchley2017; @Rae2018; @Ma2015]. However, very few studies directly investigate interactions between work patterns, inadequate sleep, and physiology, with none of them further assessing neurobiological changes in the same context. This projects will address the resulting gaps in the literature using a combination of population and cognitive neuroscience, epidemiology and immunological methods. 
+
+## Hypotheses and predictions
+

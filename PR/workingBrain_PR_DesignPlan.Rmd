@@ -1,0 +1,15 @@
+# Design Plan
+
+
+## Study type
+
+See OSF registration options.
+
+
+## 2. Blinding
+
+Blinding describes who is aware of the experimenta manipulations within a study.
+
+
+## 3. Study design
+

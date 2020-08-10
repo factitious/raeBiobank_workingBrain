@@ -3,7 +3,7 @@ title             : "Characterizing the neural markers of occupational wellbeing
 shorttitle        : "Neural markers of occupational wellbeing"
 
 author: 
-  - name          : "Raul Duke"
+  - name          : "Raul Ungureanu"
     affiliation   : "1, 2"
     corresponding : yes    # Define only one corresponding author
     address       : "Brighton, BN1 9QG, United Kingdom"
