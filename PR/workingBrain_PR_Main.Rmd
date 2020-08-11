@@ -59,8 +59,6 @@ output            : papaja::apa6_pdf
 
 ```{r setup, include = FALSE}
 library("papaja")
-r_refs("r-references.bib")
-
 ```
 
 ```{r analysis-preferences}
@@ -69,10 +67,16 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 ```
 
-```{r child = "workingBrain_PR_StudyInfo.Rmd"}
-#This should insert the separate document that you have for introduction.
+
+```{r child = "subsections/workingBrain_PR_StudyInfo.Rmd"}
+
 ```
 
+\newpage
+
+```{r child = "subsections/workingBrain_PR_DesignPlan.Rmd"}
+
+```
 
 
 
