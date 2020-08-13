@@ -51,6 +51,7 @@ footnotelist      : no
 linenumbers       : no
 mask              : no
 draft             : no
+csl               : apaNumeric
 
 documentclass     : "apa6"
 classoption       : "man"
@@ -72,6 +73,13 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 
 ```
 
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id="refs" custom-style="Bibliography"></div>
+\endgroup
+
 \newpage
 
 ```{r child = "subsections/workingBrain_PR_DesignPlan.Rmd"}
@@ -82,11 +90,3 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 
 \newpage
 
-# References
-
-\begingroup
-\setlength{\parindent}{-0.5in}
-\setlength{\leftskip}{0.5in}
-
-<div id="refs" custom-style="Bibliography"></div>
-\endgroup
