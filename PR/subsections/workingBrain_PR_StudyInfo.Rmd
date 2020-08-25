@@ -1,5 +1,6 @@
 ## Background 
 
+Testing HackMD edit
 
 Work takes up a huge chunk of our adult lives: the average Briton works approximately 42 hours per week [@TUC1], with an additional ~4.9 hours spent on commuting [@TUC2], and an estimate of ~10.1 hours in unpaid overtime [@TotallyMoney]. These numbers have been growing in the past 30 years [@TUC1; @TUC2; @TotallyMoney] without benefits to productivity. Importantly, a growing body of evidence suggests a strong negative impact on our health and wellbeing. Long working hours are associated with higher risk of cardiovascular disease [@Bannai2014], higher incidence of depressive [@Kim2016], and anxiety symptoms [@Bannai2014], deficient cognitive function [@Kajitani2018], and adverse physiological changes [@VanderHulst2003]. Moreover, interventional studies show that a reduction in working hours benefits both health and productivity [@Akerstedt2001; @Barck-Holst2017]. However, we do not yet understand the neurobiological implications of our modern, increasingly intense, working patterns. Three reasons motivate the need for such an understanding: 
 
