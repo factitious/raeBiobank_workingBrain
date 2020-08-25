@@ -15,14 +15,15 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
 ```{r loadLibs, results="hide"}
 library(readxl); library(tidyverse); library(dplyr); library(naniar); library(ggplot2); library(jsonlite);
 library(data.tree); library(circlepackeR); library(igraph); library(ggraph);library(networkD3); library(htmlwidgets);
-library(collapsibleTree); library(reticulate)
+library(collapsibleTree); library(reticulate);
+library(ggdag); library(dagitty)
  
 ```
 
 
 Load the data and have a look at the first few rows.
 ```{r loadData, echo=FALSE}
-metaData_all <- read_excel("~/GoogleDrive/Git/raeBiobank/RR/workingBrain_dataFields.xlsx", 
+metaData_all <- read_excel("~/GoogleDrive/Git/raeBiobank/metaData/workingBrain_dataFields.xlsx", 
     sheet = "allData_BB")
 
 head(metaData_all)
@@ -33,6 +34,7 @@ These are all the datafields in the UK Biobank data set, so we need to filter fo
 metaData<- filter(metaData_all, inBasket == T)
 head(metaData)
 ```
+
 
 ## Explore
 ```{r checks1, echo=FALSE}
@@ -206,6 +208,15 @@ fields_p
 # saveWidget(fields_p, file=paste("circlePack_fields.html"))
 ```
 
+```{r fields}
+
+fields_toShow <- paste(metaData_filtered$MetaCat, metaData_filtered$Category, metaData_filtered$FieldID, metaData_filtered$Field, sep=" > ")
+# This creates a var 480 lines, with a full path for each fieldID number
+
+
+```
+
+
 ### Interactive Dendrogram
 
 **There is some problem using two different types of html widgets in the same knit, so for now this will just live in the shiny app: https://munchausend.shinyapps.io/dataViz/**
@@ -222,32 +233,313 @@ fields_p
 
 ```
 
-## Simulating data.
 
-Got directory structure for fMRI data from Fidel (fMRIB), see `metaData/simulation/fmri_dirStructure.pdf`. Will use this to simulate fMRI data files for e.g. a hundred participants.
+## Analysis plan
 
-No dummy/simulated/example data is available for the Biobank resource, so I'm making my own.
-First looking for a more computationally friendly representation of the distributions of my variables. **None available**
+This project *aims* to characterize the neurophysiological processes through which work patterns affect our health and wellbeing, with the following *objectives*: 
 
-The most informative, official, documentation of the data structure can be found here:  http://biobank.ctsu.ox.ac.uk/~bbdatan/Accessing_UKB_data_v2.1.pdf
+1. **Identify occupational factors that have a meaningful impact on neuronal function and describe the mechanism of impact.** 
+2. **Assess how physiological inflammatory responses are altered by occupational factors. **
+3. **Determine how the identified neuronal and inflammatory markers jointly affect our physical and mental health.** 
 
-From the above I can create the UDI's* for all our items and add it as an extra column in our metaData_filtered dataset.
+Progress against these objectives will help develop a holistic insight into why our wellbeing is affected by modern work patterns and other occupational factors. 
 
-```*UDI - the Unique Data Identifier for an item of data within the UK Biobank repository.
-The format for standard data fields is field_id-instance_index.array_index```
+Therefore, our main question is how do occupational factors affect neurophysiology? In the case of UKBB data, our occupational factors will be under the "metaCat" *Employment*, and our neurohysiology measures are *C-Reactive Protein (CRP)* and brain imaging (*task + resting-state MRI*). Directly investigating the effect of occupational factors on neurophysiology is possible, but in and of itself it will not be particularly useful, because:
 
-This needs some thinking through, come back to it. **TODO** 
+
+- Different levels of abstraction/analysis, i.e. quite far removed from one another -> a miriad of intermidiary factors.
+- It wouldn't tell us much re a viable biological mechanism for any potential effect.
+- Interpretation would be difficult.
+
+We therefore propose a mechanism based on extant literature (see details here: #link to pre-registration#), which will guide our investigation Namely, we propose that occupational factors affect neurophysiology, cognition and affect thourgh altering the body's inflammatory responses. Moreover, we suggest that this effect is mediated by interoception.  
+
+### Proposed DAGs.
+
+I will be using directed acyclic graphs (DAGs), which provide visual representations of our **causal assumptions**, to help make sense of the data and keeping track of the "big picture". This will necessarily be an oversimplification of any underlying truth. 
+
+For a good intro on DAG + my reasoning, see [Rohrer, J. M. (2018). Thinking Clearly About Correlations and Causation: Graphical Causal Models for Observational Data. Advances in Methods and Practices in Psychological Science, 1(1), 27–42](https://doi.org/10.1177/2515245917745629) or e.g. Judea Pearl's "Book of Why".
+  
+Help with implementation [here](https://rdrr.io/cran/ggdag/), [here](https://cran.r-project.org/web/packages/ggdag/ggdag.pdf), [here](https://cran.r-project.org/web/packages/ggdag/vignettes/intro-to-ggdag.html), and [here](https://ggdag.malco.io/articles/bias-structures.html).  
+  
+#### Objective 1: Identify occupational factors that have a meaningful impact on neuronal function and describe the mechanism of impact.
+
+```{r brainDag}
+workingBrain_brainDag <- dagify(
+  lfstyle ~ sdems + work,           
+  work ~ sdems,      
+  sleep ~ work + lfstyle,
+  phys ~ work + sleep + lfstyle,
+  brain ~ cog + phys + sleep,
+  cog ~ phys  + work + sleep,
+  part ~ work + sdems + lfstyle,
+  
+  labels = c("work" = "Occupational\n Factors",
+             "lfstyle" = "Lifestyle &\n Environment",
+             "sdems" = "Sociodemographics",
+             "sleep" = "Sleep",
+             "brain" = "Brain",
+             "phys" = "Physiology",
+             "cog" = "Cognition &\n Affect",
+             "part" = "Participation"),
+  
+  latent = "part",
+  exposure = "work",
+  outcome = "brain"
+  
+)
+
+
+ggdag(workingBrain_brainDag, stylized = TRUE) + 
+  theme_dag_blank()
+
+```
+
+* "work" = "Occupational Factors / Employment" == **exposure**,
+* "lfstyle" = "Lifestyle and Environment",
+* "sdems" = "Sociodemographics",
+* "sleep" = "Sleep",
+* "brain" = "Brain Imaging (tf/rs-fMRI)" == **outcome**,
+* "phys" = "Physiology",
+* "cog" = "Cognition &\n Affect",
+* "part" = "Participation": unobserved (i.e. latent) variable. 
+
+Note on "part": I'm making the assumption that sociodemographic, work, and lifestyle factors determined whether a participant volunteered for the UKBB cohort or not, and also whether they went through with follow-up requests (e.g. coming back for the "Imaging" visit after "Baseline" assessments). Unfortunately, we do not have any information on people that declined the invitation to volunteer for the UKBB, or the ones who declined follow-up (although there's some details in Littlejohns, T. J., et atl, 2020; https://doi.org/10.1038/s41467-020-15948-9). I'm including this to underlie potential/probable bias in our data, namely: 
+
+- post-selection bias: "part" is a hidden collider variable, and since we are conditioning on it (i.e. we're only looking at people *in* the UKBB cohort) potentially biases the relationships in our models. Also: no-response, misrepresentativeness, attrition biases (could have different variables for these, but not useful at this stage).
+
+**#TODO#** "part" appears to be a back-door only through "lifestyle", so we should actually be fine as long as we properly controll for lifestyle factors)? This "takes care" of post-selection but what about the other ones? - I think so! Again, as long as we can (appropriately) control for lifestyle factors. Feels counter-intuitive though - maybe it's just me but selection bias is confusing in these terms. Will need an opinion on this.
+
+Unclear what the best way to think about cognitive measures is in the current circumstances. Most likely a bi-directional relationship in relation to brain measures in truth (i.e. brain <-> cognition), but which is more relevant to the current situation (brain -> cog, cog -> brain). Decided cog -> brain is more relevant in current case. 
+
+Conditional independencies in the DAG:
+```{r}
+impliedConditionalIndependencies(workingBrain_brainDag)
+```
+
+This shows that (given our DAG is correct) our *Brain* measures will be independent of *Work* if we condition on *Cognition*, *Physiological* and *Sleep* features (i.e. **bran _||_ work | cog, phys, slep**). This is because in the current case we're assuming that the effect of *Work* on the *Brain* is carried/mediated by (and only by/comprehensively) **cog**, **phys** and **sleep.** If we include a path from **work** to **brain**, we could condition on **cog**, **phys** and **slep** to see if there's any variation not carried by these two. The "left-over" variation could not be directly attributable to **work** necessarily however, it might be one or several variables that are unaccounted for in our graph/models.
+ 
+
+I am having difficulties vizualizing all potential paths when knitting, so will have to skip in published notebook - code provided at https://github.com/factitious/raeBiobank_workingBrain/blob/master/metaData/workingBrain_metaData.Rmd).
+```{r}
+#listing all potential paths
+#dag_paths(workingBrain_brainDag)
+
+#vizualising
+#ggdag_paths(workingBrain_brainDag, text = T, text_size = 2, shadow = T, node_size = 10)
+
+```
+
+(If the current DAG and related assumptions are correct) The sets of covariates that, when adjusted for, block all back-door paths, and include no more or no less information than necessary to determine the causal link b/w *Work* and *Brain* (i.e. minimally sufficient adjustment set) are:
+```{r}
+ggdag_adjustment_set(workingBrain_brainDag, text = T, shadow = TRUE) +
+  theme_dag_blank() 
+```
+
+- so adjusting/conditioning/controlling for **sdems** closes all the backdoor paths, i.e. we only need to adjust for *Sociodemographics* in order to assess the effect of work on the brain.
+
+Of course, as I mentioned initially, this will tell us nothing about the mechanism through which work affects the brain (which is what we actually care about). The same is true for the other objectives re *phys* (i.e. Physiology) and joint effect of the two (below). Therefore, I think we will need mediation analysis (e.g. in the form of SEM) to investigate this further?? 
+
+Also, we need a way to decide on how to condition on the lifestyle features (e.g. stratification; inclusion in regression models). Likely should just rely on prior knowledege as (computational) dimensionality reduction techniques (e.g. PCA, ICA) are not great when it comes to interpretability. 
+
+
+#### Objective 2: Assess how physiological inflammatory responses are altered by occupational factors. 
+
 
 ```{r}
-metaData_UKB <- metaData_filtered %>%
-  mutate(Instances = as.numeric(Instances))
-
-# metaData_UKB %>% 
-#   group_by(Instances) %>%
-#   complete(Total = full_seq(1:Total, 1))
-# 
-# metaData_UKB$UDI <- 
+workingBrain_physDag <- dagify(
+  lfstyle ~ work + sdems,             
+  work ~ sdems,      
+  sleep ~ work + lfstyle,
+  phys ~ work + sleep + lfstyle,
+  part ~ work + sdems + lfstyle,
   
+  labels = c("work" = "Occupational\n Factors",
+             "lfstyle" = "Lifestyle &\n Environment",
+             "sdems" = "Sociodemographics",
+             "sleep" = "Sleep",
+             "phys" = "Physiology",
+             "cog" = "Cognition &\n Affect",
+             "part" = "Participation"),
+  
+  latent = "part",
+  exposure = "work",
+  outcome = "phys"
+  
+)
+
+ggdag(workingBrain_physDag, stylized = TRUE) +
+  theme_dag_blank()
 ```
+
+```{r}
+impliedConditionalIndependencies(workingBrain_physDag)
+```
+
+```{r}
+ggdag_adjustment_set(workingBrain_physDag, text = T, shadow = TRUE) +
+  theme_dag_blank()
+```
+
+
+
+#### Objective 3: Determine how the identified neuronal and inflammatory markers jointly affect our physical and mental health.
+
+```{r}
+
+workingBrain_healthDag <- dagify(
+  lfstyle ~ work + sdems,             
+  work ~ sdems,      
+  sleep ~ work + lfstyle,
+  phys ~ work + sleep + lfstyle,
+  brain ~ cog + phys + sleep,
+  cog ~ phys + work + sleep,
+  health ~ brain + cog + sleep + phys,
+  #part ~ work + sdems + lfstyle + health,
+  
+  labels = c("work" = "Occupational\n Factors",
+             "lfstyle" = "Lifestyle &\n Environment",
+             "sdems" = "Sociodemographics",
+             "sleep" = "Sleep",
+             "brain" = "Brain",
+             "phys" = "Physiology",
+             "cog" = "Cognition &\n Affect",
+             #"part" = "Participation",
+             "health" = "Health &\n MH"),
+  
+  #latent = "part",
+  exposure = "work",
+  outcome = "health"
+  
+) %>% 
+  tidy_dagitty(layout = "nicely", seed = 150)
+
+
+ggdag(workingBrain_healthDag, stylized = TRUE) +
+  theme_dag_blank()
+
+```
+
+- N.B.: I've removed "part" from the graph as it makes visualizing more difficult.
+
+```{r}
+
+# Replica of the above but as a different type of object for listing d-separations.
+workingBrain_healthDagDep <- dagify(
+  lfstyle ~ work + sdems,             
+  work ~ sdems,      
+  sleep ~ work + lfstyle,
+  phys ~ work + sleep + lfstyle,
+  brain ~ cog + phys + sleep,
+  cog ~ phys + work + sleep,
+  health ~ brain + cog + sleep + phys,
+  part ~ work + sdems + lfstyle + health,
+  
+  labels = c("work" = "Occupational\n Factors",
+             "lfstyle" = "Lifestyle &\n Environment",
+             "sdems" = "Sociodemographics",
+             "sleep" = "Sleep",
+             "brain" = "Brain",
+             "phys" = "Physiology",
+             "cog" = "Cognition &\n Affect",
+             "health" = "Health &\n MH",
+             "part" = "Participation"),
+  
+  latent = "part",
+  exposure = "work",
+  outcome = "health"
+  
+) 
+
+
+impliedConditionalIndependencies(workingBrain_healthDagDep)
+```
+
+
+```{r}
+ggdag_adjustment_set(workingBrain_healthDag, text = T, shadow = TRUE, stylized = TRUE) +
+  theme_dag_blank()
+```
+
+
+
+### Looking at the metaCats in more detail.
+
+Categories falling under "Work", i.e. "Employment":
+```{r}
+metaData_filtered %>%
+  filter(MetaCat == "Employment") %>%
+  select(Category) %>%
+  unique()
+```
+
+- Initially only looking at "Current" employment, instance 2, (unless "Time employed in main current job" (#757) is < 3/6 months, in which case take previous job if < 6 months ago, or "unemployed" otherwise).
+
+
+Summary of all the fields under "Employment:Current":
+```{r}
+metaData_filtered %>%
+  filter(Category == "Employment: Current") %>%
+  select(Category, Field, FieldID, `Value Type`) %>%
+  arrange(Category)
+```
+
+- We are primarily interested in "Length of working week for main job" (#767). Problematic without knowing the hours worked in a week (e.g. 4 days/week: 30 or 60 hours?) [CORRECTION BELOW]. Also potentially problematic as it is a *categorical* variable [CORRECTION BELOW]. 
+- We have this information below in the "Employment: History" section, i.e. "Work hours per week - exact value" (#22605). It seems bizare that you would have this info for past, but not current, employment so maybe we will also find this information for the current employment under this section? 
+- The distribution that produced the data will be far from normal weather we take days or hours worked - what to do about that? 
+- CORRECTION based on info [here](https://biobank.ndph.ox.ac.uk/showcase/field.cgi?id=767): "Length of working week for main job" (#767) is a continuous variable [integers, hours]. Has 4 instances, with instance 2 **at imaging visit** (cool!). This was collected from all the participants who indicated they were in paid employment or self-employed, as defined by their answers to ["Current employment status" (#6142)](https://biobank.ndph.ox.ac.uk/showcase/field.cgi?id=6142).
+
+- Aprox. 1000 participants have an Instance 3 (2019+) at the second imaging visit (see "Instances" here [here](https://biobank.ndph.ox.ac.uk/showcase/field.cgi?id=767)). Could be very useful for looking at any potential longitudinal effects + within-subj analyses. 
+
+
+ 
+Summary of all the fields under "Employment: History":
+```{r}
+metaData_filtered %>%
+  filter(Category == "Employment: History") %>%
+  select(Category, Field, FieldID, `Value Type`) %>%
+  arrange(Category)
+```
+
+- Not exactly clear how good this data is for our purposes, at least initially when we are looking at hours worked. Perhaps we can look at hours worked in the previous job if the period in the current job is less than 3/6 months.
+- "Participants were asked to enumerate their work history. Periods of 6 months or longer during which they were in paid full time employment for at least 15 hours each week have been labelled "jobs", with all other periods labelled 'gaps'". [details here](https://biobank.ndph.ox.ac.uk/showcase/label.cgi?id=130)
+- 121,276 participants in Online follow-up between 2015-06-24 and 2017-07-27. [details here](https://biobank.ndph.ox.ac.uk/showcase/field.cgi?id=22500)
+
+Categories falling under "Sociodemographics":
+```{r}
+metaData_filtered %>%
+  filter(MetaCat == "Sociodemographics") %>%
+  select(Category) %>%
+  unique()
+```
+
+Summary of all the fields under "Sociodemographics":
+```{r}
+metaData_filtered %>%
+  filter(MetaCat == "Sociodemographics") %>%
+  select(Category, Field, FieldID, `Value Type`) %>%
+  arrange(Category)
+```
+
+
+Categories falling under "Lifestyle and environment":
+```{r}
+metaData_filtered %>%
+  filter(MetaCat == "Lifestyle and environment") %>%
+  select(Category) %>%
+  unique()
+```
+
+Summary of all the fields under "Lifestyle and environment":
+```{r}
+metaData_filtered %>%
+  filter(MetaCat == "Lifestyle and environment") %>%
+  select(Category, Field, FieldID, `Value Type`) %>%
+  arrange(Category)
+```
+
+NB: *Sleep* actually falls under "Lifestyle and environment" in this dataset, but we don't actually want to use it like that (i.e. "Sleep" is separate, see DAGs)
+
+
+
 
 
