@@ -61,7 +61,7 @@ sort(unique(metaData$Path))
 
 **"Wrangling"**
 
-The following are various steps to make the data more intuitive and easier to work with (code not included, just presenting output here). The main aim is to divide the unhelpful (and in this state unusable) `Path` variable into columns that could actually help us make sense of the data. Details will be in the code, **not included for readability** (probably still lacking in some places, come back to this: `TODO`).
+The following are various steps to make the data more intuitive and easier to work with (code provided at https://github.com/factitious/raeBiobank_workingBrain/blob/master/metaData/workingBrain_metaData.Rmd). The main aim is to divide the unhelpful (and in this state unusable) `Path` variable into columns that could actually help us make sense of the data.
 
 ```{r splitPaths, results="hide"}
 
@@ -236,7 +236,7 @@ fields_toShow <- paste(metaData_filtered$MetaCat, metaData_filtered$Category, me
 
 ## Analysis plan
 
-This project *aims* to characterize the neurophysiological processes through which work patterns affect our health and wellbeing, with the following *objectives*: 
+This project *aims* to characterize the neurophysiological processes through which occupational factors affect our health and wellbeing, with the following *objectives*: 
 
 1. **Identify occupational factors that have a meaningful impact on neuronal function and describe the mechanism of impact.** 
 2. **Assess how physiological inflammatory responses are altered by occupational factors. **
@@ -244,14 +244,101 @@ This project *aims* to characterize the neurophysiological processes through whi
 
 Progress against these objectives will help develop a holistic insight into why our wellbeing is affected by modern work patterns and other occupational factors. 
 
-Therefore, our main question is how do occupational factors affect neurophysiology? In the case of UKBB data, our occupational factors will be under the "metaCat" *Employment*, and our neurohysiology measures are *C-Reactive Protein (CRP)* and brain imaging (*task + resting-state MRI*). Directly investigating the effect of occupational factors on neurophysiology is possible, but in and of itself it will not be particularly useful, because:
+Therefore, our first main question is how do occupational factors affect neurophysiology? In the current case (i.e. UKBB dataset), our occupational factors will be under the metaCat *Employment*, our neurohysiology measures are *C-Reactive Protein (CRP)* and brain imaging (*task + resting-state MRI*). Directly investigating the effect of occupational factors on neurophysiology is possible, but in and of itself it will not be particularly useful, because:
 
 
 - Different levels of abstraction/analysis, i.e. quite far removed from one another -> a miriad of intermidiary factors.
 - It wouldn't tell us much re a viable biological mechanism for any potential effect.
 - Interpretation would be difficult.
 
-We therefore propose a mechanism based on extant literature (see details here: #link to pre-registration#), which will guide our investigation Namely, we propose that occupational factors affect neurophysiology, cognition and affect thourgh altering the body's inflammatory responses. Moreover, we suggest that this effect is mediated by interoception.  
+We therefore propose a mechanism based on extant literature (see details here: #link to pre-registration#), which will guide our investigation Namely, we propose that occupational factors affect neurophysiology, cognition and affect through altering the body's inflammatory responses. Moreover, we suggest that this effect is mediated, in part, by interoception.  
+
+### Proposed strategies
+
+In order to determine how particular occupational factors are associated with neural markers, immune function, and cognition, we need to first understand how numerous non-imaging/-physiological variables inter-relate in our Biobank dataset. This includes employment, sociodemographic, lifestyle, and health-related information. Given the complexity of our data and underlying causal relationships between its features (see assumptions below), we are considering several different strategies for this stage of our analysis, outlined below. 
+
+#### Feature selection/extraction using (only) prior domain-specific knowledge. 
+
+- In this approach we would qualitatively assess fields in the meta-categories of interest (i.e. *Employment*, *Sociodemographics*, *Lifestyle and environment*, and *Health and medical history*). Using prior domain-specific knowledge (e.g. published literature), together with descriptive (uni and bivariate) statistics and visualization tools, we would then choose (a likely small) number of features from each meta-category to include in our subsequent (fairly simple) imaging/physiology models, e.g. GLM, following normalisation and other pre-processing steps.   
+
+*Pros*:
+ - Easy to interpret
+ - Implementation is straightforward (ish) 
+ - Know how to do
+ - Likely scales well
+ - Will probably need to do some version of this regardless of what strategy we choose
+
+*Cons:*
+ - Could be missing out on a lot of valuable information
+ - Difficult to look at multi-variate relationships
+ - We could end up with masked relationships due to missing features/information*
+ - Biased by being heavily reliant on prior knowledge
+
+
+\* When trying to measure the influences of multiple factors on an outcome, sometimes none of those influences is apparent from the bivariate relationships alone (i.e. $outcome ~ feature1$; $outcome ~ feature2$). This kind of problem tends to arise when there are two features that are correlated with the outcome,one positively and the other one negatively, while the two features are also positively correlated with one another.In this case the effect of either feature is apparent only when conditioning on the other feature as well (i.e. $outcome ~ feature1 + feature2$), which in a GLM is asking: "What is the effect of *feature1* on our *outcome* 
+after taking into account *feature2*?" (and vice-versa). For a detailed example see Chapter 5, section 2 of [this](https://xcelab.net/rm/statistical-rethinking/)
+
+#### Canonical Correlation Analysis (CCA).
+
+- Another option for understanding the relationships b/n our non-imaging features would be to perform a CCA with a set of *Employment* features on one hand and set of *Sociodemographics*, *Lifestyle and environment*, and *Health and medical history* features on the other. Below is an description of the main idea behind CCA. Along with the Pros and Cons stated below, I am not sure CCA is appropriate for the current situation overall: it's used when there's a many-to-many relationship, but we have a one-to-many relationship at this  stage really (One *Employment* feature ~ Many non-imaging/physiology/employment features). More appropriate for subsequent stage, i.e. imaging analysis?
+
+
+![Main goal](ccaShow.png)
+
+- We are trying to maximize $R_c$: the linear correlation (Pearson's $r$) b/n two variates ($u;t$), i.e. weighted ($b1...bp; a1...aq$) linear composites of each set of variables ($X_1...X_p;Y_1...Yq$).  
+
+My main concern is interpretability - aren't we dealing with the same issue as in PCA or any other analysis method focused on latent space? i.e. following decomposition/re-expression the meaning of your features is lost, you instead get components which are a (linear) combinations of your initial features. 
+
+**Answer: No.**  
+- In the case of CCA you can still relate your variates to the original features through
+  - canonical weights = e.g. unique partial contribution of X1 to u (equivalent to $\beta$ in a regression model); e.g. the $b1...bp$'s above.
+  - canonical loadings = direct contribution of one feature to its respective canonical variate regardless of other features (interpreted as in PCA); e.g. corr(X1,u).
+  - canonical cross-loadings = direct contribution of one feature to the "opposite" variate (i.e. the one it is not a part of); e.g. corr(Y1, u).
+
+
+The most accessible explanation + more detail is in the *Where does the Effect Come From?* section of [this](https://www.tandfonline.com/doi/abs/10.1207/s15327752jpa8401_09) paper.  
+
+Also: 
+
+Resources:
+- [Hao-Ting's primer](https://doi.org/10.1016/j.neuroimage.2020.116745)
+- [Primer more focused on psych](https://www.tandfonline.com/doi/abs/10.1207/s15327752jpa8401_09)
+- Use in cog neuro, [here](https://www.nature.com/articles/s41598-020-67605-2) and []
+- Review for cog neuro applications [here](https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.25090)
+- "Famous" Smith paper using it [here](http://www.nature.com/articles/nn.4125). I don't understand 
+
+
+*Pros*:
+ - All information is included in the assessment
+ - A powerful way to describe the structure b/n and w/n in two sets of features simultaneously.
+ - 
+
+*Cons*:
+ - Interpretation is difficult (lacks specificity).
+ - Assumes linear relationship b/n any two variables and between variates.
+ - Multicollinearity in either variate confounds interpretation of canonical results + leads to instability (different results on different runs).
+ - However, all the features in a set (e.g. all X's) have to be interrelated (there has to be some correlation) - but not so much as to cause multicollinearity.  
+ - Choosing composition (X's and Y's) is difficult.
+ - No precise statistics for interpretation of CCA -> descriptives.
+
+#### Factor analysis.
+
+- Not quite sure what it is atm.
+
+
+#### SEM. 
+
+- Path analysis with latent variables.
+
+
+*Pros:*
+  - Can investigate **mediated** as well as direct effects of some features on other features. 
+  - Used for complex, multi-faceted constructs that are measured with error. 
+  - Ablility to model "systems" of relationships rather than a DV and a set of IVs.
+  
+*Cons:*
+  - Need to learn, might be quite time-consuming. 
+
 
 ### Proposed DAGs.
 
@@ -305,11 +392,13 @@ ggdag(workingBrain_brainDag, stylized = TRUE) +
 
 Note on "part": I'm making the assumption that sociodemographic, work, and lifestyle factors determined whether a participant volunteered for the UKBB cohort or not, and also whether they went through with follow-up requests (e.g. coming back for the "Imaging" visit after "Baseline" assessments). Unfortunately, we do not have any information on people that declined the invitation to volunteer for the UKBB, or the ones who declined follow-up (although there's some details in Littlejohns, T. J., et atl, 2020; https://doi.org/10.1038/s41467-020-15948-9). I'm including this to underlie potential/probable bias in our data, namely: 
 
-- post-selection bias: "part" is a hidden collider variable, and since we are conditioning on it (i.e. we're only looking at people *in* the UKBB cohort) potentially biases the relationships in our models. Also: no-response, misrepresentativeness, attrition biases (could have different variables for these, but not useful at this stage).
+- post-selection bias: "part" is a hidden collider, and since we are conditioning on it (i.e. we're only looking at people *in* the UKBB cohort), it will likely biases our models. Also: no-response, misrepresentativeness, attrition biases (could have different variables for these, but not useful at this stage).
 
 **#TODO#** "part" appears to be a back-door only through "lifestyle", so we should actually be fine as long as we properly controll for lifestyle factors)? This "takes care" of post-selection but what about the other ones? - I think so! Again, as long as we can (appropriately) control for lifestyle factors. Feels counter-intuitive though - maybe it's just me but selection bias is confusing in these terms. Will need an opinion on this.
 
-Unclear what the best way to think about cognitive measures is in the current circumstances. Most likely a bi-directional relationship in relation to brain measures in truth (i.e. brain <-> cognition), but which is more relevant to the current situation (brain -> cog, cog -> brain). Decided cog -> brain is more relevant in current case. 
+Unclear what the best way to think about cognitive measures is in the current circumstances. Most likely a bi-directional relationship in the case of brain ~ cog measures (i.e. brain <-> cognition), but which is more relevant to the current situation (brain -> cog, cog -> brain). 
+
+
 
 Conditional independencies in the DAG:
 ```{r}
@@ -486,7 +575,7 @@ metaData_filtered %>%
 - We are primarily interested in "Length of working week for main job" (#767). Problematic without knowing the hours worked in a week (e.g. 4 days/week: 30 or 60 hours?) [CORRECTION BELOW]. Also potentially problematic as it is a *categorical* variable [CORRECTION BELOW]. 
 - We have this information below in the "Employment: History" section, i.e. "Work hours per week - exact value" (#22605). It seems bizare that you would have this info for past, but not current, employment so maybe we will also find this information for the current employment under this section? 
 - The distribution that produced the data will be far from normal weather we take days or hours worked - what to do about that? 
-- CORRECTION based on info [here](https://biobank.ndph.ox.ac.uk/showcase/field.cgi?id=767): "Length of working week for main job" (#767) is a continuous variable [integers, hours]. Has 4 instances, with instance 2 **at imaging visit** (cool!). This was collected from all the participants who indicated they were in paid employment or self-employed, as defined by their answers to ["Current employment status" (#6142)](https://biobank.ndph.ox.ac.uk/showcase/field.cgi?id=6142).
+- CORRECTION based on info [here](https://biobank.ndph.ox.ac.uk/showcase/field.cgi?id=767): "Length of working week for main job" (#767) is a continuous variable [integers, hours]. Has 4 instances, with instance 2 **at imaging visit** . This was collected from all the participants who indicated they were in paid employment or self-employed, as defined by their answers to ["Current employment status" (#6142)](https://biobank.ndph.ox.ac.uk/showcase/field.cgi?id=6142) .
 
 - Aprox. 1000 participants have an Instance 3 (2019+) at the second imaging visit (see "Instances" here [here](https://biobank.ndph.ox.ac.uk/showcase/field.cgi?id=767)). Could be very useful for looking at any potential longitudinal effects + within-subj analyses. 
 
