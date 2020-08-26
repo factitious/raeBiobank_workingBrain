@@ -23,14 +23,15 @@ authornote: |
 abstract: |
   
   Occupational factors can have numerous impacts on wellbeing and mental health, from under- or over-employment, to shift work, and commuting time. 
-  However, the neural mechanisms by which such occupational factors influence subjective wellbeing, and engender vulnerability to mental health symptoms, are less well understood. This project aims to characterize the neurophysiological processes through which occupational factors affect our health and wellbeing in an analysis of the UK Biobank data. 
-  To do so we will implement a multifactorial analysis strategy, beginning with an exploratory analysis of the non-imaging variables in our dataset. This will allow us to sufficiently characterise the association of occupational factors with sociodemographic, lifestyle, and health-related information in order to appropriately control for bias in subsequent analyses focusing on neurophysiology. 
-  We intend to successively update our preregistration documentation as we proceed through each analysis step in this project. This document forms the first document in this series. All analysis workflows, together with time-stamped logs detailing data access events, if available, will be linked to subsequent preregistration documentation. 
+  However, the neural mechanisms by which such occupational factors influence subjective wellbeing, and engender vulnerability to mental health symptoms, are less well understood. This project aims to characterize the neurophysiological processes through which occupational factors affect our health and wellbeing in an analysis of data from the UK Biobank. The UK Biobank is a large-scale epidemiological study of 500,000 individuals, ~40,000 of whom have completed an MRI session at time of writing. 
+  To characterise neural markers of occupational wellbeing in the Biobank, we will implement a multifactorial analysis strategy, beginning with an exploratory analysis of the non-imaging variables in our dataset. This will allow us to sufficiently characterise the association of occupational factors with sociodemographic, lifestyle, and health-related information in order to appropriately control for these in subsequent analyses focusing on neurophysiology. 
+  We intend to successively update our preregistration documentation as we proceed through each analysis step in this project. This document forms the first document in this series. Analysis workflows, together with time-stamped logs detailing data access events, if available, will be linked to subsequent preregistration documentation. 
    
     
 
 
   
+version           : "Version 1, 26th August 2020."
 keywords          : "UK Biobank; Occupational factors; Work; Employment; fMRI; rsMRI; Interoception; Inflammation; Cytokine; Immune function."
 wordcount         : "X"
 bibliography      : workingBrain.bib
