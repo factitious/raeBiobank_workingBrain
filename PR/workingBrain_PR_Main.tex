@@ -37,7 +37,6 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={Characterizing the neural markers of occupational wellbeing},
   pdflang={en-EN},
   pdfkeywords={UK Biobank; Occupational factors; Work; Employment; fMRI; rsMRI; Interoception; Inflammation; Cytokine; Immune function.},
   hidelinks,
@@ -106,14 +105,14 @@
   {\section*{\normalfont\normalsize\abstractname}}
   {}{\typeout{Failed to patch abstract.}}
 \makeatother
-\shorttitle{Neural markers of occupational wellbeing}
+\shorttitle{Pre-registration: Neural markers of occupational wellbeing}
 \author{Raul Ungureanu\textsuperscript{1, 2}\ \& Charlotte Rae\textsuperscript{2,3}}
 \affiliation{
 \vspace{0.5cm}
 \textsuperscript{1} Sussex Neuroscience, School of Life Sciences, University of Sussex, Falmer, UK\\\textsuperscript{2} School of Psychology, University of Sussex, Falmer, UK\\\textsuperscript{3} Sackler Centre for Consciousness Science, University of Sussex, Falmer, UK}
 \authornote{
 
-Correspondence concerning this article should be addressed to Raul Ungureanu, Brighton, BN1 9QG, United Kingdom. E-mail: r.ungureanu@sussex.ac.uk}
+Correspondence concerning this article should be addressed to Raul Ungureanu, School of Psychology, University of Sussex, Falmer, BN1 9QH. E-mail: r.ungureanu@sussex.ac.uk}
 \keywords{UK Biobank; Occupational factors; Work; Employment; fMRI; rsMRI; Interoception; Inflammation; Cytokine; Immune function.\newline\indent Word count: X}
 \DeclareDelayedFloatFlavor{ThreePartTable}{table}
 \DeclareDelayedFloatFlavor{lltable}{table}
@@ -122,6 +121,14 @@ Correspondence concerning this article should be addressed to Raul Ungureanu, Br
 \renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
 \makeatother
 \usepackage{csquotes}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\bfseries Pre-registration $\colon$ Neural markers of occupational wellbeing.}
+\thispagestyle{empty}
+\fancyhead[R]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0.2pt}
 \ifxetex
   % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
   \usepackage{polyglossia}
@@ -136,15 +143,16 @@ Correspondence concerning this article should be addressed to Raul Ungureanu, Br
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
   {\par}
 
-\title{Characterizing the neural markers of occupational wellbeing}
+\title{\textbf{Pre-registration:}\\
+\textbf{Characterising the neural markers of occupational wellbeing.}}
 
 \date{}
 
 \abstract{
 Occupational factors can have numerous impacts on wellbeing and mental health, from under- or over-employment, to shift work, and commuting time.
-However, the neural mechanisms by which such occupational factors influence subjective wellbeing, and engender vulnerability to mental health symptoms, are less well understood. This project aims to characterize the neurophysiological processes through which occupational factors affect our health and wellbeing in an analysis of the UK Biobank data.
-To do so we will implement a multifactorial analysis strategy, beginning with an exploratory analysis of the non-imaging variables in our dataset. This will allow us to sufficiently characterise the association of occupational factors with sociodemographic, lifestyle, and health-related information in order to appropriately control for bias in subsequent analyses focusing on neurophysiology.
-We intend to successively update our preregistration documentation as we proceed through each analysis step in this project. This document forms the first document in this series. All analysis workflows, together with time-stamped logs detailing data access events, if available, will be linked to subsequent preregistration documentation.
+However, the neural mechanisms by which such occupational factors influence subjective wellbeing, and engender vulnerability to mental health symptoms, are less well understood. This project aims to characterize the neurophysiological processes through which occupational factors affect our health and wellbeing in an analysis of data from the UK Biobank: a large-scale epidemiological study of 500,000 individuals, \textasciitilde40,000 of whom have completed an MRI session at time of writing.
+To characterise neural markers of occupational wellbeing in the Biobank, we will implement a multifactorial analysis strategy, beginning with an exploratory analysis of the non-imaging variables in our dataset. This will allow us to sufficiently characterise the association of occupational factors with sociodemographic, lifestyle, and health-related information in order to appropriately control for these in subsequent analyses focusing on neurophysiology.
+We intend to successively update our preregistration documentation as we proceed through each analysis step in this project. This document forms the first document in this series. Analysis workflows, together with time-stamped logs detailing data access events, if available, will be linked to subsequent preregistration documentation.
 }
 
 \begin{document}
@@ -190,13 +198,13 @@ Progress against these objectives will help develop a holistic insight into why 
 \hypertarget{rationale}{%
 \subsection{Rationale}\label{rationale}}
 
-Until recently the impact of working patterns on our neurophysiology has been overlooked, therefore our investigative plan does not build directly and comprehensively on prior work. However, we have identified inadequate sleep as one principal means through which the influence of occupational factors on wellbeing is likely to manifest. First, relative to all other activities, work is the primary waking activity exchanged for sleep.\textsuperscript{{[}10{]}} Second, it is becoming increasingly common for workers to accumulate sleep debt throughout the working week and attempt to catch-up on the weekend, a countermeasure that has been shown to be ineffective in combating the deleterious effects of weekday sleep debt.\textsuperscript{{[}11--14{]}} Finally, working longer hours is associated with significantly reduced sleep duration and quality.\textsuperscript{{[}15{]}} Therefore, we will use the known neuronal and physiological mechanisms of sleep, and in particular sleep restriction, to help guide the incipient stage of our investigation.
+The impact of working patterns on our neurophysiology is still not comprehensively understood; therefore our investigative plan does not build solely and directly on prior work in this specific arena. However, we have identified inadequate sleep as one principal means through which the influence of occupational factors on wellbeing is likely to manifest. First, relative to all other activities, work is the primary waking activity exchanged for sleep.\textsuperscript{{[}10{]}} Second, it is increasingly common for workers to accumulate sleep debt throughout the working week and attempt to catch-up on the weekend, a countermeasure that has been shown to often be ineffective in combating the deleterious effects of weekday sleep debt.\textsuperscript{{[}11--14{]}} Finally, working longer hours is associated with significantly reduced sleep duration and quality.\textsuperscript{{[}15{]}} Therefore, we will use the known neuronal and physiological mechanisms of sleep, and in particular sleep restriction, to help guide the incipient stage of our investigation.
 
-A multitude of bodily systems react to and interact with sleep-loss, a key set being the body's inflammatory response, and in particular increased expression of proinflammatory cytokines. Sleep restriction studies have consistently found increased levels of interleukin-6\textsuperscript{{[}16{]}} in response to restricted sleep,\textsuperscript{{[}13{]}} an effect that is resilient to recovery sleep.\textsuperscript{{[}12{]}} One mechanism by which this altered inflammatory response affects cognitive and affective processing is via the interoceptive system.\textsuperscript{{[}17{]}} Afferent signals from peripheral nerves that embed visceral organs communicate to the brain what is happening physiologically in the body, including sensing inflammation. Interoception interacts with many other cognitive processes, such that our bodily feelings determine the way we behave.\textsuperscript{{[}18,19{]}} Altogether, this suggests that inflammation, via interoception, can drive how we feel and ultimately how we act.
+A multitude of bodily systems react to and interact with sleep-loss, a key set being the body's inflammatory response, and in particular increased expression of proinflammatory cytokines. Sleep restriction studies have consistently found increased levels of interleukin-6\textsuperscript{{[}16{]}} in response to restricted sleep,\textsuperscript{{[}13{]}} an effect that is resilient to recovery sleep.\textsuperscript{{[}12{]}} One mechanism by which this altered inflammatory response affects cognitive and affective processing is via the interoceptive system.\textsuperscript{{[}17{]}} Afferent signals from peripheral nerves that embed visceral organs communicate to the brain what is happening physiologically in the body, including sensing inflammation. Interoception interacts with many other cognitive processes, such that our bodily feelings guide the way we behave.\textsuperscript{{[}18,19{]}} Altogether, this suggests that inflammation, via interoception, can drive how we feel and ultimately how we act.
 
-Neurally, the most consistent findings associated with inadequate sleep are: (i) amygdala hyper-reactivity to aversive stimuli;\textsuperscript{{[}20,21{]}} (ii) disconnect between frontal regions and the amygdala, as well as the basal ganglia;\textsuperscript{{[}20,22--24{]}} (iii) altered structure and function in the fronto-parietal network.\textsuperscript{{[}25,26{]}} Furthermore, given its pivotal role in both interoception and the salience-detection network, the insular cortex is likely to be a key mediator of the neurophysiological changes that result from chronic sleep restriction.\textsuperscript{{[}17--19,27{]}} However, very few studies directly investigate interactions between work patterns, inadequate sleep, and physiology, with even fewer further assessing neurobiological changes in the same context.
+Neurally, the most consistent findings associated with inadequate sleep are: (i) amygdala hyper-reactivity to aversive stimuli;\textsuperscript{{[}20,21{]}} (ii) disconnect between frontal regions and the amygdala, as well as the basal ganglia;\textsuperscript{{[}20,22--24{]}} (iii) altered structure and function in the fronto-parietal network.\textsuperscript{{[}25,26{]}} Furthermore, given its pivotal role in both interoception and the salience-detection network, the insular cortex is likely to be a key mediator of the neurophysiological changes that result from chronic sleep restriction.\textsuperscript{{[}17--19,27{]}} However, few studies that directly investigate interactions between work patterns, inadequate sleep, and physiology, further assess neurobiological changes in the same context.
 
-This project will address the resulting gaps in the literature using a combination of population neuroscience and epidemiological methods. We will begin by identifying neural markers of occupational wellbeing in the UK Biobank cohort: a population-based prospective study of \textasciitilde500,000 individuals, a subset of which completed an imaging follow-up, including both task\textsuperscript{{[}28{]}} and resting-state functional Magnetic Resonance Imaging (fMRI).\textsuperscript{{[}29{]}} Following approval by the UK Biobank Access Committee (Project ref. no.: 62188), brain imaging data (i.e.~task and resting functional brain MRI data) will be obtained for 35,501 participants, together with blood biochemistry assay results relevant to inflammation (i.e.~C-reactive protein) and a curated selection of employment, sociodemographic, lifestyle and health-related information collected through questionnaires, verbal interviews and census data (e.g.~Townsend Deprivation Scores). Details concerning the data analysis strategy can be found under the \emph{Multifactorial analysis strategy} section below.
+This project will address the resulting gaps in the literature using a combination of population neuroscience and epidemiological methods. We will identify neural markers of occupational wellbeing in the UK Biobank cohort: a population-based prospective study of \textasciitilde500,000 individuals, a subset of which completed an imaging follow-up, including both task\textsuperscript{{[}28{]}} and resting-state functional Magnetic Resonance Imaging (fMRI).\textsuperscript{{[}29{]}} Following approval by the UK Biobank Access Committee (Project ref. no.: 62188), brain imaging data (i.e.~task and resting functional brain MRI data) will be obtained for 35,501 participants, together with blood biochemistry assay results relevant to inflammation (i.e.~C-reactive protein) and a curated selection of employment, sociodemographic, lifestyle and health-related information collected through questionnaires, verbal interviews and census data (e.g.~Townsend Deprivation Scores). Details concerning the data analysis strategy can be found under the \emph{Multifactorial analysis strategy} section below.
 
 \newpage
 
@@ -223,7 +231,7 @@ This project will address the resulting gaps in the literature using a combinati
 \begin{itemize}
 \tightlist
 \item
-  Working longer hours will be associated with higher concentrations of CRP in the UK Biobank data.
+  Working longer hours will be associated with higher concentrations of C-Reactive Protein (CRP) in the UK Biobank data.
 \end{itemize}
 
 \hspace{1cm}
@@ -241,20 +249,20 @@ This project will address the resulting gaps in the literature using a combinati
 \hypertarget{multifactorial-analysis-strategy}{%
 \subsection{Multifactorial analysis strategy}\label{multifactorial-analysis-strategy}}
 
-In order to determine how particular work patterns are associated with neural markers, immune function, and cognition, we need to first understand how numerous non-imaging/-physiological variables inter-relate in our Biobank dataset. This includes employment, sociodemographic, lifestyle, and health-related information. The complete list of data fields requested can be found at \url{http://tiny.cc/UKBBMetaData_62188} (N.B.:``Participants'' attribute refers to total participants in the cohort with information in the selected ``Field'', not the number of participants in the dataset linked to the current project).
+In order to determine how particular work patterns are associated with neural markers, immune function, and cognition, we need to first understand how numerous non-imaging/-physiological variables inter-relate in our Biobank dataset. This includes employment, sociodemographic, lifestyle, and health-related information. The complete list of data fields requested from the Biobank for this project can be found at \url{http://tiny.cc/UKBBMetaData_62188} (N.B.:``Participants'' attribute refers to total participants in the cohort with information in the selected ``Field'', not the number of participants in the dataset linked to the current project).
 
-It is plausible that, for example, number of hours worked (`\emph{Length of working week for main job}') covaries in multiple, likely nonlinear, ways, with other employment variables (such as commute time, `\emph{distance between home and workplace}' \& `\emph{frequency of travelling}'), and with numerous variables from other categories. This means that if we wish to test for a specific effect between hours worked and neural function, for example, it may be challenging to conclude that a neural characteristic is attributable to hours worked, without accounting in some manner for these related variables. Even in the imaging data alone, it is clear that numerous quality-related metrics such as head motion, acquisition date and time, and scanner configuration act as potential confounders\textsuperscript{{[}37{]}}
+It is plausible that, for example, number of hours worked (`\emph{Length of working week for main job}') covaries in multiple, likely nonlinear, ways, with other employment variables (such as commute time, `\emph{distance between home and workplace}' \& `\emph{frequency of travelling}'), and with numerous variables from other categories such as sociodemographic, lifestyle, and health-related information. This means that if we wish to test for a specific effect between hours worked and neural function, for example, it may be challenging to conclude that a neural characteristic is attributable to hours worked, without accounting in some manner for these related variables. Even in the imaging data alone, it is clear that numerous quality-related metrics such as head motion, acquisition date and time, and scanner configuration act as potential confounders.\textsuperscript{{[}37{]}}
 
 Therefore, prior to analysing the imaging and physiological data, we will undertake a comprehensive investigation of how employment variables (e.g.~`\emph{Length of working week for main job}'; Biobank Field ID: 767) relate to sociodemographic, lifestyle, and health-related information, in our dataset of \(n=35,501\) individuals. To do so, we plan to use multivariate analysis techniques, incorporating machine learning methods, potentially applying a Canonical Correlational Analysis (CCA) approach.
 
-A complete and full picture of these relationships is, although very much worthy of scientific merit, not our primary and only goal, and also a lengthier and more detailed process than is within our present remit. We aim to characterise sufficiently the strongest inter-relations of employment variables with sociodemographic, lifestyle, and health-related information, and the nature of their association (e.g.~linear, U-shape function). This will be a standalone piece of work, but also form the preliminary stage to the investigation of brain, body and behavioural markers of occupational wellbeing, to which the above-stated hypotheses relate. For example, we may use variables that show a strong, linear relation to number of hours worked as covariates in mass univariate General Linear Models when analysing the Hariri task fMRI. Other ways in which we utilise the picture of employment and other non-imaging/-physiology variables in our analyses of the imaging and physiology data will evolve as we proceed through the project.
+A complete and full picture of these relationships is, although very much worthy of scientific merit, not our primary and only goal, and also a lengthier and more detailed process than is within our present remit. We aim to characterise sufficiently the strongest inter-relations of employment variables with sociodemographic, lifestyle, and health-related information, and the nature of their association (e.g.~linear, U-shape function). This will be a standalone piece of work, but also form the preliminary stage to the investigation of brain, body and behavioural markers of occupational wellbeing, to which the above-stated hypotheses relate. For example, we may use variables that show a strong, linear relation to number of hours worked as covariates in mass univariate General Linear Models when analysing the Hariri task fMRI. Other ways in which we utilise the picture of employment and other non-imaging/-physiology variables in our analyses of the imaging and physiology data will evolve as we proceed through the project, and will be recounted in successive updates to this present preregistration document.
 
 \newpage
 
 \hypertarget{multistage-preregistration-plan}{%
 \subsection{Multistage preregistration plan}\label{multistage-preregistration-plan}}
 
-We intend to successively update our preregistration documentation as we proceed through each analysis step in this project. This document (dated XXX) forms the first document in this series. As we complete data analysis stages, we will be able to prescribe increasingly specific hypotheses, and refine our original broad imaging and physiological analysis approaches set out in earlier preregistration documentation, to increasingly more precise plans. This will include an evolution of expected statistical approaches as the multifactorial complexities of our dataset reveal themselves in relation to our specific questions about brain, body and behavioural markers of occupational wellbeing. For example, we anticipate the possibility of applying a Canonical Correlational Analysis (CCA) approach, but as of yet do not have specific applications or software to preregister.
+We intend to successively update our preregistration documentation as we proceed through each analysis step in this project. This document (dated 26th August 2020) forms the first document in this series. As we complete data analysis stages, we will be able to prescribe increasingly specific hypotheses, and refine our original broad imaging and physiological analysis approaches set out in earlier preregistration documentation, to increasingly more precise plans. This will include an evolution of expected statistical approaches as the multifactorial complexities of our dataset reveal themselves in relation to our specific questions about brain, body and behavioural markers of occupational wellbeing. For example, we anticipate the possibility of applying a Canonical Correlational Analysis (CCA) approach, but as of yet do not have specific applications or software to preregister.
 
 We will seek to timestamp our data logs and analysis records, and provide updated pregregistration documents in a public repository, such that the evolutionary timeline is indicative of a commitment to preregistration principles, (i.e.~to guard against questionable research practices), while taking account of the multi-stage and complex nature of this project.
 

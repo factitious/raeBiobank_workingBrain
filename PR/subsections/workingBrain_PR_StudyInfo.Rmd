@@ -58,7 +58,7 @@ This project will address the resulting gaps in the literature using a combinati
 
 ***H: Occupational factors will affect physiological immune function, in part, through altering sleep patterns.*** Given the known neurophysiological consequences of sleep restriction [@Reinhardt2016; @Simpson2016; @Meier-Ewert2004], and the effect of working patterns on sleep duration and quality [@Basner2014; @Basner2018; @Marucci-Wellman2016, @VanderHulst2003], we predict that: 
 
-- Working longer hours will be associated with higher concentrations of CRP in the UK Biobank data.
+- Working longer hours will be associated with higher concentrations of C-Reactive Protein (CRP) in the UK Biobank data.
 
 \hspace{1cm}
 
