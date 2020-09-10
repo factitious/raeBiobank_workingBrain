@@ -244,7 +244,7 @@ This project *aims* to characterize the neurophysiological processes through whi
 
 Progress against these objectives will help develop a holistic insight into why our wellbeing is affected by modern work patterns and other occupational factors. 
 
-Therefore, our first main question is how do occupational factors affect neurophysiology? In the current case (i.e. UKBB dataset), our occupational factors will be under the metaCat *Employment*, our neurohysiology measures are *C-Reactive Protein (CRP)* and brain imaging (*task + resting-state MRI*). Directly investigating the effect of occupational factors on neurophysiology is possible, but in and of itself it will not be particularly useful, because:
+Therefore, our main question is what occupational factors affect neurophysiology and how? In the current case (i.e. UKBB dataset), our occupational factors will be under the metaCat *Employment*, our neurohysiology measures are *C-Reactive Protein (CRP)* and brain imaging (*task + resting-state MRI*). Directly investigating the effect of occupational factors on neurophysiology is possible, but in and of itself it will not be particularly useful, because:
 
 
 - Different levels of abstraction/analysis, i.e. quite far removed from one another -> a miriad of intermidiary factors.
@@ -257,11 +257,12 @@ We therefore propose a mechanism based on extant literature (see details here: #
 
 In order to determine how particular occupational factors are associated with neural markers, immune function, and cognition, we need to first understand how numerous non-imaging/-physiological variables inter-relate in our Biobank dataset. This includes employment, sociodemographic, lifestyle, and health-related information. Given the complexity of our data and underlying causal relationships between its features (see assumptions below), we are considering several different strategies for this stage of our analysis, outlined below. 
 
-#### Feature selection/extraction using (only) prior domain-specific knowledge. 
+#### Feature selection/extraction using prior domain-specific knowledge. 
 
 - In this approach we would qualitatively assess fields in the meta-categories of interest (i.e. *Employment*, *Sociodemographics*, *Lifestyle and environment*, and *Health and medical history*). Using prior domain-specific knowledge (e.g. published literature), together with descriptive (uni and bivariate) statistics and visualization tools, we would then choose (a likely small) number of features from each meta-category to include in our subsequent (fairly simple) imaging/physiology models, e.g. GLM, following normalisation and other pre-processing steps.   
 
 *Pros*:
+
  - Easy to interpret
  - Implementation is straightforward (ish) 
  - Know how to do
@@ -269,76 +270,92 @@ In order to determine how particular occupational factors are associated with ne
  - Will probably need to do some version of this regardless of what strategy we choose
 
 *Cons:*
+
  - Could be missing out on a lot of valuable information
  - Difficult to look at multi-variate relationships
  - We could end up with masked relationships due to missing features/information*
  - Biased by being heavily reliant on prior knowledge
 
 
-\* When trying to measure the influences of multiple factors on an outcome, sometimes none of those influences is apparent from the bivariate relationships alone (i.e. $outcome ~ feature1$; $outcome ~ feature2$). This kind of problem tends to arise when there are two features that are correlated with the outcome,one positively and the other one negatively, while the two features are also positively correlated with one another.In this case the effect of either feature is apparent only when conditioning on the other feature as well (i.e. $outcome ~ feature1 + feature2$), which in a GLM is asking: "What is the effect of *feature1* on our *outcome* 
-after taking into account *feature2*?" (and vice-versa). For a detailed example see Chapter 5, section 2 of [this](https://xcelab.net/rm/statistical-rethinking/)
+\* When trying to measure the influences of multiple factors on an outcome, sometimes none of those influences is apparent from the bivariate relationships alone (i.e. $outcome$ ~ $feature1$; $outcome$ ~ $feature2$). This kind of problem tends to arise when there are two features that are correlated with the outcome, one positively and the other one negatively, while the two features are also positively correlated with one another.In this case the effect of either feature is apparent only when conditioning on the other feature as well (i.e. $outcome$ ~ $feature1 + feature2$), which in a GLM is asking: "What is the effect of *feature1* on our *outcome* after taking into account *feature2*?" (and vice-versa). For a detailed example see Chapter 5, section 2 of [this](https://xcelab.net/rm/statistical-rethinking/)
 
 #### Canonical Correlation Analysis (CCA).
 
-- Another option for understanding the relationships b/n our non-imaging features would be to perform a CCA with a set of *Employment* features on one hand and set of *Sociodemographics*, *Lifestyle and environment*, and *Health and medical history* features on the other. Below is an description of the main idea behind CCA. Along with the Pros and Cons stated below, I am not sure CCA is appropriate for the current situation overall: it's used when there's a many-to-many relationship, but we have a one-to-many relationship at this  stage really (One *Employment* feature ~ Many non-imaging/physiology/employment features). More appropriate for subsequent stage, i.e. imaging analysis?
+
+- Another option for understanding the relationships b/n our non-imaging features would be to perform a CCA with a set of *Employment* features on one hand and set of *Sociodemographics*, *Lifestyle and environment*, and *Health and medical history* features on the other. Below is an description of the main idea behind CCA. Along with the Pros and Cons stated below, I am not sure CCA is appropriate for the current situation overall: it's used when there's a many-to-many relationship, but we have a one-to-many relationship at this stage (i.e. one *Employment* feature ~ many non-imaging/physiology/employment features). More appropriate for subsequent stage, i.e. imaging analysis?
 
 
-![Main goal](ccaShow.png)
+![](ccaShow.png)
 
-- We are trying to maximize $R_c$: the linear correlation (Pearson's $r$) b/n two variates ($u;t$), i.e. weighted ($b1...bp; a1...aq$) linear composites of each set of variables ($X_1...X_p;Y_1...Yq$).  
 
-My main concern is interpretability - aren't we dealing with the same issue as in PCA or any other analysis method focused on latent space? i.e. following decomposition/re-expression the meaning of your features is lost, you instead get components which are a (linear) combinations of your initial features. 
+- We are trying to maximize $R_c$, which is the linear correlation (Pearson's $r$) b/n two variates ($u; \: t$). These variates are weighted ($b1...bp; \: sa1...aq$) linear composites of each set of variables ($X_1...X_p; \: Y_1...Yq$).  
 
-**Answer: No.**  
-- In the case of CCA you can still relate your variates to the original features through
+My main concern is interpretability - aren't we dealing with the same issue as in PCA or any other analysis method focused on latent space? i.e. following decomposition/re-expression the meaning of your features is lost, you instead get components which are a (linear) combinations of your initial features. **Answer: No.**
+
+
+In the case of CCA you can still relate your variates to the original features through:
+  
+  
   - canonical weights = e.g. unique partial contribution of X1 to u (equivalent to $\beta$ in a regression model); e.g. the $b1...bp$'s above.
-  - canonical loadings = direct contribution of one feature to its respective canonical variate regardless of other features (interpreted as in PCA); e.g. corr(X1,u).
-  - canonical cross-loadings = direct contribution of one feature to the "opposite" variate (i.e. the one it is not a part of); e.g. corr(Y1, u).
+  - canonical loadings = direct contribution of one feature to its respective canonical variate regardless of other features (interpreted as in PCA); e.g. $corr(X_1,u)$.
+  - canonical cross-loadings = direct contribution of one feature to the "opposite" variate (i.e. the one it is not a part of); e.g. $corr(Y_1, u)$.
 
 
-The most accessible explanation + more detail is in the *Where does the Effect Come From?* section of [this](https://www.tandfonline.com/doi/abs/10.1207/s15327752jpa8401_09) paper.  
+The most accessible explanation + more detail is in the *Where does the Effect Come From?* section of [this](https://www.tandfonline.com/doi/abs/10.1207/s15327752jpa8401_09) paper. See also: 
 
-Also: 
 
-Resources:
 - [Hao-Ting's primer](https://doi.org/10.1016/j.neuroimage.2020.116745)
 - [Primer more focused on psych](https://www.tandfonline.com/doi/abs/10.1207/s15327752jpa8401_09)
-- Use in cog neuro, [here](https://www.nature.com/articles/s41598-020-67605-2) and []
+- Use in cog neuro, [here](https://www.nature.com/articles/s41598-020-67605-2).
 - Review for cog neuro applications [here](https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.25090)
-- "Famous" Smith paper using it [here](http://www.nature.com/articles/nn.4125). I don't understand 
+- "Famous" Smith paper using it [here](http://www.nature.com/articles/nn.4125). 
 
 
 *Pros*:
+
+
  - All information is included in the assessment
- - A powerful way to describe the structure b/n and w/n in two sets of features simultaneously.
- - 
+ - A powerful way to describe the structure b/n and w/n in two sets of features **simultaneously**
+
 
 *Cons*:
+
+
  - Interpretation is difficult (lacks specificity).
  - Assumes linear relationship b/n any two variables and between variates.
- - Multicollinearity in either variate confounds interpretation of canonical results + leads to instability (different results on different runs).
+ - Multicollinearity in either variate confounds interpretation of canonical results + leads to instability.
  - However, all the features in a set (e.g. all X's) have to be interrelated (there has to be some correlation) - but not so much as to cause multicollinearity.  
  - Choosing composition (X's and Y's) is difficult.
- - No precise statistics for interpretation of CCA -> descriptives.
+ - No precise statistics for interpretation of CCA -> reliant on descriptives.
+ - Not appropriate when a single variable constitutes a "variate" i.e. can't have a single X or a single Y; a single IV or a single DV. In that case, multiple GLMs are more appropriate. 
 
-#### Factor analysis.
+#### Factor analysis/SEM.
 
-- Not quite sure what it is atm.
+- The goal of factor analysis/SEM is to model the relationship between measured variables/features and latent constructs. From my (limited) understanding, the two are similar, but SEM also attempts to also look at "structural" relationship b/n features and/or factors to determine causality.
+
+On factor analysis, from this [tutorial](https://stats.idre.ucla.edu/spss/seminars/introduction-to-factor-analysis/a-practical-introduction-to-factor-analysis/):
 
 
-#### SEM. 
-
-- Path analysis with latent variables.
-
+- Similar to PCA, but the partitioning of variance is done differently: both methods try to reduce the dimensionality of the dataset to fewer unobserved variables, but whereas PCA assumes that there common variances takes up all of total variance, common factor analysis assumes that total variance can be partitioned into common and unique variance (the unobserved or latent variable that makes up common variance is called a factor, hence the name factor analysis).  
+- The other main difference between PCA and factor analysis lies in the goal of your analysis. If your goal is to simply reduce your variable list down into a linear combination of smaller components then PCA is the way to go. However, if you believe there is some latent construct that defines the interrelationship among items, then factor analysis may be more appropriate. 
 
 *Pros:*
-  - Can investigate **mediated** as well as direct effects of some features on other features. 
+
+
+  - Can investigate **mediated**, as well as direct, effects of some features on other features. 
   - Used for complex, multi-faceted constructs that are measured with error. 
   - Ablility to model "systems" of relationships rather than a DV and a set of IVs.
   
 *Cons:*
-  - Need to learn, might be quite time-consuming. 
 
+
+  - Need to learn, might be quite time-consuming. 
+  - Unknown cons (as I don't understand it fully yet).
+
+#### Other
+
+- Multilevel modelling.
+- ??
 
 ### Proposed DAGs.
 
@@ -375,9 +392,9 @@ workingBrain_brainDag <- dagify(
   
 )
 
-
 ggdag(workingBrain_brainDag, stylized = TRUE) + 
   theme_dag_blank()
+
 
 ```
 
@@ -389,6 +406,32 @@ ggdag(workingBrain_brainDag, stylized = TRUE) +
 * "phys" = "Physiology",
 * "cog" = "Cognition &\n Affect",
 * "part" = "Participation": unobserved (i.e. latent) variable. 
+
+```{r, include=FALSE}
+# Ignore this part, this is for rendering a sharing-ready DAG.
+
+workingBrain_brainDagPresent <- dagify(
+  lfstyle ~ sdems + work,           
+  work ~ sdems,      
+  sleep ~ work + lfstyle,
+  phys ~ work + sleep + lfstyle,
+  brain ~ cog + phys + sleep,
+  cog ~ phys  + work + sleep,
+  
+  labels = c("work" = "Occupational\n Factors",
+             "lfstyle" = "Lifestyle &\n Environment",
+             "sdems" = "Sociodemographics",
+             "sleep" = "Sleep",
+             "brain" = "Brain",
+             "phys" = "Physiology",
+             "cog" = "Cognition &\n Affect"),
+        
+  exposure = "work",
+  outcome = "brain"
+  
+)
+```
+
 
 Note on "part": I'm making the assumption that sociodemographic, work, and lifestyle factors determined whether a participant volunteered for the UKBB cohort or not, and also whether they went through with follow-up requests (e.g. coming back for the "Imaging" visit after "Baseline" assessments). Unfortunately, we do not have any information on people that declined the invitation to volunteer for the UKBB, or the ones who declined follow-up (although there's some details in Littlejohns, T. J., et atl, 2020; https://doi.org/10.1038/s41467-020-15948-9). I'm including this to underlie potential/probable bias in our data, namely: 
 
@@ -405,7 +448,7 @@ Conditional independencies in the DAG:
 impliedConditionalIndependencies(workingBrain_brainDag)
 ```
 
-This shows that (given our DAG is correct) our *Brain* measures will be independent of *Work* if we condition on *Cognition*, *Physiological* and *Sleep* features (i.e. **bran _||_ work | cog, phys, slep**). This is because in the current case we're assuming that the effect of *Work* on the *Brain* is carried/mediated by (and only by/comprehensively) **cog**, **phys** and **sleep.** If we include a path from **work** to **brain**, we could condition on **cog**, **phys** and **slep** to see if there's any variation not carried by these two. The "left-over" variation could not be directly attributable to **work** necessarily however, it might be one or several variables that are unaccounted for in our graph/models.
+This shows that (if our DAG is correct) our *Brain* measures will be independent of *Work* if we condition on *Cognition*, *Physiological* and *Sleep* features (i.e. **bran _||_ work | cog, phys, slep**). This is because in the current case we're assuming that the effect of *Work* on the *Brain* is carried/mediated by (and only by/comprehensively) **cog**, **phys** and **sleep.** If we include a path from **work** to **brain**, we could condition on **cog**, **phys** and **slep** to see if there's any variation not carried by these two. The "left-over" variation could not be directly attributable to **work** necessarily however, it might be one or several variables that are unaccounted for in our graph/models.
  
 
 I am having difficulties vizualizing all potential paths when knitting, so will have to skip in published notebook - code provided at https://github.com/factitious/raeBiobank_workingBrain/blob/master/metaData/workingBrain_metaData.Rmd).
