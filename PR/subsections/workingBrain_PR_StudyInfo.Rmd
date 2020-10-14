@@ -70,7 +70,28 @@ This project will address the resulting gaps in the literature using a combinati
 
 \newpage
 
-## Multifactorial analysis strategy
+## Multifactorial analysis strategy (UPDATED)
+
+
+The initial phase of our analysis will focus on the discovery of neuroimaging, immunological, and cognitive markers of occupational factors that have a negative impact on health and wellbeing. In order to achieve this, we will isolate subjects that present potentially deleterious employment characteristics and match them with control cases (i.e. subjects with standard working patterns, not considered to be deleterious) from the same cohort (i.e. UK Biobank) at a 1:1 ratio. Matching will take into account all relevant sociodemographic, lifestyle and environment, and health-related characteristics, as determined by variable selection methods. 
+
+
+In the first instance we will select a single, key, occupational factor as our dependent variable/outcome of interest, i.e. '*Length of working week for main job*' (Biobank Field ID: 767), and define our population of interest as subjects who fall within the top 5% of the distribution for this variable. After detemining the variables to include in the matching process, appropriate distance measures will be determined for each variable (e.g. propensity scores), and a matching method implemented (e.g. nearest neighbour). 
+
+
+In order to determine the variables that need to be included the matching process, we are considering several methods:
+
+  - Test statistics (e.g. t-test, chi-square) comparing the population of interest with controls on all the variables. Variables with a Family Discovery Rate (FDR) adjusted p-value lower than a pre-defined number cut-off point (e.g. 0.05) would be selected for matching.
+  
+  - Random forests methods, used to estimate variable importance measures (e.g. permuation importance). All relevant variables, as determined by the selected imporatnce scores, would be selected for matching.    
+   
+  - Other means of achieving this selection could evolve as we proceed through the descriptive stages of the analysis, and will be recounted in successive updates to this present preregistration document.
+  
+  
+\newpage
+
+## Multifactorial analysis strategy (ORIGINAL)
+
 
 In order to determine how particular work patterns are associated with neural markers, immune function, and cognition, we need to first understand how numerous non-imaging/-physiological variables inter-relate in our Biobank dataset. This includes employment, sociodemographic, lifestyle, and health-related information. The complete list of data fields requested from the Biobank for this project can be found at http://tiny.cc/UKBBMetaData_62188 (N.B.:"Participants" attribute refers to total participants in the cohort with information in the selected "Field", not the number of participants in the dataset linked to the current project).
 
@@ -80,12 +101,11 @@ Therefore, prior to analysing the imaging and physiological data, we will undert
 
 A complete and full picture of these relationships is, although very much worthy of scientific merit, not our primary and only goal, and also a lengthier and more detailed process than is within our present remit. We aim to characterise sufficiently the strongest inter-relations of employment variables with sociodemographic, lifestyle, and health-related information, and the nature of their association (e.g. linear, U-shape function). This will be a standalone piece of work, but also form the preliminary stage to the investigation of brain, body and behavioural markers of occupational wellbeing, to which the above-stated hypotheses relate. For example, we may use variables that show a strong, linear relation to number of hours worked as covariates in mass univariate General Linear Models when analysing the Hariri task fMRI. Other ways in which we utilise the picture of employment and other non-imaging/-physiology variables in our analyses of the imaging and physiology data will evolve as we proceed through the project, and will be recounted in successive updates to this present preregistration document.
 
-
 \newpage
 
 ## Multistage preregistration plan
 
-We intend to successively update our preregistration documentation as we proceed through each analysis step in this project. This document (dated 26th August 2020) forms the first document in this series. As we complete data analysis stages, we will be able to prescribe increasingly specific hypotheses, and refine our original broad imaging and physiological analysis approaches set out in earlier preregistration documentation, to increasingly more precise plans. This will include an evolution of expected statistical approaches as the multifactorial complexities of our dataset reveal themselves in relation to our specific questions about brain, body and behavioural markers of occupational wellbeing. For example, we anticipate the possibility of applying a Canonical Correlational Analysis (CCA) approach, but as of yet do not have specific applications or software to preregister. 
+We intend to successively update our preregistration documentation as we proceed through each analysis step in this project. This document (dated ##th October 2020) forms the second document in this series. As we complete data analysis stages, we will be able to prescribe increasingly specific hypotheses, and refine our original broad imaging and physiological analysis approaches set out in earlier preregistration documentation, to increasingly more precise plans. This will include an evolution of expected statistical approaches as the multifactorial complexities of our dataset reveal themselves in relation to our specific questions about brain, body and behavioural markers of occupational wellbeing.
 
 We will seek to timestamp our data logs and analysis records, and provide updated pregregistration documents in a public repository, such that the evolutionary timeline is indicative of a commitment to preregistration principles, (i.e. to guard against questionable research practices), while taking account of the multi-stage and complex nature of this project.
 
