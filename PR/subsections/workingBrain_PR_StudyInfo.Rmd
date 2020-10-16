@@ -70,27 +70,7 @@ This project will address the resulting gaps in the literature using a combinati
 
 \newpage
 
-## Multifactorial analysis strategy (UPDATED)
-
-
-The initial phase of our analysis will focus on the discovery of neuroimaging, immunological, and cognitive markers of occupational factors that have a negative impact on health and wellbeing. In order to achieve this, we will isolate subjects that present potentially deleterious employment characteristics and match them with control cases (i.e. subjects with standard working patterns, not considered to be deleterious) from the same cohort (i.e. UK Biobank) at a 1:1 ratio. Matching will take into account all relevant sociodemographic, lifestyle and environment, and health-related characteristics, as determined by variable selection methods. 
-
-
-In the first instance we will select a single, key, occupational factor as our dependent variable/outcome of interest, i.e. '*Length of working week for main job*' (Biobank Field ID: 767), and define our population of interest as subjects who fall within the top 5% of the distribution for this variable. After detemining the variables to include in the matching process, appropriate distance measures will be determined for each variable (e.g. propensity scores), and a matching method implemented (e.g. nearest neighbour). 
-
-
-In order to determine the variables that need to be included the matching process, we are considering several methods:
-
-  - Test statistics (e.g. t-test, chi-square) comparing the population of interest with controls on all the variables. Variables with a Family Discovery Rate (FDR) adjusted p-value lower than a pre-defined number cut-off point (e.g. 0.05) would be selected for matching.
-  
-  - Random forests methods, used to estimate variable importance measures (e.g. permuation importance). All relevant variables, as determined by the selected imporatnce scores, would be selected for matching.    
-   
-  - Other means of achieving this selection could evolve as we proceed through the descriptive stages of the analysis, and will be recounted in successive updates to this present preregistration document.
-  
-  
-\newpage
-
-## Multifactorial analysis strategy (ORIGINAL)
+## Multifactorial analysis strategy (ORIGINAL; 26th August 2020)
 
 
 In order to determine how particular work patterns are associated with neural markers, immune function, and cognition, we need to first understand how numerous non-imaging/-physiological variables inter-relate in our Biobank dataset. This includes employment, sociodemographic, lifestyle, and health-related information. The complete list of data fields requested from the Biobank for this project can be found at http://tiny.cc/UKBBMetaData_62188 (N.B.:"Participants" attribute refers to total participants in the cohort with information in the selected "Field", not the number of participants in the dataset linked to the current project).
@@ -100,6 +80,45 @@ It is plausible that, for example, number of hours worked ('*Length of working w
 Therefore, prior to analysing the imaging and physiological data, we will undertake a comprehensive investigation of how employment variables (e.g. '*Length of working week for main job*'; Biobank Field ID: 767) relate to sociodemographic, lifestyle, and health-related information, in our dataset of $n=35,501$ individuals. To do so, we plan to use multivariate analysis techniques, incorporating machine learning methods, potentially applying a Canonical Correlational Analysis (CCA) approach.
 
 A complete and full picture of these relationships is, although very much worthy of scientific merit, not our primary and only goal, and also a lengthier and more detailed process than is within our present remit. We aim to characterise sufficiently the strongest inter-relations of employment variables with sociodemographic, lifestyle, and health-related information, and the nature of their association (e.g. linear, U-shape function). This will be a standalone piece of work, but also form the preliminary stage to the investigation of brain, body and behavioural markers of occupational wellbeing, to which the above-stated hypotheses relate. For example, we may use variables that show a strong, linear relation to number of hours worked as covariates in mass univariate General Linear Models when analysing the Hariri task fMRI. Other ways in which we utilise the picture of employment and other non-imaging/-physiology variables in our analyses of the imaging and physiology data will evolve as we proceed through the project, and will be recounted in successive updates to this present preregistration document.
+
+
+\newpage
+
+## Multifactorial analysis strategy (UPDATED; 16th October 2020)
+
+
+Our analysis will focus on the discovery of neuroimaging, immunological, and cognitive markers of occupational factors that we predict have a negative impact on health and wellbeing. In order to achieve this, we will isolate subjects that present potentially deleterious employment characteristics and match them with control cases (i.e. subjects with working patterns not considered to be deleterious) from the same cohort (i.e. UK Biobank) at a 1:1 ratio. Matching will take into account key sociodemographic, lifestyle and environment, and health-related characteristics, identified by variable selection methods described below. We will then compare the deleterious employment group to the control group on neuroimaging, immunological and cognitive markers, with the control group matched to the case group on key sociodemographic, lifestyle and environment, and health-related characteristics - ensuring we can attribute observed group differences to occupational factors.
+
+
+# Occupational factors
+In the first instance we will select a single, key, occupational factor as our dependent variable/outcome of interest, i.e. '*Length of working week for main job*' (Biobank Field ID: 767), and define our population of interest as subjects who fall within the top 5% (n=1,775) of the distribution for this variable (n=35,501). This will identify a group of ~1,775 subjects who typically work long hours in their main job (schematic in *Figure 1*). 
+
+**xxx**
+*Figure 1.* Defining our population of interest: we will take the top 5% of the sample distribution (n=35,501) for Biobank Field ID 767, '*Length of working week for main job*' to be our population of interest. 
+
+Next, we will find a set of matched controls from the remaining 95% of the sample who work fewer hours. Our aim is to identify a group of ~1,775 subjects who work fewer hours than the case group, but who are matched on key sociodemographic, lifestyle and environment, and health-related characteristics (see **Identifying matching variables by feature selection**).
+
+Once we have completed our case-control analysis of neuroimaging, immunological, and cognitive markers for '*Length of working week for main job*', we will seek to repeat the process for other Biobank Field IDs of potentially deleterious occupational factors (such as commute time or shift work). These subsequent analyses will likely identify a different set of ~1,775 cases and ~1,755 controls, although some individuals may be present across different occupational factor analyses. **RAUL**: should we list the potential additional future occ factors to be investigated here? Or maybe we can leave for future PR? e.g.
+1. *Length of working week for main job*
+2. *Commute time*
+3. *Shift work*
+etc?
+
+
+# Identifying matching variables by feature selection
+In order to determine the variables that need to be included in the matching process, we will compare the 5% case group of interest to the remaining 95% of the sample on all Data Fields in our project 62188 dataset (see http://tiny.cc/UKBBMetaData_62188), excluding the occupational factor of interest that defines the status of the 5% case group, and the neuroimaging, immunological, and cognitive markers of interest. **RAUL**: are we going to have to do it repeatedly for different MRI/CRP/non-physiology analysis?? I think we should keep the same n=1,775 cases & n=1,775 controls across MRI/CRP/etc. So we would have to exclude all those variables we subsequently want to investigate from the matching. We plan to use the following methods:
+
+  - *Test statistics* (e.g. t-test, chi-square) comparing the population of interest with the 95% rest of the sample on all the possible matching variables. Variables with a Family Discovery Rate (FDR) adjusted p-value lower than a pre-defined number cut-off point (p<0.05) would be selected for matching. If this generates a very large number of matching variables with the consequence that it is impossible to identify at least ~1,775 matched controls, we will take the variables with the most significant p-values to match on, progressively adding in further variables until we can no longer identify a minimum of ~1,775 control individuals.
+  
+  - *Random forests*, a classifier approach to identifying the most important features that characterise a dataset. This approach will be applied to estimate variable importance measures (e.g. permutation importance), which will tell us how much each variable contributes to the characterisation of an individual as working long hours, and therefore, how important it is to match on this variable. We plan to use the **xxx** toolbox. All relevant variables, as determined by the selected importance scores, would be selected for matching. As with the *test statistics* approach, if this generates a very large number of matching variables with the consequence that it is impossible to identify at least ~1,775 matched controls, we will take the variables with the largest importance values to match on, progressively adding in further variables until we can no longer identify a minimum of ~1,775 control individuals.
+  We plan to run both the *test statistics* and *random forests* feature selection approaches to gain an overview of consistency between the two methods (i.e., if the same features appear as important to match cases and controls on, across the two approaches, this gives additional confidence).
+   
+  - *Other means of achieving feature selection* may evolve as we proceed through the descriptive stages of the analysis, and will be recounted in successive updates to this present preregistration document.
+
+
+# Case-control matching
+After determining the variables to include in the matching process, appropriate distance measures will be determined for each variable (e.g. propensity scores), and a matching method implemented (e.g. nearest neighbour). **RAUL**: nice - well done for thinking about this.
+
 
 \newpage
 

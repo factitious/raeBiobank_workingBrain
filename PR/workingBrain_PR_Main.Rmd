@@ -34,7 +34,7 @@ abstract: |
 
 
   
-version           : "Version 1, 26th August 2020."
+version           : "Version 2, 16th October 2020."
 keywords          : "UK Biobank; Occupational factors; Work; Employment; fMRI; rsMRI; Interoception; Inflammation; Cytokine; Immune function."
 wordcount         : "X"
 bibliography      : workingBrain.bib
