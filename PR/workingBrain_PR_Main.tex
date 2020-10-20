@@ -4,7 +4,7 @@
 %
 \documentclass[
   english,
-  man, donotrepeattitle]{apa6}
+  man, donotrepeattitle,floatsintext]{apa6}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -234,8 +234,6 @@ This project will address the resulting gaps in the literature using a combinati
   Working longer hours will be associated with higher concentrations of C-Reactive Protein (CRP) in the UK Biobank data.
 \end{itemize}
 
-\hspace{1cm}
-
 \textbf{\emph{H: Work patterns will impact cognitive function and workplace performance.}} Based on work time reduction interventions,\textsuperscript{{[}8,36{]}} we predict that:
 
 \begin{itemize}
@@ -246,49 +244,51 @@ This project will address the resulting gaps in the literature using a combinati
 
 \newpage
 
-\hypertarget{multifactorial-analysis-strategy-updated}{%
-\subsection{Multifactorial analysis strategy (UPDATED)}\label{multifactorial-analysis-strategy-updated}}
+\hypertarget{multifactorial-analysis-strategy}{%
+\subsection{Multifactorial analysis strategy}\label{multifactorial-analysis-strategy}}
 
-The initial phase of our analysis will focus on the discovery of neuroimaging, immunological, and cognitive markers of occupational factors that have a negative impact on health and wellbeing. In order to achieve this, we will isolate subjects that present potentially deleterious employment characteristics and match them with control cases (i.e.~subjects with standard working patterns, not considered to be deleterious) from the same cohort (i.e.~UK Biobank) at a 1:1 ratio. Matching will take into account all relevant sociodemographic, lifestyle and environment, and health-related characteristics, as determined by variable selection methods.
+Our analysis will focus on the discovery of neuroimaging, immunological, and cognitive markers of occupational factors that we predict to have a negative impact on health and wellbeing. To achieve this, we will isolate subjects that present potentially deleterious employment characteristics and match them with control cases (i.e.~subjects with working patterns not considered to be deleterious) from the same cohort at a 1:1 ratio. We will then compare the two groups (i.e.~``Cases'' vs ``Controls'') on neuroimaging, immunological, and cognitive characteristics. The control group will be matched to the case group on key sociodemographic, lifestyle and environment, and health-related variables identified through selection methods, described below, to ensure that we can attribute observed group differences to occupational factors.
 
-In the first instance we will select a single, key, occupational factor as our dependent variable/outcome of interest, i.e.~`\emph{Length of working week for main job}' (Biobank Field ID: 767), and define our population of interest as subjects who fall within the top 5\% of the distribution for this variable. After detemining the variables to include in the matching process, appropriate distance measures will be determined for each variable (e.g.~propensity scores), and a matching method implemented (e.g.~nearest neighbour).
+\textbf{Occupational factors}. In the first instance, we will select a single, key, occupational factor as our variable of interest, i.e.~`\emph{Length of working week for main job}' (Biobank Field ID: 767) and define our population of interest as subjects who fall within the top 5\% (n=1,775) of the distribution for this variable (n=35,501). This will identify a group of \textasciitilde1,775 subjects who typically work long hours in their main job (schematic in \emph{Figure 1}).
 
-In order to determine the variables that need to be included the matching process, we are considering several methods:
+
+
+\begin{figure}
+\includegraphics[width=500px]{/Users/munchausend/GoogleDrive/Git/raeBiobank/PR/Plots/PopOfInterest} \caption{\emph{Defining our population of interest. We will take the top 5\% of the sample distribution (n = 35,501) for `Length of working week for the main job' (Biobank Field ID: 767) to represent our population of interest (i.e.~`Cases'; n = 1,775), and select matched case-controls (i.e.~`Controls'; n = 1,775) from the remainder of the sample (n = 33,726). The above is an illustration of this procedure, using a simulated distribution for n = 35,501, based on estimates available from the data provider (\url{https://biobank.ctsu.ox.ac.uk/crystal/field.cgi?id=767}). Code available at \url{https://github.com/factitious/raeBiobank_workingBrain/tree/master/PR/Plots/Histo.R}}}\label{fig:figure}
+\end{figure}
+
+Next, we will find a set of matched controls from the remaining 95\% of the sample who work fewer hours. We aim to identify a group of \textasciitilde1,775 subjects who work fewer hours than the case group, but who are matched on key sociodemographic, lifestyle and environment, and health-related characteristics (see \textbf{Identifying matching variables}).
+
+Once we have completed our case-control analysis of neuroimaging, immunological, and cognitive markers for `\emph{Length of working week for main job}', we will seek to repeat the process for other potentially deleterious occupational factors (such as commute time or shift work). These subsequent analyses will likely identify a different set of \textasciitilde1,775 cases and \textasciitilde1,755 controls, although some individuals may be present across multiple analyses.
+
+\textbf{Identifying matching variables}. To determine the variables that need to be included in the matching process, we will compare the 5\% case group of interest to the remaining 95\% of the sample on all Data Fields in our project 62188 dataset (see \url{http://tiny.cc/UKBBMetaData_62188}), excluding the occupational factor of interest that defines the status of the 5\% case group, and the neuroimaging, immunological, and cognitive variables of interest. We plan to use the following methods:
 
 \begin{itemize}
 \item
-  Test statistics (e.g.~t-test, chi-square) comparing the population of interest with controls on all the variables. Variables with a Family Discovery Rate (FDR) adjusted p-value lower than a pre-defined number cut-off point (e.g.~0.05) would be selected for matching.
+  \emph{Test statistics} (e.g.~t-test, chi-square) comparing the population of interest with the 95\% rest of the sample on all the possible matching variables. Variables with a Family Discovery Rate (FDR) adjusted p-value lower than a pre-defined cut-off point (p\textless0.05) would be selected for matching. If this generates a very large number of matching variables with the consequence that it is impossible to identify at least \textasciitilde1,775 matched controls, we will take the variables with the most significant p-values to match on, progressively adding in further variables until we can no longer identify a minimum of \textasciitilde1,775 control individuals.
 \item
-  Random forests methods, used to estimate variable importance measures (e.g.~permuation importance). All relevant variables, as determined by the selected imporatnce scores, would be selected for matching.
+  \emph{Random forests}, a classifier approach to identifying the most important features that characterise a dataset. This approach will be applied to estimate variable importance measures (e.g.~permutation importance), which will tell us how much each variable contributes to the characterisation of an individual as working long hours, and therefore, how important it is to match on this variable. All relevant variables, as determined by the selected importance scores, would be selected for matching. As with the \emph{test statistics} approach, if this generates a very large number of matching variables with the consequence that it is impossible to identify at least \textasciitilde1,775 matched controls, we will take the variables with the largest importance values to match on, progressively adding in further variables until we can no longer identify a minimum of \textasciitilde1,775 control individuals.
+  We plan to run both the \emph{test statistics} and \emph{random forests} feature selection approaches to gain an overview of consistency between the two methods (i.e., if the same features appear as important to match cases and controls on, across the two approaches, this gives additional confidence).
 \item
-  Other means of achieving this selection could evolve as we proceed through the descriptive stages of the analysis, and will be recounted in successive updates to this present preregistration document.
+  \emph{Other means of identifying matching variables} may evolve as we proceed through the descriptive stages of the analysis, and will be recounted in successive updates to this present preregistration document.
 \end{itemize}
 
-\newpage
-
-\hypertarget{multifactorial-analysis-strategy-original}{%
-\subsection{Multifactorial analysis strategy (ORIGINAL)}\label{multifactorial-analysis-strategy-original}}
-
-In order to determine how particular work patterns are associated with neural markers, immune function, and cognition, we need to first understand how numerous non-imaging/-physiological variables inter-relate in our Biobank dataset. This includes employment, sociodemographic, lifestyle, and health-related information. The complete list of data fields requested from the Biobank for this project can be found at \url{http://tiny.cc/UKBBMetaData_62188} (N.B.:``Participants'' attribute refers to total participants in the cohort with information in the selected ``Field'', not the number of participants in the dataset linked to the current project).
-
-It is plausible that, for example, number of hours worked (`\emph{Length of working week for main job}') covaries in multiple, likely nonlinear, ways, with other employment variables (such as commute time, `\emph{distance between home and workplace}' \& `\emph{frequency of travelling}'), and with numerous variables from other categories such as sociodemographic, lifestyle, and health-related information. This means that if we wish to test for a specific effect between hours worked and neural function, for example, it may be challenging to conclude that a neural characteristic is attributable to hours worked, without accounting in some manner for these related variables. Even in the imaging data alone, it is clear that numerous quality-related metrics such as head motion, acquisition date and time, and scanner configuration act as potential confounders.\textsuperscript{{[}37{]}}
-
-Therefore, prior to analysing the imaging and physiological data, we will undertake a comprehensive investigation of how employment variables (e.g.~`\emph{Length of working week for main job}'; Biobank Field ID: 767) relate to sociodemographic, lifestyle, and health-related information, in our dataset of \(n=35,501\) individuals. To do so, we plan to use multivariate analysis techniques, incorporating machine learning methods, potentially applying a Canonical Correlational Analysis (CCA) approach.
-
-A complete and full picture of these relationships is, although very much worthy of scientific merit, not our primary and only goal, and also a lengthier and more detailed process than is within our present remit. We aim to characterise sufficiently the strongest inter-relations of employment variables with sociodemographic, lifestyle, and health-related information, and the nature of their association (e.g.~linear, U-shape function). This will be a standalone piece of work, but also form the preliminary stage to the investigation of brain, body and behavioural markers of occupational wellbeing, to which the above-stated hypotheses relate. For example, we may use variables that show a strong, linear relation to number of hours worked as covariates in mass univariate General Linear Models when analysing the Hariri task fMRI. Other ways in which we utilise the picture of employment and other non-imaging/-physiology variables in our analyses of the imaging and physiology data will evolve as we proceed through the project, and will be recounted in successive updates to this present preregistration document.
+\textbf{Case-control matching}. After determining the variables to include in the matching process, appropriate distance measures will be determined for each variable (e.g.~propensity scores), and a matching method implemented (e.g.~nearest neighbour).
 
 \newpage
 
 \hypertarget{multistage-preregistration-plan}{%
 \subsection{Multistage preregistration plan}\label{multistage-preregistration-plan}}
 
-We intend to successively update our preregistration documentation as we proceed through each analysis step in this project. This document (dated \#\#th October 2020) forms the second document in this series. As we complete data analysis stages, we will be able to prescribe increasingly specific hypotheses, and refine our original broad imaging and physiological analysis approaches set out in earlier preregistration documentation, to increasingly more precise plans. This will include an evolution of expected statistical approaches as the multifactorial complexities of our dataset reveal themselves in relation to our specific questions about brain, body and behavioural markers of occupational wellbeing.
+We intend to successively update our preregistration documentation as we proceed through each analysis step in this project. This document (dated October 20th, 2020) forms the second document in this series. As we complete data analysis stages, we will be able to prescribe increasingly specific hypotheses, and refine our original broad imaging and physiological analysis approaches set out in earlier preregistration documentation, to increasingly more precise plans. This will include an evolution of expected statistical approaches as the multifactorial complexities of our dataset reveal themselves in relation to our specific questions about brain, body and behavioural markers of occupational wellbeing.
 
-We will seek to timestamp our data logs and analysis records, and provide updated pregregistration documents in a public repository, such that the evolutionary timeline is indicative of a commitment to preregistration principles, (i.e.~to guard against questionable research practices), while taking account of the multi-stage and complex nature of this project.
+We will seek to timestamp our data logs and analysis records and provide updated pre-gregistration documents in a public repository, such that the evolutionary timeline is indicative of a commitment to preregistration principles, (i.e.~to guard against questionable research practices) while taking account of the multi-stage and complex nature of this project.
+
+\newpage
 
 \newpage
 
-\newpage
+\hspace{1cm}
 
 \hypertarget{refs}{}
 \begin{cslreferences}
@@ -399,9 +399,6 @@ We will seek to timestamp our data logs and analysis records, and provide update
 
 \leavevmode\hypertarget{ref-Schiller2018}{}%
 36. Schiller, H., Lekander, M., Rajaleid, K., Hellgren, C., Åkerstedt, T., Barck-Holst, P., \& Kecklund, G. (2018). Total workload and recovery in relation to worktime reduction: A randomised controlled intervention study with time-use data. \emph{Occupational and Environmental Medicine}, \emph{75}(3), 218--226. \url{http://dx.doi.org/10.1136/oemed-2017-104592}
-
-\leavevmode\hypertarget{ref-Smith2020}{}%
-37. Smith, S. M., Elliott, L. T., Alfaro-Almagro, F., McCarthy, P., Nichols, T. E., Douaud, G., \& Miller, K. L. (2020). Brain aging comprises many modes of structural and functional change with distinct genetic and biophysical associations. \emph{eLife}, \emph{9}. \url{http://dx.doi.org/10.7554/elife.52677}
 \end{cslreferences}
 
 \end{document}
