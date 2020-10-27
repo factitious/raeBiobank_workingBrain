@@ -29,9 +29,17 @@ metaData_all <- read_excel("~/GoogleDrive/Git/raeBiobank/metaData/workingBrain_d
 head(metaData_all)
 ```
 
+# Load previous version for comparison
+```{r loadData, echo=FALSE}
+metaData_old <- read_excel("~/GoogleDrive/Git/raeBiobank/metaData/workingBrain_dataFields_old.xlsx", 
+    sheet = "allData_BB")
+
+head(metaData_old)
+```
+
 These are all the datafields in the UK Biobank data set, so we need to filter for the fields included in our study (i.e. based on the variable 'inBasket'):
 ```{r filterData}
-metaData<- filter(metaData_all, inBasket == T)
+metaData <- filter(metaData_all, inBasket == T)
 head(metaData)
 ```
 
@@ -124,6 +132,14 @@ metaData_filtered <- metaData_filtered %>%
   mutate(CatVal2 = replace(CatVal2, CatVal1 == "Employment" & CatVal2 == "Employment", "Other")) %>%
   
   mutate(CatVal1 = replace(CatVal1, CatVal1 == "Recruitment", "Sociodemographics_Baseline")) %>%
+  
+  mutate(CatVal1 = replace(CatVal1, Medium == "Health-related outcomes", "Health and medical history_Death register")) %>%
+  
+  mutate(Medium = replace(Medium, CatVal1 == "Health and medical history_Death register", "Online follow-up")) %>%
+  
+  mutate(CatVal1 = replace(CatVal1, FieldID == 20400, "Mental health_Other")) %>%
+  
+  mutate(CatVal1 = replace(CatVal1, CatVal1 == "Mental health" & CatVal2 == "Mental distress", "Mental health_Other")) %>%
 
   unite("MetaCat", CatVal1:CatVal4) # put together all the columns previously split into "MetaCat" column.
 
@@ -154,15 +170,98 @@ sort(unique(metaData_filtered$pathString))
 cat("Metacategories after transformation:")
 unique(metaData_filtered$MetaCat)
 
-cat("Categories after transformation:")
+cat("Categories after transformation:\n")
 unique(metaData_filtered$Category)
 
+```
+
+```{r splitPaths, results="hide"}
+metaData_old <- filter(metaData_old, inBasket == T)
+
+# Split "Path" column based on ">" separator
+metaData_filtered_old <- metaData_old %>%
+  rename(CategoryID = Category) %>% # Rename original "Category" column to what it actually is, i.e. "CategoryID"
+  separate(Path, c("Medium", "CatVal1", "CatVal2","CatVal3", "CatVal4"), ">") # split "Path" column.
+  
+
+# Removing whitespace from vars.
+metaData_filtered_old$Medium <- sub("^\\s+", "", metaData_filtered_old$Medium)
+metaData_filtered_old$Medium <- sub("\\s+$", "", metaData_filtered_old$Medium)
+
+metaData_filtered_old$CatVal1 <- sub("^\\s+", "", metaData_filtered_old$CatVal1)
+metaData_filtered_old$CatVal1 <- sub("\\s+$", "", metaData_filtered_old$CatVal1)
+
+metaData_filtered_old$CatVal2 <- sub("^\\s+", "", metaData_filtered_old$CatVal2)
+metaData_filtered_old$CatVal2 <- sub("\\s+$", "", metaData_filtered_old$CatVal2)
+
+metaData_filtered_old$CatVal3 <- sub("^\\s+", "", metaData_filtered_old$CatVal3)
+metaData_filtered_old$CatVal3 <- sub("\\s+$", "", metaData_filtered_old$CatVal3)
+
+metaData_filtered_old$CatVal4 <- sub("^\\s+", "", metaData_filtered_old$CatVal4)
+metaData_filtered_old$CatVal4 <- sub("\\s+$", "", metaData_filtered_old$CatVal4)
+
+# Change column values and structure in a way that makes sense.
+
+metaData_filtered_old <- metaData_filtered_old %>%
+  
+  # Removing column values we won't need.
+  replace_with_na_if(.predicate = is.character,condition = ~.x == "Touchscreen") %>% # remove "Touchscreen" column value from rows that contain them
+  replace_with_na_if(.predicate = is.character,condition = ~.x == "Brain MRI") %>% # remove "Brain MRI" column value from rows that contain them
+  replace_with_na_if(.predicate = is.character,condition = ~.x == "MET Scores") %>% # remove "Brain MRI" column value from rows that contain them
+  replace_with_na_if(.predicate = is.character,condition = ~.x == "Reception") %>% # remove "Brain MRI" column value from rows that contain them
+  
+  mutate(CatVal1 = replace(CatVal1, CatVal1 == "Cognitive function online", "Cognitive function")) %>% # Replace 'Cognitive function online' with 'Cognitive function'
+  mutate(CatVal1 = replace(CatVal1, CatVal1 == "Baseline characteristics" & is.na(CatVal2), "Sociodemographics_Baseline")) %>%
+  mutate(CatVal1 = replace(CatVal1, CatVal1 == "Baseline characteristics" & CatVal2 == "Indices of Multiple Deprivation", "Sociodemographics")) %>%
+  mutate(CatVal1 = replace(CatVal1, CatVal1 == "Ongoing characteristics", "Sociodemographics_Ongoing")) %>% # Replace 'Ongoing characteristics' with 'Sociodemographics'
+  mutate(CatVal1 = replace(CatVal1, CatVal1 == "Baseline characteristics", "Sociodemographics")) %>% 
+  # Replace 'Baseline characteristics' with 'Sociodemographics': Note that this is probably a bad way of doing this. It works for us out of luck (i.e. the spacing of 'Baseline characteristics' in the two separate cases) as we want to do two different things with them but if you want to do anywthing else with the data, this will likely lead to problems.
+  mutate(CatVal1 = replace(CatVal1, is.na(CatVal1) & CatVal2 == "Psychosocial factors" & CatVal3 == "Mental health", "Mental health_Other")) %>%
+  mutate(CatVal1 = replace(CatVal1, is.na(CatVal1) & CatVal2 == "Psychosocial factors" & CatVal3 == "Social support", "Mental health_Social support")) %>%
+  replace_with_na_if(.predicate = is.character,condition = ~.x == "Psychosocial factors") %>%
+  
+
+  mutate(CatVal1 = replace(CatVal1,  CatVal1 == "Work environment" & CatVal2 == "Medical information", "Health and medical history")) %>%
+
+  mutate(CatVal1 = replace(CatVal1, is.na(CatVal1) & CatVal2 == "Sociodemographics" & CatVal3 == "Employment", "Employment_Employment: Current")) %>%
+  mutate(CatVal2 = replace(CatVal2, CatVal1 == "Employment_Current" & CatVal2 == "Sociodemographics" & CatVal3 == "Employment", "DELETEME")) %>%
+  mutate(CatVal3 = replace(CatVal3, CatVal1 == "Employment_Current" & CatVal2 == "DELETEME" & CatVal3 == "Employment", "DELETEME")) %>%
+  
+  mutate(CatVal2 = replace(CatVal2, is.na(CatVal2) & CatVal1 == "Work environment", "Employment history")) %>% # Get rid of extra NAs that result from 'Work environment'
+  mutate(CatVal1 = replace(CatVal1, CatVal1 == "Work environment" & CatVal2 == "Employment history", "Employment")) %>%
+  
+  mutate(CatVal2 = replace(CatVal2, CatVal1 == "Employment" & CatVal2 == "Employment history", "Employment: History")) %>%
+
+  mutate(CatVal1 = replace(CatVal1, CatVal1 == "Verbal interview" & CatVal2 == "Medical conditions", "Health and medical history")) %>%
+  mutate(CatVal1 = replace(CatVal1, CatVal1 == "Verbal interview" & CatVal2 == "Employment", "Employment")) %>%
+  mutate(CatVal2 = replace(CatVal2, CatVal1 == "Employment" & CatVal2 == "Employment", "Other")) %>%
+  
+  mutate(CatVal1 = replace(CatVal1, CatVal1 == "Recruitment", "Sociodemographics_Baseline")) %>%
+
+  unite("MetaCat", CatVal1:CatVal4) # put together all the columns previously split into "MetaCat" column.
+
+# Remove all the "NA"s from the names.
+metaData_filtered_old$MetaCat <- sub("NA_", "", metaData_filtered_old$MetaCat)
+metaData_filtered_old$MetaCat <- sub("_NA", "", metaData_filtered_old$MetaCat)  
+
+
+metaData_filtered_old <- metaData_filtered_old %>%
+  separate(MetaCat, c("MetaCat", "Category"), "_") # split into "MetaCat" and "Category"
+
+```
+
+```{r}
+#cat("Metacategories after transformation:\n")
+unique(metaData_filtered_old$MetaCat)
+
+cat("Categories after transformation:\n")
+unique(metaData_filtered_old$Category)
 ```
 
 
 ```{r exportTransformedData}
 # As .rda
-# save(metaData_export, file = "metaData_export.rda")
+#save(metaData_filtered, file = "metaData_filtered.rda")
 
 #As csv
 #write.csv(metaData_export,"/Users/munchausend/GoogleDrive/Git/raeBiobank/workingBrain_dataFields 210520.csv", row.names = TRUE)
